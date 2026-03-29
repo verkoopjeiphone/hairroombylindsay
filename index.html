@@ -64,7 +64,7 @@
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
     .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--dark); }
 
-    /* HERO – clean, met 3 knoppen */
+    /* HERO – clean met 3 knoppen */
     #home {
       min-height: 100vh;
       display: grid; grid-template-columns: 1.2fr 1fr;
@@ -142,30 +142,23 @@
     }
 
     .hero-right {
-      position: relative; overflow: hidden; background: var(--warm);
+      position: relative; overflow: hidden;
       display: flex; align-items: center; justify-content: center;
     }
     .hero-illustration {
       width: 100%; height: 100%;
-      background: linear-gradient(150deg, #e8dbc8 0%, #d4c3a8 45%, #c0a888 100%);
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center; gap: 1rem;
-      opacity: 0; animation: fadeIn 1.2s .3s forwards;
+      display: flex; align-items: center; justify-content: center;
       position: relative;
+      opacity: 0; animation: fadeIn 1.2s .3s forwards;
     }
-    .hero-illustration::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: repeating-linear-gradient(90deg,
-        transparent, transparent 28px,
-        rgba(158,125,58,.07) 28px, rgba(158,125,58,.07) 30px);
+    /* Alleen strak kleurverloop rechts, geen icon/tekst */
+    .hero-illustration-plain {
+      background: linear-gradient(150deg, #f5ede0 0%, #e4d3b8 40%, #cfb28b 100%);
     }
-    .hero-illustration .hi-icon { font-size: 5rem; opacity: .25; position: relative; z-index: 1; }
-    .hero-illustration .hi-label {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1rem; letter-spacing: .2em; text-transform: uppercase;
-      color: var(--gold); opacity: .55; position: relative; z-index: 1;
-    }
+    .hero-illustration-plain::before { content: ''; }
+    .hero-illustration-plain .hi-icon,
+    .hero-illustration-plain .hi-label { display: none; }
+
     .hero-badge {
       position: absolute; bottom: 2.5rem; left: 0;
       background: var(--dark); color: var(--light);
@@ -176,218 +169,48 @@
     .hero-badge .hb-name { font-family: 'Dancing Script', cursive; font-size: 1.6rem; margin-top: .05rem; }
     .hero-badge .hb-sub { font-size: .7rem; color: rgba(255,255,255,.4); margin-top: .15rem; }
 
-    /* MARQUEE */
-    .marquee-strip {
-      overflow: hidden; height: 44px; background: var(--gold);
-      display: flex; align-items: center;
+    /* KLEIN OVER-BLOKJE “IN DE SALON” */
+    #over-kort {
+      padding: 5rem 5rem 6rem;
+      background: var(--light);
+      display: flex;
+      justify-content: center;
     }
-    .marquee-inner {
-      display: flex; gap: 3rem; align-items: center; white-space: nowrap;
-      animation: marquee 24s linear infinite;
-      font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; color: var(--cream);
+    .over-mini {
+      max-width: 840px;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 3rem;
+      align-items: center;
     }
-    .marquee-inner .dot { opacity: .6; font-size: .9rem; }
-    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
-    /* OVER MIJ */
-    #over { display: grid; grid-template-columns: 1fr 1fr; min-height: 600px; }
-    .over-visual {
-      background: var(--warm);
-      display: flex; align-items: center; justify-content: center;
-      padding: 5rem 4rem; position: relative;
-    }
-    .over-frame {
-      width: 100%; max-width: 340px; aspect-ratio: 3/4;
-      background: linear-gradient(150deg, #ddd0bb, #c4b094);
-      position: relative; display: flex; align-items: flex-end;
-    }
-    .over-frame::before {
-      content: ''; position: absolute; top: -10px; left: -10px; right: 10px; bottom: 10px;
-      border: 1px solid rgba(158,125,58,.4);
-    }
-    .over-frame-lbl {
-      background: var(--dark); color: var(--light);
-      padding: .75rem 1.1rem;
-      font-size: .62rem; letter-spacing: .12em; text-transform: uppercase;
-      width: 100%;
-    }
-    .over-frame-icon {
-      position: absolute; top: 50%; left: 50%;
-      transform: translate(-50%,-60%); font-size: 5rem; opacity: .12;
-    }
-    .over-circle {
-      position: absolute; top: 2.5rem; right: 2rem;
-      width: 95px; height: 95px; border-radius: 50%;
-      border: 1px solid var(--gold);
-      display: flex; align-items: center; justify-content: center;
-      text-align: center; font-size: .52rem; letter-spacing: .12em;
-      text-transform: uppercase; color: var(--gold); opacity: .65; line-height: 1.7;
-    }
-    .over-text {
-      padding: 6rem 5rem;
-      display: flex; flex-direction: column; justify-content: center;
-    }
-    .sec-eyebrow {
+    .over-mini-text .sec-eyebrow {
       font-size: .66rem; letter-spacing: .26em; text-transform: uppercase;
       color: var(--gold); margin-bottom: 1rem;
     }
-    .sec-title {
+    .over-mini-text .sec-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2rem, 3vw, 3rem); line-height: 1.15;
-      color: var(--dark); margin-bottom: 1.8rem;
+      font-size: clamp(2rem, 3vw, 2.7rem); line-height: 1.2;
+      color: var(--dark); margin-bottom: 1.4rem;
     }
-    .sec-title em { font-style: italic; color: var(--gold); }
-    .over-text p { color: var(--muted); line-height: 1.9; font-size: .93rem; margin-bottom: 1rem; max-width: 480px; }
-    .pills { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 1.8rem; }
-    .pill {
-      padding: .45rem 1.1rem; border: 1px solid var(--border);
-      font-size: .67rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted);
-    }
-    .pill.g { border-color: var(--gold); color: var(--gold); background: rgba(158,125,58,.07); }
+    .over-mini-text .sec-title em { font-style: italic; color: var(--gold); }
+    .over-mini-text p { color: var(--muted); line-height: 1.9; font-size: .95rem; }
 
-    /* DIENSTEN */
-    #diensten { padding: 7rem 5rem; background: var(--light); }
-    .sec-header { text-align: center; margin-bottom: 3.8rem; }
-    .diensten-grid {
-      display: grid; grid-template-columns: repeat(3,1fr);
+    .over-mini-card {
+      background: var(--warm);
       border: 1px solid var(--border);
+      padding: 1.6rem 1.8rem;
     }
-    .dc {
-      padding: 2.6rem 2.2rem;
-      border-right: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      transition: background .3s; position: relative; overflow: hidden;
-    }
-    .dc::after {
-      content: ''; position: absolute; bottom: 0; left: 0;
-      height: 2px; width: 0; background: var(--gold); transition: width .4s;
-    }
-    .dc:hover { background: var(--warm); }
-    .dc:hover::after { width: 100%; }
-    .dc:nth-child(3n) { border-right: none; }
-    .dc:nth-child(n+4) { border-bottom: none; }
-    .dc-icon { font-size: 1.5rem; margin-bottom: 1.1rem; }
-    .dc-name { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--dark); margin-bottom: .5rem; }
-    .dc-desc { font-size: .85rem; color: var(--muted); line-height: 1.75; }
-    .dc-price { display: inline-block; margin-top: 1.1rem; font-size: .63rem; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); }
-
-    /* SALON */
-    #salon { padding: 7rem 5rem; background: var(--warm); }
-    .sfeer-grid {
-      display: grid;
-      grid-template-columns: 1.6fr 1fr 1fr;
-      grid-template-rows: 260px 260px;
-      gap: 8px; margin-top: 3.5rem;
-    }
-    .si { overflow: hidden; position: relative; }
-    .si:first-child { grid-row: 1/3; }
-    .si-box {
-      width: 100%; height: 100%;
-      display: flex; align-items: center; justify-content: center; font-size: 3rem;
-      transition: transform .5s;
-    }
-    .si:hover .si-box { transform: scale(1.06); }
-    .s1 { background: linear-gradient(140deg,#c9b896,#a8936a); }
-    .s2 { background: linear-gradient(140deg,#ddd0bb,#c4b094); }
-    .s3 { background: linear-gradient(140deg,#bfaf98,#a09070); }
-    .s4 { background: linear-gradient(140deg,#e0d4c0,#c8b898); }
-    .s5 { background: linear-gradient(140deg,#cfc0a8,#b0a080); }
-    .si-overlay {
-      position: absolute; inset: 0; background: rgba(30,26,22,.45);
-      display: flex; align-items: flex-end; padding: 1.2rem;
-      opacity: 0; transition: opacity .3s;
-    }
-    .si:hover .si-overlay { opacity: 1; }
-    .si-overlay span {
+    .over-mini-card h3 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1rem; color: var(--cream); font-style: italic; letter-spacing: .05em;
+      font-size: 1.4rem;
+      margin-bottom: .4rem;
+      color: var(--dark);
     }
-    .sfeer-note { text-align: center; margin-top: 1.8rem; font-size: .82rem; color: var(--muted); }
-    .sfeer-note a { color: var(--gold); text-decoration: none; }
-
-    /* PRIJSLIJST */
-    #prijzen { padding: 7rem 5rem; background: var(--dark); }
-    #prijzen .sec-eyebrow { color: var(--gold); }
-    #prijzen .sec-title { color: var(--cream); }
-    .flex-badge {
-      display: flex; align-items: center; justify-content: center; gap: .6rem;
-      margin: .5rem auto 3.5rem;
-      font-size: .68rem; letter-spacing: .18em; text-transform: uppercase; color: var(--gold);
-    }
-    .flex-badge::before, .flex-badge::after {
-      content: ''; flex: 1; max-width: 90px; height: 1px; background: rgba(158,125,58,.3);
-    }
-    .p-cols {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 0 5rem; max-width: 920px; margin: 0 auto;
-    }
-    .pg { margin-bottom: 2.8rem; }
-    .pg-title {
-      font-size: .62rem; letter-spacing: .24em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 1rem;
-      display: flex; align-items: center; gap: .7rem;
-    }
-    .pg-title::after { content: ''; flex: 1; height: 1px; background: rgba(158,125,58,.22); }
-    .pr {
-      display: flex; justify-content: space-between; align-items: baseline;
-      padding: .65rem 0; border-bottom: 1px solid rgba(255,255,255,.055);
+    .over-mini-card p {
       font-size: .88rem;
+      color: var(--muted);
+      line-height: 1.7;
     }
-    .pr .pn { color: rgba(255,255,255,.75); }
-    .pr .ps { font-size: .73rem; color: rgba(255,255,255,.33); display: block; margin-top: .12rem; }
-    .pr .pp { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--gold); white-space: nowrap; margin-left: 1rem; }
-    .pr .pa { font-size: .7rem; color: rgba(255,255,255,.3); font-style: italic; margin-left: 1rem; }
-    .p-footer { text-align: center; margin-top: 2.5rem; font-size: .8rem; color: rgba(255,255,255,.28); font-style: italic; }
-
-    /* AFSPRAAK */
-    #afspraak {
-      padding: 7rem 5rem; background: var(--light);
-      display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start;
-    }
-    .af-info .sec-title { margin-bottom: 1.2rem; }
-    .af-info p { color: var(--muted); line-height: 1.85; font-size: .92rem; margin-bottom: 1.5rem; }
-    .c-block { margin-top: 1.5rem; }
-    .c-row {
-      display: flex; align-items: flex-start; gap: 1.1rem;
-      padding: .9rem 0; border-bottom: 1px solid var(--border);
-    }
-    .c-row:last-child { border-bottom: none; }
-    .c-ico {
-      width: 38px; height: 38px; border-radius: 50%;
-      border: 1px solid var(--border); background: var(--warm);
-      display: flex; align-items: center; justify-content: center;
-      font-size: .9rem; color: var(--gold); flex-shrink: 0;
-    }
-    .c-lbl { font-size: .6rem; letter-spacing: .16em; text-transform: uppercase; color: var(--gold); }
-    .c-val { font-size: .92rem; color: var(--dark); margin-top: .12rem; }
-    .c-val a { color: var(--dark); text-decoration: none; }
-    .c-val a:hover { color: var(--gold); }
-
-    .af-form { background: var(--warm); border: 1px solid var(--border); padding: 3rem; }
-    .af-form .ft { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; color: var(--dark); margin-bottom: .3rem; }
-    .af-form .fsub { font-size: .78rem; color: var(--muted); margin-bottom: 2rem; }
-    .fr2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .fg { margin-bottom: 1.1rem; }
-    .fg label { display: block; font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-bottom: .4rem; }
-    .fg input, .fg select, .fg textarea {
-      width: 100%; padding: .75rem 1rem;
-      border: 1px solid var(--border); background: var(--light);
-      color: var(--dark); font-family: 'Raleway', sans-serif; font-size: .9rem;
-      outline: none; transition: border-color .25s; appearance: none;
-    }
-    .fg input:focus, .fg select:focus, .fg textarea:focus { border-color: var(--gold); }
-    .fg textarea { resize: vertical; min-height: 80px; }
-    .fg select {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239e7d3a' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
-      background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem;
-    }
-    .btn-form {
-      width: 100%; padding: 1rem; background: var(--gold); color: var(--light);
-      font-family: 'Raleway', sans-serif; font-size: .7rem; letter-spacing: .18em;
-      text-transform: uppercase; border: none; cursor: pointer; transition: background .25s; margin-top: .5rem;
-    }
-    .btn-form:hover { background: var(--dark); }
-    .f-msg { text-align: center; margin-top: .9rem; font-size: .78rem; min-height: 1.2rem; }
 
     /* OPENINGSTIJDEN */
     .hours-bar {
@@ -443,9 +266,6 @@
     /* ANIMATIONS */
     @keyframes up { from { opacity:0; transform:translateY(22px); } to { opacity:1; transform:translateY(0); } }
     @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-    .reveal { opacity:0; transform:translateY(28px); transition: opacity .7s ease, transform .7s ease; }
-    .reveal.visible { opacity:1; transform:translateY(0); }
-    .d1 { transition-delay:.1s; } .d2 { transition-delay:.2s; } .d3 { transition-delay:.3s; }
 
     /* RESPONSIVE */
     @media (max-width: 960px) {
@@ -456,20 +276,9 @@
       #home { grid-template-columns:1fr; }
       .hero-right { height:55vw; }
       .hero-left { padding:3rem 2rem; }
-      #over { grid-template-columns:1fr; }
-      .over-visual { height:380px; padding:2.5rem; }
-      .over-text { padding:3rem 2rem; }
-      #diensten, #salon, #prijzen, #afspraak { padding:4rem 2rem; }
-      .diensten-grid { grid-template-columns:1fr; }
-      .dc { border-right:none; }
-      .dc:nth-child(n+4) { border-bottom:1px solid var(--border); }
-      .dc:last-child { border-bottom:none; }
-      .sfeer-grid { grid-template-columns:1fr 1fr; grid-template-rows:repeat(3,180px); }
-      .si:first-child { grid-row:auto; }
-      .p-cols { grid-template-columns:1fr; gap:0; }
-      #afspraak { grid-template-columns:1fr; gap:3rem; }
+      #over-kort { padding:3rem 2rem 4rem; }
+      .over-mini { grid-template-columns:1fr; }
       .footer-grid { grid-template-columns:1fr; gap:2.5rem; }
-      .fr2 { grid-template-columns:1fr; }
       .hours-bar { padding:2rem; }
       .hi { padding:.75rem 1.2rem; }
     }
@@ -485,25 +294,23 @@
 <!-- NAV -->
 <nav id="navbar">
   <a href="#home" class="nav-logo">
-    <span class="nl-top">Hair Room</span>
+    <span class="nl-top">HAIR ROOM</span>
     <span class="nl-script">by Lindsay</span>
   </a>
   <ul class="nav-links" id="navLinks">
-    <li><a href="#over">Over mij</a></li>
-    <li><a href="#diensten">Diensten</a></li>
-    <li><a href="#salon">Salon</a></li>
+    <li><a href="#over-kort">Over mij</a></li>
+    <li><a href="#afspraak">Afspraak</a></li>
     <li><a href="#prijzen">Prijzen</a></li>
-    <li><a href="#afspraak" class="nav-cta">Afspraak</a></li>
   </ul>
   <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
-<!-- HERO met 3 knoppen -->
+<!-- HERO -->
 <section id="home">
   <div class="hero-left">
-    <p class="hero-eyebrow">✦ Hair Room by Lindsay · Salon & aan huis</p>
+    <p class="hero-eyebrow">✦ HAIR ROOM BY LINDSAY · SALON & AAN HUIS</p>
     <div class="hero-logo-block">
       <span class="hl-top">HAIR ROOM</span>
       <div class="hl-row">
@@ -523,16 +330,12 @@
     <div class="hero-actions">
       <a href="#afspraak" class="btn-main btn-main-primary">Afspraak maken</a>
       <a href="#prijzen" class="btn-main btn-main-ghost">Prijzenlijst bekijken</a>
-      <a href="#over" class="btn-main btn-main-ghost">Over mij</a>
+      <a href="#over-kort" class="btn-main btn-main-ghost">Over mij</a>
     </div>
   </div>
 
   <div class="hero-right">
-    <!-- Vervang deze illustratie gerust door een foto -->
-    <div class="hero-illustration">
-      <div class="hi-icon">💇‍♀️</div>
-      <div class="hi-label">Hair Room by Lindsay</div>
-    </div>
+    <div class="hero-illustration hero-illustration-plain"></div>
     <div class="hero-badge">
       <div class="hb-label">Hairstylist</div>
       <div class="hb-name">Lindsay</div>
@@ -541,223 +344,24 @@
   </div>
 </section>
 
-<!-- MARQUEE -->
-<div class="marquee-strip" aria-hidden="true">
-  <div class="marquee-inner">
-    <span class="dot">✦</span> Knippen & föhnen <span class="dot">✦</span> Balayage <span class="dot">✦</span> Highlights <span class="dot">✦</span> Dames kleuren <span class="dot">✦</span> Permanent <span class="dot">✦</span> Extensions <span class="dot">✦</span> Aan huis service <span class="dot">✦</span> Knippen & föhnen <span class="dot">✦</span> Balayage <span class="dot">✦</span> Highlights <span class="dot">✦</span> Dames kleuren <span class="dot">✦</span> Permanent <span class="dot">✦</span> Extensions <span class="dot">✦</span> Aan huis service
-  </div>
-</div>
-
-<!-- OVER MIJ -->
-<section id="over">
-  <div class="over-visual">
-    <div class="over-frame">
-      <div class="over-frame-icon">✂️</div>
-      <div class="over-frame-lbl">Hair Room by Lindsay · Hairstylist</div>
+<!-- KORTE OVER / IN DE SALON -->
+<section id="over-kort">
+  <div class="over-mini">
+    <div class="over-mini-text">
+      <p class="sec-eyebrow">Over mij</p>
+      <h2 class="sec-title">Welkom bij<br><em>Hair Room by Lindsay</em></h2>
+      <p>
+        Bij Hair Room by Lindsay draait alles om een rustige, persoonlijke ervaring.
+        Je bent welkom in de salon, maar ik kom ook graag bij jou aan huis.
+      </p>
     </div>
-    <div class="over-circle">Passie<br>voor<br>haar</div>
-  </div>
-  <div class="over-text">
-    <p class="sec-eyebrow reveal">Over mij</p>
-    <h2 class="sec-title reveal">Welkom bij<br><em>Hair Room by Lindsay</em></h2>
-    <p class="reveal">
-      Bij Hair Room by Lindsay draait alles om jou. Of je nu een frisse knip wilt, warme balayage
-      of een mooie kleurbehandeling — ik neem de tijd voor jouw wensen en werk met oprechte passie voor het vak.
-    </p>
-    <p class="reveal d1">
-      Ik bied een flexibele service: ik kom bij jou aan huis, of je bent van harte welkom in mijn
-      gezellige salon. Neem rustig een kijkje — vragen mag altijd! 🤎
-    </p>
-    <div class="pills reveal d2">
-      <div class="pill g">✦ Flexibel</div>
-      <div class="pill">In de salon</div>
-      <div class="pill">Aan huis</div>
-      <div class="pill">Op afspraak</div>
-      <div class="pill">Eerlijke prijzen</div>
+    <div class="over-mini-card">
+      <h3>In de salon & aan huis</h3>
+      <p>
+        Een warme, rustige plek waar jij centraal staat. Met flexibele tijden en eerlijke prijzen
+        zoeken we samen naar een look die bij jou past.
+      </p>
     </div>
-  </div>
-</section>
-
-<!-- DIENSTEN -->
-<section id="diensten">
-  <div class="sec-header">
-    <p class="sec-eyebrow reveal">Wat ik doe</p>
-    <h2 class="sec-title reveal">Mijn <em>diensten</em></h2>
-  </div>
-  <div class="diensten-grid reveal">
-    <div class="dc">
-      <div class="dc-icon">✂️</div>
-      <div class="dc-name">Knippen</div>
-      <p class="dc-desc">Wassen & knippen, met of zonder föhnen. Haar wordt standaard gewassen voor de knipbeurt.</p>
-      <span class="dc-price">Vanaf € 25,00</span>
-    </div>
-    <div class="dc">
-      <div class="dc-icon">🌬️</div>
-      <div class="dc-name">Föhnen & Stylen</div>
-      <p class="dc-desc">Föhnen, styltang of krultang — voor iedere gelegenheid de perfecte look.</p>
-      <span class="dc-price">Vanaf € 22,50</span>
-    </div>
-    <div class="dc">
-      <div class="dc-icon">🎨</div>
-      <div class="dc-name">Dames kleuren</div>
-      <p class="dc-desc">Uitgroei kleuren, volledig kleuren, of uitgroei met highlights voor een mooie overgang.</p>
-      <span class="dc-price">Vanaf € 40,00</span>
-    </div>
-    <div class="dc">
-      <div class="dc-icon">✨</div>
-      <div class="dc-name">Highlights & Balayage</div>
-      <p class="dc-desc">Subtiele highlights, coupe soleil of een warme balayage. Alle behandelingen zijn inclusief toner.</p>
-      <span class="dc-price">Op aanvraag</span>
-    </div>
-    <div class="dc">
-      <div class="dc-icon">💫</div>
-      <div class="dc-name">Permanent</div>
-      <p class="dc-desc">Deel permanent of helemaal permanent, inclusief knippen & föhnen voor een perfect eindresultaat.</p>
-      <span class="dc-price">Vanaf € 70,00</span>
-    </div>
-    <div class="dc">
-      <div class="dc-icon">🌿</div>
-      <div class="dc-name">Extensions & Extra's</div>
-      <p class="dc-desc">Luxe verzorgingsmasker + hoofdmassage (15 min). Extensions op aanvraag. Een compleet verwenmoment.</p>
-      <span class="dc-price">Vanaf € 20,00</span>
-    </div>
-  </div>
-</section>
-
-<!-- SALON SFEER -->
-<section id="salon">
-  <div class="sec-header">
-    <p class="sec-eyebrow reveal">De plek</p>
-    <h2 class="sec-title reveal">Een <em>blik</em> in de salon</h2>
-  </div>
-  <div class="sfeer-grid reveal">
-    <div class="si"><div class="si-box s1">🪑</div><div class="si-overlay"><span>De kappersstoel</span></div></div>
-    <div class="si"><div class="si-box s2">🪞</div><div class="si-overlay"><span>Ronde spiegel</span></div></div>
-    <div class="si"><div class="si-box s3">🚿</div><div class="si-overlay"><span>Wasbak</span></div></div>
-    <div class="si"><div class="si-box s4">✨</div><div class="si-overlay"><span>Sfeervolle details</span></div></div>
-    <div class="si"><div class="si-box s5">🌿</div><div class="si-overlay"><span>Warme sfeer</span></div></div>
-  </div>
-  <p class="sfeer-note reveal">
-    Meer foto's? Volg mij op Instagram
-    <a href="https://www.instagram.com/hairroombylindsay" target="_blank" rel="noopener">@hairroombylindsay</a>
-  </p>
-</section>
-
-<!-- PRIJSLIJST -->
-<section id="prijzen">
-  <div class="sec-header">
-    <p class="sec-eyebrow reveal">Transparant</p>
-    <h2 class="sec-title reveal">Prijslijst ✨</h2>
-  </div>
-  <div class="flex-badge reveal">✦ Flexibel: in de salon of aan huis ✦</div>
-
-  <div class="p-cols">
-    <div>
-      <div class="pg reveal">
-        <div class="pg-title">✦ Knippen</div>
-        <div class="pr"><div class="pn">Wassen & knippen <span class="ps">haar wordt standaard gewassen</span></div><span class="pp">€ 25,00</span></div>
-        <div class="pr"><div class="pn">Wassen, knippen & deel föhnen</div><span class="pp">€ 27,50</span></div>
-        <div class="pr"><div class="pn">Knippen & föhnen</div><span class="pp">v.a. € 42,50</span></div>
-      </div>
-      <div class="pg reveal d1">
-        <div class="pg-title">✦ Dames föhnen / stylen</div>
-        <div class="pr"><div class="pn">Föhnen</div><span class="pp">v.a. € 22,50</span></div>
-        <div class="pr"><div class="pn">Styltang</div><span class="pp">v.a. € 25,00</span></div>
-        <div class="pr"><div class="pn">Krultang</div><span class="pp">v.a. € 25,00</span></div>
-      </div>
-      <div class="pg reveal d2">
-        <div class="pg-title">✦ Permanent <span style="font-weight:300;font-style:italic;font-size:.85em;letter-spacing:0;text-transform:none;color:rgba(255,255,255,.3)">incl. knippen & föhnen</span></div>
-        <div class="pr"><div class="pn">Deel permanent</div><span class="pp">€ 70,00</span></div>
-        <div class="pr"><div class="pn">Permanent helemaal</div><span class="pp">v.a. € 80,00</span></div>
-      </div>
-    </div>
-    <div>
-      <div class="pg reveal">
-        <div class="pg-title">✦ Dames kleuren</div>
-        <div class="pr"><div class="pn">Uitgroei kleuren</div><span class="pp">v.a. € 40,00</span></div>
-        <div class="pr"><div class="pn">Helemaal kleuren</div><span class="pp">v.a. € 55,00</span></div>
-        <div class="pr"><div class="pn">Uitgroei kleuren & highlights</div><span class="pp">v.a. € 75,00</span></div>
-        <div class="pr"><div class="pn">Highlights</div><span class="pa">op aanvraag</span></div>
-        <div class="pr"><div class="pn">Highlights helemaal</div><span class="pa">op aanvraag</span></div>
-        <div class="pr"><div class="pn">Balayage</div><span class="pa">op aanvraag</span></div>
-        <div class="pr"><div class="pn">Toner tussen behandelingen door</div><span class="pp">€ 25,00</span></div>
-        <div class="pr" style="padding-top:.8rem;"><span class="pa" style="font-size:.75rem;">Highlights en balayage zijn inclusief toner</span></div>
-      </div>
-      <div class="pg reveal d1">
-        <div class="pg-title">✦ Extensions</div>
-        <div class="pr"><div class="pn">Extensions</div><span class="pa">op aanvraag</span></div>
-      </div>
-      <div class="pg reveal d2">
-        <div class="pg-title">✦ Extra's</div>
-        <div class="pr"><div class="pn">Luxe verzorgingsmasker + hoofdmassage <span class="ps">15 minuten</span></div><span class="pp">€ 20,00</span></div>
-      </div>
-    </div>
-  </div>
-  <p class="p-footer reveal">Eerlijke prijzen, liefde voor het vak en aandacht voor jou. Vragen? Stuur gerust een berichtje! 🤎</p>
-</section>
-
-<!-- AFSPRAAK -->
-<section id="afspraak">
-  <div class="af-info">
-    <p class="sec-eyebrow reveal">Contact</p>
-    <h2 class="sec-title reveal">Afspraak <em>maken</em></h2>
-    <p class="reveal">Neem rustig een kijkje en plan een afspraak via het formulier, Instagram of Facebook. Vragen mag altijd!</p>
-    <div class="c-block">
-      <div class="c-row reveal">
-        <div class="c-ico">📍</div>
-        <div><div class="c-lbl">Locatie</div><div class="c-val">In de salon · Aan huis</div></div>
-      </div>
-      <div class="c-row reveal d1">
-        <div class="c-ico">📷</div>
-        <div><div class="c-lbl">Instagram</div><div class="c-val"><a href="https://www.instagram.com/hairroombylindsay" target="_blank" rel="noopener">@hairroombylindsay</a></div></div>
-      </div>
-      <div class="c-row reveal d2">
-        <div class="c-ico">👤</div>
-        <div><div class="c-lbl">Facebook</div><div class="c-val"><a href="https://www.facebook.com/hairroombylindsay" target="_blank" rel="noopener">Hair room by Lindsay</a></div></div>
-      </div>
-      <div class="c-row reveal">
-        <div class="c-ico">⏰</div>
-        <div><div class="c-lbl">Beschikbaarheid</div><div class="c-val">Ma t/m za · Tijden in overleg</div></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="af-form reveal">
-    <div class="ft">Stuur een bericht</div>
-    <p class="fsub">Vul het formulier in, ik neem zo snel mogelijk contact op.</p>
-    <div class="fr2">
-      <div class="fg"><label for="naam">Naam</label><input type="text" id="naam" placeholder="Jouw naam" /></div>
-      <div class="fg"><label for="tel">Telefoonnummer</label><input type="tel" id="tel" placeholder="+31 6 ..." /></div>
-    </div>
-    <div class="fg"><label for="email">E-mailadres</label><input type="email" id="email" placeholder="jouw@email.nl" /></div>
-    <div class="fg">
-      <label for="dienst">Gewenste dienst</label>
-      <select id="dienst">
-        <option value="" disabled selected>Kies een dienst</option>
-        <option>Wassen & knippen (€ 25,00)</option>
-        <option>Knippen & föhnen (v.a. € 42,50)</option>
-        <option>Föhnen / stylen (v.a. € 22,50)</option>
-        <option>Uitgroei kleuren (v.a. € 40,00)</option>
-        <option>Helemaal kleuren (v.a. € 55,00)</option>
-        <option>Highlights / balayage (op aanvraag)</option>
-        <option>Permanent (v.a. € 70,00)</option>
-        <option>Extensions (op aanvraag)</option>
-        <option>Luxe masker + massage (€ 20,00)</option>
-        <option>Anders / combinatie</option>
-      </select>
-    </div>
-    <div class="fg">
-      <label for="locatie">Locatie voorkeur</label>
-      <select id="locatie">
-        <option value="" disabled selected>In de salon of aan huis?</option>
-        <option>In de salon</option>
-        <option>Aan huis</option>
-        <option>Geen voorkeur</option>
-      </select>
-    </div>
-    <div class="fg"><label for="bericht">Bericht / wensen</label><textarea id="bericht" placeholder="Vertel iets over je wensen, haartype of vragen..."></textarea></div>
-    <button class="btn-form" onclick="submitForm(event)">Verstuur bericht ✦</button>
-    <p class="f-msg" id="fMsg"></p>
   </div>
 </section>
 
@@ -793,22 +397,16 @@
       </div>
     </div>
     <div class="fc">
-      <h4>Diensten</h4>
+      <h4>Navigatie</h4>
       <ul>
-        <li><a href="#diensten">Knippen & föhnen</a></li>
-        <li><a href="#diensten">Dames kleuren</a></li>
-        <li><a href="#diensten">Highlights & balayage</a></li>
-        <li><a href="#diensten">Permanent</a></li>
-        <li><a href="#diensten">Extensions</a></li>
-        <li><a href="#diensten">Luxe behandelingen</a></li>
+        <li><a href="#over-kort">Over mij</a></li>
+        <li><a href="#afspraak">Afspraak</a></li>
+        <li><a href="#prijzen">Prijzen</a></li>
       </ul>
     </div>
     <div class="fc">
-      <h4>Info</h4>
+      <h4>Contact</h4>
       <ul>
-        <li><a href="#over">Over Lindsay</a></li>
-        <li><a href="#prijzen">Prijslijst</a></li>
-        <li><a href="#afspraak">Afspraak maken</a></li>
         <li><a href="https://www.instagram.com/hairroombylindsay" target="_blank" rel="noopener">Instagram</a></li>
         <li><a href="https://www.facebook.com/hairroombylindsay" target="_blank" rel="noopener">Facebook</a></li>
       </ul>
@@ -820,35 +418,19 @@
   </div>
 </footer>
 
+<!-- Placeholder anchors zodat de knoppen werken (kun je later echte pagina's van maken) -->
+<section id="afspraak" style="height:1px;"></section>
+<section id="prijzen" style="height:1px;"></section>
+
 <script>
   function toggleMenu() {
     document.getElementById('navLinks').classList.toggle('open');
   }
 
-  const reveals = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
-  }, { threshold: 0.1 });
-  reveals.forEach(el => io.observe(el));
-
   window.addEventListener('scroll', () => {
     const n = document.getElementById('navbar');
     n.style.padding = scrollY > 60 ? '.8rem 4rem' : '1.2rem 4rem';
   });
-
-  function submitForm(e) {
-    e.preventDefault();
-    const naam = document.getElementById('naam').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const msg = document.getElementById('fMsg');
-    if (!naam || !email) {
-      msg.style.color = '#c97070';
-      msg.textContent = 'Vul je naam en e-mailadres in.';
-      return;
-    }
-    msg.style.color = '#9e7d3a';
-    msg.textContent = '✦ Bedankt! Ik neem zo snel mogelijk contact met je op. 🤎';
-  }
 </script>
 </body>
 </html>
