@@ -56,15 +56,18 @@
       color: var(--muted); text-decoration: none; transition: color .2s;
     }
     .nav-links a:hover { color: var(--gold); }
-    .nav-cta { padding: .55rem 1.5rem; background: var(--gold); color: var(--light) !important; transition: background .2s !important; }
+    .nav-cta {
+      padding: .55rem 1.5rem; background: var(--gold);
+      color: var(--light) !important; transition: background .2s !important;
+    }
     .nav-cta:hover { background: var(--dark) !important; }
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
     .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--dark); }
 
-    /* HERO */
+    /* HERO – clean, met 3 knoppen */
     #home {
       min-height: 100vh;
-      display: grid; grid-template-columns: 1fr 1fr;
+      display: grid; grid-template-columns: 1.2fr 1fr;
       padding-top: 78px; background: var(--light);
     }
     .hero-left {
@@ -73,16 +76,16 @@
     }
     .hero-eyebrow {
       font-size: .68rem; letter-spacing: .26em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 2rem;
+      color: var(--gold); margin-bottom: 1.5rem;
       opacity: 0; animation: up .8s .1s forwards;
     }
     .hero-logo-block {
-      margin-bottom: 2.2rem;
+      margin-bottom: 1.8rem;
       opacity: 0; animation: up .9s .22s forwards;
     }
     .hero-logo-block .hl-top {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.8rem, 4.8vw, 5rem);
+      font-size: clamp(2.8rem, 4.2vw, 4.5rem);
       font-weight: 600; letter-spacing: .18em; text-transform: uppercase;
       color: var(--gold); line-height: 1; display: block;
     }
@@ -92,34 +95,51 @@
     .hero-logo-block .hl-row svg { width: clamp(26px,3.5vw,44px); color: var(--gold); }
     .hero-logo-block .hl-script {
       font-family: 'Dancing Script', cursive;
-      font-size: clamp(2.4rem, 3.8vw, 4.2rem); color: var(--gold); line-height: 1;
+      font-size: clamp(2.2rem, 3.4vw, 3.8rem); color: var(--gold); line-height: 1;
     }
     .hero-tagline {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(.95rem,1.5vw,1.2rem); font-style: italic;
-      color: var(--muted); max-width: 380px; line-height: 1.75;
-      margin-bottom: 2.4rem;
-      opacity: 0; animation: up .9s .38s forwards;
+      font-size: clamp(1rem,1.6vw,1.25rem);
+      color: var(--muted); max-width: 420px; line-height: 1.8;
+      margin-bottom: 2.2rem;
+      opacity: 0; animation: up .9s .36s forwards;
     }
+
     .hero-actions {
-      display: flex; gap: 1.2rem; align-items: center;
-      opacity: 0; animation: up .9s .52s forwards;
+      display: flex; flex-wrap: wrap; gap: .75rem;
+      opacity: 0; animation: up .9s .5s forwards;
     }
-    .btn-gold {
-      padding: .85rem 2.2rem; background: var(--gold); color: var(--light);
-      font-family: 'Raleway', sans-serif; font-size: .7rem;
-      letter-spacing: .18em; text-transform: uppercase;
-      border: none; cursor: pointer; text-decoration: none;
-      transition: background .25s, transform .2s; display: inline-block;
+    .btn-main {
+      flex: 1 1 180px;
+      text-align: center;
+      padding: 0.9rem 1.4rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      font-size: .72rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      transition: background .2s, color .2s, border-color .2s, transform .15s;
     }
-    .btn-gold:hover { background: var(--dark); transform: translateY(-2px); }
-    .btn-outline {
-      font-size: .7rem; letter-spacing: .14em; text-transform: uppercase;
-      color: var(--muted); text-decoration: none;
-      border-bottom: 1px solid var(--border); padding-bottom: 2px;
-      transition: color .2s, border-color .2s;
+    .btn-main-primary {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--light);
     }
-    .btn-outline:hover { color: var(--gold); border-color: var(--gold); }
+    .btn-main-primary:hover {
+      background: var(--dark);
+      border-color: var(--dark);
+      transform: translateY(-1px);
+    }
+    .btn-main-ghost {
+      background: transparent;
+      color: var(--muted);
+    }
+    .btn-main-ghost:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: translateY(-1px);
+    }
 
     .hero-right {
       position: relative; overflow: hidden; background: var(--warm);
@@ -146,9 +166,6 @@
       font-size: 1rem; letter-spacing: .2em; text-transform: uppercase;
       color: var(--gold); opacity: .55; position: relative; z-index: 1;
     }
-    /* TIP: Replace .hero-illustration with <img src="salon.jpg" class="hero-photo" />
-       .hero-photo { width:100%; height:100%; object-fit:cover; }
-    */
     .hero-badge {
       position: absolute; bottom: 2.5rem; left: 0;
       background: var(--dark); color: var(--light);
@@ -346,7 +363,6 @@
     .c-val a { color: var(--dark); text-decoration: none; }
     .c-val a:hover { color: var(--gold); }
 
-    /* Form */
     .af-form { background: var(--warm); border: 1px solid var(--border); padding: 3rem; }
     .af-form .ft { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; color: var(--dark); margin-bottom: .3rem; }
     .af-form .fsub { font-size: .78rem; color: var(--muted); margin-bottom: 2rem; }
@@ -484,10 +500,10 @@
   </button>
 </nav>
 
-<!-- HERO -->
+<!-- HERO met 3 knoppen -->
 <section id="home">
   <div class="hero-left">
-    <p class="hero-eyebrow">✦ Eerlijke prijzen &bull; Liefde voor het vak &bull; Aandacht voor jou</p>
+    <p class="hero-eyebrow">✦ Hair Room by Lindsay · Salon & aan huis</p>
     <div class="hero-logo-block">
       <span class="hl-top">HAIR ROOM</span>
       <div class="hl-row">
@@ -501,27 +517,26 @@
       </div>
     </div>
     <p class="hero-tagline">
-      Eerlijke prijzen, liefde voor het vak<br>en aandacht voor jou.<br>
-      Flexibel: in de salon of aan huis.
+      Eerlijke prijzen, liefde voor het vak en aandacht voor jou.
+      Flexibel: in de salon of bij jou aan huis.
     </p>
     <div class="hero-actions">
-      <a href="#afspraak" class="btn-gold">Maak een afspraak</a>
-      <a href="#prijzen" class="btn-outline">Bekijk prijzen</a>
+      <a href="#afspraak" class="btn-main btn-main-primary">Afspraak maken</a>
+      <a href="#prijzen" class="btn-main btn-main-ghost">Prijzenlijst bekijken</a>
+      <a href="#over" class="btn-main btn-main-ghost">Over mij</a>
     </div>
   </div>
+
   <div class="hero-right">
-    <!--
-      FOTO TOEVOEGEN: Vervang onderstaande div door:
-      <img src="salon.jpg" alt="Hair Room by Lindsay" style="width:100%;height:100%;object-fit:cover;" />
-    -->
+    <!-- Vervang deze illustratie gerust door een foto -->
     <div class="hero-illustration">
       <div class="hi-icon">💇‍♀️</div>
-      <div class="hi-label">De Salon</div>
+      <div class="hi-label">Hair Room by Lindsay</div>
     </div>
     <div class="hero-badge">
       <div class="hb-label">Hairstylist</div>
       <div class="hb-name">Lindsay</div>
-      <div class="hb-sub">In de salon &bull; Aan huis</div>
+      <div class="hb-sub">In de salon · Aan huis</div>
     </div>
   </div>
 </section>
@@ -529,17 +544,13 @@
 <!-- MARQUEE -->
 <div class="marquee-strip" aria-hidden="true">
   <div class="marquee-inner">
-    <span class="dot">✦</span> Knippen &amp; föhnen <span class="dot">✦</span> Balayage <span class="dot">✦</span> Highlights <span class="dot">✦</span> Dames kleuren <span class="dot">✦</span> Permanent <span class="dot">✦</span> Extensions <span class="dot">✦</span> Aan huis service <span class="dot">✦</span> Knippen &amp; föhnen <span class="dot">✦</span> Balayage <span class="dot">✦</span> Highlights <span class="dot">✦</span> Dames kleuren <span class="dot">✦</span> Permanent <span class="dot">✦</span> Extensions <span class="dot">✦</span> Aan huis service
+    <span class="dot">✦</span> Knippen & föhnen <span class="dot">✦</span> Balayage <span class="dot">✦</span> Highlights <span class="dot">✦</span> Dames kleuren <span class="dot">✦</span> Permanent <span class="dot">✦</span> Extensions <span class="dot">✦</span> Aan huis service <span class="dot">✦</span> Knippen & föhnen <span class="dot">✦</span> Balayage <span class="dot">✦</span> Highlights <span class="dot">✦</span> Dames kleuren <span class="dot">✦</span> Permanent <span class="dot">✦</span> Extensions <span class="dot">✦</span> Aan huis service
   </div>
 </div>
 
 <!-- OVER MIJ -->
 <section id="over">
   <div class="over-visual">
-    <!--
-      FOTO TOEVOEGEN: Vervang het over-frame door:
-      <img src="lindsay.jpg" alt="Lindsay" style="width:100%;height:100%;object-fit:cover;" />
-    -->
     <div class="over-frame">
       <div class="over-frame-icon">✂️</div>
       <div class="over-frame-lbl">Hair Room by Lindsay · Hairstylist</div>
@@ -577,12 +588,12 @@
     <div class="dc">
       <div class="dc-icon">✂️</div>
       <div class="dc-name">Knippen</div>
-      <p class="dc-desc">Wassen &amp; knippen, met of zonder föhnen. Haar wordt standaard gewassen voor de knipbeurt.</p>
+      <p class="dc-desc">Wassen & knippen, met of zonder föhnen. Haar wordt standaard gewassen voor de knipbeurt.</p>
       <span class="dc-price">Vanaf € 25,00</span>
     </div>
     <div class="dc">
       <div class="dc-icon">🌬️</div>
-      <div class="dc-name">Föhnen &amp; Stylen</div>
+      <div class="dc-name">Föhnen & Stylen</div>
       <p class="dc-desc">Föhnen, styltang of krultang — voor iedere gelegenheid de perfecte look.</p>
       <span class="dc-price">Vanaf € 22,50</span>
     </div>
@@ -594,19 +605,19 @@
     </div>
     <div class="dc">
       <div class="dc-icon">✨</div>
-      <div class="dc-name">Highlights &amp; Balayage</div>
+      <div class="dc-name">Highlights & Balayage</div>
       <p class="dc-desc">Subtiele highlights, coupe soleil of een warme balayage. Alle behandelingen zijn inclusief toner.</p>
       <span class="dc-price">Op aanvraag</span>
     </div>
     <div class="dc">
       <div class="dc-icon">💫</div>
       <div class="dc-name">Permanent</div>
-      <p class="dc-desc">Deel permanent of helemaal permanent, inclusief knippen &amp; föhnen voor een perfect eindresultaat.</p>
+      <p class="dc-desc">Deel permanent of helemaal permanent, inclusief knippen & föhnen voor een perfect eindresultaat.</p>
       <span class="dc-price">Vanaf € 70,00</span>
     </div>
     <div class="dc">
       <div class="dc-icon">🌿</div>
-      <div class="dc-name">Extensions &amp; Extra's</div>
+      <div class="dc-name">Extensions & Extra's</div>
       <p class="dc-desc">Luxe verzorgingsmasker + hoofdmassage (15 min). Extensions op aanvraag. Een compleet verwenmoment.</p>
       <span class="dc-price">Vanaf € 20,00</span>
     </div>
@@ -620,10 +631,6 @@
     <h2 class="sec-title reveal">Een <em>blik</em> in de salon</h2>
   </div>
   <div class="sfeer-grid reveal">
-    <!--
-      FOTO'S TOEVOEGEN: Vervang elke si-box door:
-      <img src="foto1.jpg" alt="Salon" style="width:100%;height:100%;object-fit:cover;" />
-    -->
     <div class="si"><div class="si-box s1">🪑</div><div class="si-overlay"><span>De kappersstoel</span></div></div>
     <div class="si"><div class="si-box s2">🪞</div><div class="si-overlay"><span>Ronde spiegel</span></div></div>
     <div class="si"><div class="si-box s3">🚿</div><div class="si-overlay"><span>Wasbak</span></div></div>
@@ -645,13 +652,12 @@
   <div class="flex-badge reveal">✦ Flexibel: in de salon of aan huis ✦</div>
 
   <div class="p-cols">
-    <!-- Links -->
     <div>
       <div class="pg reveal">
         <div class="pg-title">✦ Knippen</div>
-        <div class="pr"><div class="pn">Wassen &amp; knippen <span class="ps">haar wordt standaard gewassen</span></div><span class="pp">€ 25,00</span></div>
-        <div class="pr"><div class="pn">Wassen, knippen &amp; deel föhnen</div><span class="pp">€ 27,50</span></div>
-        <div class="pr"><div class="pn">Knippen &amp; föhnen</div><span class="pp">v.a. € 42,50</span></div>
+        <div class="pr"><div class="pn">Wassen & knippen <span class="ps">haar wordt standaard gewassen</span></div><span class="pp">€ 25,00</span></div>
+        <div class="pr"><div class="pn">Wassen, knippen & deel föhnen</div><span class="pp">€ 27,50</span></div>
+        <div class="pr"><div class="pn">Knippen & föhnen</div><span class="pp">v.a. € 42,50</span></div>
       </div>
       <div class="pg reveal d1">
         <div class="pg-title">✦ Dames föhnen / stylen</div>
@@ -660,18 +666,17 @@
         <div class="pr"><div class="pn">Krultang</div><span class="pp">v.a. € 25,00</span></div>
       </div>
       <div class="pg reveal d2">
-        <div class="pg-title">✦ Permanent <span style="font-weight:300;font-style:italic;font-size:.85em;letter-spacing:0;text-transform:none;color:rgba(255,255,255,.3)">incl. knippen &amp; föhnen</span></div>
+        <div class="pg-title">✦ Permanent <span style="font-weight:300;font-style:italic;font-size:.85em;letter-spacing:0;text-transform:none;color:rgba(255,255,255,.3)">incl. knippen & föhnen</span></div>
         <div class="pr"><div class="pn">Deel permanent</div><span class="pp">€ 70,00</span></div>
         <div class="pr"><div class="pn">Permanent helemaal</div><span class="pp">v.a. € 80,00</span></div>
       </div>
     </div>
-    <!-- Rechts -->
     <div>
       <div class="pg reveal">
         <div class="pg-title">✦ Dames kleuren</div>
         <div class="pr"><div class="pn">Uitgroei kleuren</div><span class="pp">v.a. € 40,00</span></div>
         <div class="pr"><div class="pn">Helemaal kleuren</div><span class="pp">v.a. € 55,00</span></div>
-        <div class="pr"><div class="pn">Uitgroei kleuren &amp; highlights</div><span class="pp">v.a. € 75,00</span></div>
+        <div class="pr"><div class="pn">Uitgroei kleuren & highlights</div><span class="pp">v.a. € 75,00</span></div>
         <div class="pr"><div class="pn">Highlights</div><span class="pa">op aanvraag</span></div>
         <div class="pr"><div class="pn">Highlights helemaal</div><span class="pa">op aanvraag</span></div>
         <div class="pr"><div class="pn">Balayage</div><span class="pa">op aanvraag</span></div>
@@ -700,7 +705,7 @@
     <div class="c-block">
       <div class="c-row reveal">
         <div class="c-ico">📍</div>
-        <div><div class="c-lbl">Locatie</div><div class="c-val">In de salon &bull; Aan huis</div></div>
+        <div><div class="c-lbl">Locatie</div><div class="c-val">In de salon · Aan huis</div></div>
       </div>
       <div class="c-row reveal d1">
         <div class="c-ico">📷</div>
@@ -712,7 +717,7 @@
       </div>
       <div class="c-row reveal">
         <div class="c-ico">⏰</div>
-        <div><div class="c-lbl">Beschikbaarheid</div><div class="c-val">Ma t/m za &bull; Tijden in overleg</div></div>
+        <div><div class="c-lbl">Beschikbaarheid</div><div class="c-val">Ma t/m za · Tijden in overleg</div></div>
       </div>
     </div>
   </div>
@@ -729,8 +734,8 @@
       <label for="dienst">Gewenste dienst</label>
       <select id="dienst">
         <option value="" disabled selected>Kies een dienst</option>
-        <option>Wassen &amp; knippen (€ 25,00)</option>
-        <option>Knippen &amp; föhnen (v.a. € 42,50)</option>
+        <option>Wassen & knippen (€ 25,00)</option>
+        <option>Knippen & föhnen (v.a. € 42,50)</option>
         <option>Föhnen / stylen (v.a. € 22,50)</option>
         <option>Uitgroei kleuren (v.a. € 40,00)</option>
         <option>Helemaal kleuren (v.a. € 55,00)</option>
@@ -790,9 +795,9 @@
     <div class="fc">
       <h4>Diensten</h4>
       <ul>
-        <li><a href="#diensten">Knippen &amp; föhnen</a></li>
+        <li><a href="#diensten">Knippen & föhnen</a></li>
         <li><a href="#diensten">Dames kleuren</a></li>
-        <li><a href="#diensten">Highlights &amp; balayage</a></li>
+        <li><a href="#diensten">Highlights & balayage</a></li>
         <li><a href="#diensten">Permanent</a></li>
         <li><a href="#diensten">Extensions</a></li>
         <li><a href="#diensten">Luxe behandelingen</a></li>
@@ -810,31 +815,27 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <span>&copy; 2025 Hair Room by Lindsay &bull; Alle rechten voorbehouden</span>
-    <span style="font-style:italic;color:rgba(255,255,255,.18);">Flexibel &bull; Eerlijk &bull; Met passie</span>
+    <span>&copy; 2025 Hair Room by Lindsay · Alle rechten voorbehouden</span>
+    <span style="font-style:italic;color:rgba(255,255,255,.18);">Flexibel · Eerlijk · Met passie</span>
   </div>
 </footer>
 
 <script>
-  // Hamburger
   function toggleMenu() {
     document.getElementById('navLinks').classList.toggle('open');
   }
 
-  // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
   }, { threshold: 0.1 });
   reveals.forEach(el => io.observe(el));
 
-  // Sticky nav
   window.addEventListener('scroll', () => {
     const n = document.getElementById('navbar');
     n.style.padding = scrollY > 60 ? '.8rem 4rem' : '1.2rem 4rem';
   });
 
-  // Form
   function submitForm(e) {
     e.preventDefault();
     const naam = document.getElementById('naam').value.trim();
@@ -847,7 +848,6 @@
     }
     msg.style.color = '#9e7d3a';
     msg.textContent = '✦ Bedankt! Ik neem zo snel mogelijk contact met je op. 🤎';
-    // Koppel hier EmailJS, Netlify Forms of je eigen backend aan.
   }
 </script>
 </body>
