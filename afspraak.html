@@ -205,14 +205,14 @@
       <p class="eyebrow">Afspraak maken</p>
       <h1>Plan uw bezoek bij <em>Lindsay</em></h1>
       <p>
-        Via deze pagina kunt u een afspraakaanvraag doen voor een behandeling in de salon.
-        Vul uw gegevens en wensen in, zodat ik een passend voorstel kan doen.
-      </p>
-      <p>
-        Op basis van uw aanvraag neem ik contact met u op om dag, tijd en behandeling definitief af te stemmen.
+        Via deze pagina kunt u eenvoudig een afspraakaanvraag doen voor een behandeling in de salon.
+        Vul uw naam, gewenste behandeling en voorkeursdag in.
       </p>
       <p class="af-note">
-        Beschikbare tijden: dinsdag en donderdag 09:00 – 12:30 · vrijdag 09:00 – 18:00.
+        Beschikbare tijden:<br>
+        Dinsdag · 09:00 – 12:30<br>
+        Donderdag · 09:00 – 12:30<br>
+        Vrijdag · 09:00 – 18:00
       </p>
     </div>
 
@@ -254,8 +254,8 @@
       </div>
 
       <div class="fg">
-        <label for="bericht">Toelichting</label>
-        <textarea id="bericht" placeholder="Beschrijf kort uw haar, huidige kleur en eventuele vragen."></textarea>
+        <label for="bericht">Toelichting (optioneel)</label>
+        <textarea id="bericht" placeholder="Beschrijf kort uw haar en eventuele wensen."></textarea>
       </div>
 
       <button type="submit" class="btn-main">Verzend aanvraag</button>
@@ -265,7 +265,6 @@
 </main>
 
 <script>
-  // Stuurt de ingevulde aanvraag door naar WhatsApp (06 4884 9226)
   function sendWhatsApp(e){
     e.preventDefault();
     const naam = document.getElementById('naam').value.trim();
@@ -281,7 +280,7 @@
       tekst += `%0AToelichting:%0A${encodeURIComponent(extra)}`;
     }
 
-    const nummer = '31648849226'; // 06 4884 9226
+    const nummer = '31648849226';
     const url = `https://wa.me/${nummer}?text=${tekst}`;
     window.location.href = url;
   }
