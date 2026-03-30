@@ -31,6 +31,24 @@
     ::-webkit-scrollbar { width: 5px; }
     ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
 
+    /* Logo-afbeelding */
+    .logo-full{
+      background-image:url('logo-full.png');
+      background-repeat:no-repeat;
+      background-position:center;
+      background-size:contain;
+      display:inline-block;
+    }
+    .logo-full-nav{
+      width:140px;
+      height:calc(140px * 0.6);
+    }
+    .logo-full-footer{
+      width:150px;
+      height:calc(150px * 0.6);
+      margin-bottom:1.1rem;
+    }
+
     /* NAV */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 200;
@@ -374,9 +392,8 @@
 
 <!-- NAV -->
 <nav id="navbar">
-  <a href="index.html" class="nav-logo">
-    <span class="nl-top">HAIR ROOM</span>
-    <span class="nl-script">by Lindsay</span>
+  <a href="index.html" class="nav-logo" aria-label="Hair Room by Lindsay">
+    <span class="logo-full logo-full-nav"></span>
   </a>
   <ul class="nav-links" id="navLinks">
     <li><a href="over.html">Over mij</a></li>
@@ -453,11 +470,11 @@
     </div>
     <div class="hi">
       <div class="hi-day">Vrijdag</div>
-      <div class="hi-time">Op afspraak</div>
+      <div class="hi-time">09:00 – 18:00 · Op afspraak</div>
     </div>
     <div class="hi">
       <div class="hi-day">Overig</div>
-      <div class="hi-time closed">In overleg / op afspraak</div>
+      <div class="hi-time">In overleg / op afspraak</div>
     </div>
   </div>
 </div>
@@ -466,9 +483,8 @@
 <footer>
   <div class="footer-grid">
     <div class="fb-brand">
-      <a href="index.html" class="fb-logo">
-        <span class="fl-top">Hair Room</span>
-        <span class="fl-script">by Lindsay</span>
+      <a href="index.html" class="fb-logo" aria-label="Hair Room by Lindsay">
+        <span class="logo-full logo-full-footer"></span>
       </a>
       <p>Eerlijke prijzen, liefde voor het vak en aandacht voor jou. Flexibel in de salon of aan huis. Vragen mag altijd!</p>
 
