@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hair Room by Lindsay</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Dancing+Script:wght@600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -56,10 +57,16 @@
       color: var(--muted); text-decoration: none; transition: color .2s;
     }
     .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      padding: .55rem 1.5rem; background: var(--gold);
+      color: var(--light) !important; transition: background .2s !important;
+      border-radius: 999px;
+    }
+    .nav-cta:hover { background: var(--dark) !important; }
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
     .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--dark); }
 
-    /* HERO – volle breedte, geen rechtervak */
+    /* HERO – volle breedte, clean */
     #home {
       min-height: 100vh;
       display: flex;
@@ -74,9 +81,7 @@
       font-size: .68rem; letter-spacing: .26em; text-transform: uppercase;
       color: var(--gold); margin-bottom: 1.6rem;
     }
-    .hero-logo-block {
-      margin-bottom: 2rem;
-    }
+    .hero-logo-block { margin-bottom: 2rem; }
     .hero-logo-block .hl-top {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(2.8rem, 4.2vw, 4.6rem);
@@ -175,8 +180,22 @@
       color: var(--muted);
       line-height: 1.7;
     }
+    .over-mini-card a {
+      display:inline-block;
+      margin-top:.9rem;
+      font-size:.72rem;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      text-decoration:none;
+      color:var(--gold);
+      border-bottom:1px solid rgba(158,125,58,.4);
+      padding-bottom:2px;
+    }
+    .over-mini-card a:hover {
+      border-color:var(--gold);
+    }
 
-    /* OPENINGSTIJDEN – aangepaste dagen */
+    /* OPENINGSTIJDEN */
     .hours-bar {
       background: var(--warm);
       border-top: 1px solid var(--border);
@@ -257,9 +276,7 @@
       .nav-links.open { display:flex; }
       .hamburger { display:flex; }
 
-      #home {
-        padding: 88px 2rem 3.5rem;
-      }
+      #home { padding: 88px 2rem 3.5rem; }
       .hero-inner { max-width: 100%; }
       #over-kort { padding:3rem 2rem 4rem; }
       .over-mini { grid-template-columns:1fr; }
@@ -278,24 +295,24 @@
 
 <!-- NAV -->
 <nav id="navbar">
-  <a href="#home" class="nav-logo">
+  <a href="index.html" class="nav-logo">
     <span class="nl-top">HAIR ROOM</span>
     <span class="nl-script">by Lindsay</span>
   </a>
   <ul class="nav-links" id="navLinks">
-    <li><a href="#over-kort">Over mij</a></li>
-    <li><a href="#afspraak">Afspraak</a></li>
-    <li><a href="#prijzen">Prijzen</a></li>
+    <li><a href="over.html">Over mij</a></li>
+    <li><a href="prijzen.html">Prijslijst</a></li>
+    <li><a href="afspraak.html" class="nav-cta">Afspraak</a></li>
   </ul>
   <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
-<!-- HERO (één vlak, clean) -->
+<!-- HERO -->
 <section id="home">
   <div class="hero-inner">
-    <p class="hero-eyebrow">HAIR ROOM BY LINDSAY · SALON & AAN HUIS</p>
+    <p class="hero-eyebrow">HAIR ROOM BY LINDSAY · SALON &amp; AAN HUIS</p>
     <div class="hero-logo-block">
       <span class="hl-top">HAIR ROOM</span>
       <div class="hl-row">
@@ -313,9 +330,9 @@
       Flexibel: in de salon of bij jou aan huis.
     </p>
     <div class="hero-actions">
-      <a href="#afspraak" class="btn-main btn-main-primary">Afspraak maken</a>
-      <a href="#prijzen" class="btn-main btn-main-ghost">Prijzenlijst bekijken</a>
-      <a href="#over-kort" class="btn-main btn-main-ghost">Over mij</a>
+      <a href="afspraak.html" class="btn-main btn-main-primary">Afspraak maken</a>
+      <a href="prijzen.html" class="btn-main btn-main-ghost">Prijslijst bekijken</a>
+      <a href="over.html" class="btn-main btn-main-ghost">Over mij</a>
     </div>
   </div>
 </section>
@@ -332,16 +349,17 @@
       </p>
     </div>
     <div class="over-mini-card">
-      <h3>In de salon & aan huis</h3>
+      <h3>In de salon &amp; aan huis</h3>
       <p>
         Een warme, rustige plek waar jij centraal staat. Met flexibele tijden en eerlijke prijzen
         zoeken we samen naar een look die bij jou past.
       </p>
+      <a href="over.html">Lees meer over Lindsay</a>
     </div>
   </div>
 </section>
 
-<!-- OPENINGSTIJDEN – alleen di/do ochtend en vr -->
+<!-- OPENINGSTIJDEN -->
 <div class="hours-bar">
   <div class="hours-inner">
     <div class="hi">
@@ -367,7 +385,7 @@
 <footer>
   <div class="footer-grid">
     <div class="fb-brand">
-      <a href="#home" class="fb-logo">
+      <a href="index.html" class="fb-logo">
         <span class="fl-top">Hair Room</span>
         <span class="fl-script">by Lindsay</span>
       </a>
@@ -384,9 +402,9 @@
     <div class="fc">
       <h4>Navigatie</h4>
       <ul>
-        <li><a href="#over-kort">Over mij</a></li>
-        <li><a href="#afspraak">Afspraak</a></li>
-        <li><a href="#prijzen">Prijzen</a></li>
+        <li><a href="over.html">Over mij</a></li>
+        <li><a href="prijzen.html">Prijslijst</a></li>
+        <li><a href="afspraak.html">Afspraak maken</a></li>
       </ul>
     </div>
     <div class="fc">
@@ -399,13 +417,9 @@
   </div>
   <div class="footer-bottom">
     <span>&copy; 2025 Hair Room by Lindsay · Alle rechten voorbehouden</span>
-    <span style="font-style:italic;color:rgba(255,255,255,.18);">Salon & aan huis · Op afspraak</span>
+    <span style="font-style:italic;color:rgba(255,255,255,.18);">Salon &amp; aan huis · Op afspraak</span>
   </div>
 </footer>
-
-<!-- Placeholder anchors zodat de knoppen werken (later echte pagina's) -->
-<section id="afspraak" style="height:1px;"></section>
-<section id="prijzen" style="height:1px;"></section>
 
 <script>
   function toggleMenu() {
