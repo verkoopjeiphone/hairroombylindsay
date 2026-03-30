@@ -1,1 +1,591 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hair Room by Lindsay</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Dancing+Script:wght@600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    :root{
+      --cream:#f5ede0;
+      --light:#faf6f0;
+      --warm:#ece0d0;
+      --gold:#9e7d3a;
+      --dark:#1e1a16;
+      --muted:#7a6a58;
+      --border:#ddd0bb;
+    }
+    html{scroll-behavior:smooth;}
+    body{
+      background:var(--light);
+      color:var(--dark);
+      font-family:'Raleway',sans-serif;
+      font-weight:300;
+      overflow-x:hidden;
+    }
+    ::-webkit-scrollbar{width:5px;}
+    ::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px;}
+
+    /* NAV */
+    nav{
+      position:fixed;top:0;left:0;right:0;z-index:200;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:1.2rem 4rem;
+      background:rgba(250,246,240,.96);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--border);
+      transition:padding .3s;
+    }
+    .nav-logo{
+      text-decoration:none;
+      display:flex;
+      align-items:center;
+    }
+    .nav-logo img{
+      height:54px;
+      width:auto;
+      display:block;
+      filter:drop-shadow(0 0 0 rgba(0,0,0,0)); /* geen rand */
+    }
+    .nav-links{display:flex;gap:2.5rem;list-style:none;}
+    .nav-links a{
+      font-size:.73rem;letter-spacing:.14em;text-transform:uppercase;
+      color:var(--muted);text-decoration:none;transition:color .2s;
+    }
+    .nav-links a:hover{color:var(--gold);}
+    .nav-cta{
+      padding:.55rem 1.5rem;
+      background:var(--gold);
+      color:var(--light)!important;
+      border-radius:999px;
+      transition:background .2s!important;
+    }
+    .nav-cta:hover{background:var(--dark)!important;}
+    .hamburger{
+      display:none;flex-direction:column;gap:5px;
+      cursor:pointer;background:none;border:none;
+    }
+    .hamburger span{
+      display:block;width:22px;height:1.5px;background:var(--dark);
+    }
+
+    /* HERO */
+    #home{
+      min-height:100vh;
+      display:grid;grid-template-columns:1fr 1fr;
+      padding-top:78px;background:var(--light);
+    }
+    .hero-left{
+      display:flex;flex-direction:column;justify-content:center;
+      padding:6rem 3.5rem 6rem 5rem;
+    }
+    .hero-logo-image{
+      max-width:360px;
+      margin-bottom:2.2rem;
+      opacity:0;
+      animation:up .9s .15s forwards;
+    }
+    .hero-logo-image img{
+      width:100%;
+      height:auto;
+      display:block;
+    }
+    .hero-eyebrow{
+      font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;
+      color:var(--gold);margin-bottom:1.5rem;
+      opacity:0;animation:up .8s .05s forwards;
+    }
+    .hero-tagline{
+      font-family:'Cormorant Garamond',serif;
+      font-size:clamp(.95rem,1.5vw,1.2rem);
+      font-style:italic;
+      color:var(--muted);
+      max-width:380px;line-height:1.75;
+      margin-bottom:2.4rem;
+      opacity:0;animation:up .9s .3s forwards;
+    }
+    .hero-actions{
+      display:flex;gap:1.2rem;align-items:center;
+      opacity:0;animation:up .9s .45s forwards;
+    }
+    .btn-gold{
+      padding:.85rem 2.2rem;background:var(--gold);color:var(--light);
+      font-family:'Raleway',sans-serif;font-size:.7rem;
+      letter-spacing:.18em;text-transform:uppercase;
+      border:none;cursor:pointer;text-decoration:none;
+      transition:background .25s,transform .2s;
+      display:inline-block;border-radius:999px;
+    }
+    .btn-gold:hover{background:var(--dark);transform:translateY(-2px);}
+    .btn-outline{
+      font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
+      color:var(--muted);text-decoration:none;
+      border-bottom:1px solid var(--border);padding-bottom:2px;
+      transition:color .2s,border-color .2s;
+    }
+    .btn-outline:hover{color:var(--gold);border-color:var(--gold);}
+
+    .hero-right{
+      position:relative;overflow:hidden;background:var(--warm);
+      display:flex;align-items:center;justify-content:center;
+    }
+    .hero-illustration{
+      width:100%;height:100%;
+      background:linear-gradient(150deg,#e8dbc8 0%,#d4c3a8 45%,#c0a888 100%);
+      display:flex;flex-direction:column;
+      align-items:center;justify-content:center;gap:1rem;
+      opacity:0;animation:fadeIn 1.2s .3s forwards;
+      position:relative;
+    }
+    .hero-illustration::before{
+      content:'';
+      position:absolute;inset:0;
+      background:repeating-linear-gradient(90deg,
+        transparent,transparent 28px,
+        rgba(158,125,58,.07) 28px,rgba(158,125,58,.07) 30px);
+    }
+    .hero-illustration .hi-icon{font-size:5rem;opacity:.25;position:relative;z-index:1;}
+    .hero-illustration .hi-label{
+      font-family:'Cormorant Garamond',serif;
+      font-size:1rem;letter-spacing:.2em;text-transform:uppercase;
+      color:var(--gold);opacity:.55;position:relative;z-index:1;
+    }
+    .hero-badge{
+      position:absolute;bottom:2.5rem;left:0;
+      background:var(--dark);color:var(--light);
+      padding:1.1rem 1.7rem;
+      opacity:0;animation:up .9s .7s forwards;
+    }
+    .hero-badge .hb-label{
+      font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);
+    }
+    .hero-badge .hb-name{
+      font-family:'Dancing Script',cursive;font-size:1.6rem;margin-top:.05rem;
+    }
+    .hero-badge .hb-sub{
+      font-size:.7rem;color:rgba(255,255,255,.4);margin-top:.15rem;
+    }
+
+    /* MARQUEE */
+    .marquee-strip{
+      overflow:hidden;height:44px;background:var(--gold);
+      display:flex;align-items:center;
+    }
+    .marquee-inner{
+      display:flex;gap:3rem;align-items:center;white-space:nowrap;
+      animation:marquee 24s linear infinite;
+      font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cream);
+    }
+    .marquee-inner .dot{opacity:.6;font-size:.9rem;}
+
+    /* SECTIONS SHARED */
+    section{width:100%;}
+    .sec-eyebrow{
+      font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;
+      color:var(--gold);margin-bottom:1rem;
+    }
+    .sec-title{
+      font-family:'Cormorant Garamond',serif;
+      font-size:clamp(2rem,3vw,3rem);line-height:1.15;
+      color:var(--dark);margin-bottom:1.8rem;
+    }
+    .sec-title em{font-style:italic;color:var(--gold);}
+
+    /* OVER MIJ (kort) */
+    #over{
+      display:grid;grid-template-columns:1fr 1fr;min-height:520px;
+    }
+    .over-visual{
+      background:var(--warm);
+      display:flex;align-items:center;justify-content:center;
+      padding:5rem 4rem;position:relative;
+    }
+    .over-frame{
+      width:100%;max-width:340px;aspect-ratio:3/4;
+      background:linear-gradient(150deg,#ddd0bb,#c4b094);
+      position:relative;display:flex;align-items:flex-end;
+    }
+    .over-frame::before{
+      content:'';position:absolute;top:-10px;left:-10px;right:10px;bottom:10px;
+      border:1px solid rgba(158,125,58,.4);
+    }
+    .over-frame-lbl{
+      background:var(--dark);color:var(--light);
+      padding:.75rem 1.1rem;
+      font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;
+      width:100%;
+    }
+    .over-frame-icon{
+      position:absolute;top:50%;left:50%;
+      transform:translate(-50%,-60%);font-size:5rem;opacity:.12;
+    }
+    .over-text{
+      padding:6rem 5rem;
+      display:flex;flex-direction:column;justify-content:center;
+    }
+    .over-text p{
+      color:var(--muted);line-height:1.9;font-size:.93rem;
+      margin-bottom:1rem;max-width:480px;
+    }
+
+    /* DIENSTEN */
+    #diensten{padding:7rem 5rem;background:var(--light);}
+    .sec-header{text-align:center;margin-bottom:3.8rem;}
+    .diensten-grid{
+      display:grid;grid-template-columns:repeat(3,1fr);
+      border:1px solid var(--border);
+    }
+    .dc{
+      padding:2.6rem 2.2rem;
+      border-right:1px solid var(--border);
+      border-bottom:1px solid var(--border);
+      transition:background .3s;position:relative;overflow:hidden;
+    }
+    .dc::after{
+      content:'';position:absolute;bottom:0;left:0;
+      height:2px;width:0;background:var(--gold);transition:width .4s;
+    }
+    .dc:hover{background:var(--warm);}
+    .dc:hover::after{width:100%;}
+    .dc:nth-child(3n){border-right:none;}
+    .dc:nth-child(n+4){border-bottom:none;}
+    .dc-icon{font-size:1.5rem;margin-bottom:1.1rem;}
+    .dc-name{
+      font-family:'Cormorant Garamond',serif;font-size:1.2rem;
+      color:var(--dark);margin-bottom:.5rem;
+    }
+    .dc-desc{font-size:.85rem;color:var(--muted);line-height:1.75;}
+    .dc-price{
+      display:inline-block;margin-top:1.1rem;
+      font-size:.63rem;letter-spacing:.14em;
+      text-transform:uppercase;color:var(--gold);
+    }
+
+    /* PRIJSLIJST TEASER */
+    #prijzen-teaser{
+      padding:6rem 5rem;
+      background:var(--dark);
+      color:rgba(255,255,255,.8);
+    }
+    .prices-inner{
+      max-width:880px;margin:0 auto;
+      display:flex;justify-content:space-between;gap:3rem;
+      align-items:flex-start;
+    }
+    .prices-inner .sec-title{color:var(--cream);margin-bottom:1rem;}
+    .prices-inner p{font-size:.9rem;color:rgba(255,255,255,.7);line-height:1.8;}
+    .price-tags{
+      margin-top:1.5rem;
+      display:flex;flex-wrap:wrap;gap:.6rem;
+    }
+    .price-tag{
+      border:1px solid rgba(255,255,255,.18);
+      padding:.35rem .85rem;
+      font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;
+      color:rgba(255,255,255,.7);
+    }
+
+    /* AFSPRAAK TEASER */
+    #afspraak{
+      padding:6rem 5rem;background:var(--light);
+      display:grid;grid-template-columns:1.2fr 1fr;gap:3.5rem;align-items:center;
+    }
+    .af-info p{
+      font-size:.93rem;color:var(--muted);line-height:1.9;margin-bottom:1rem;
+    }
+    .af-hours{
+      margin-top:1.4rem;font-size:.85rem;color:var(--muted);
+    }
+    .af-card{
+      background:var(--warm);border:1px solid var(--border);
+      padding:2.2rem;border-radius:2px;
+    }
+    .af-card p{
+      font-size:.88rem;color:var(--muted);line-height:1.8;margin-bottom:1.1rem;
+    }
+    .af-card .btn-gold{width:100%;text-align:center;}
+
+    /* FOOTER */
+    footer{
+      background:var(--dark);
+      color:rgba(255,255,255,.38);
+      padding:3rem 5rem 2rem;
+    }
+    .footer-top{
+      display:flex;justify-content:space-between;align-items:center;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      padding-bottom:1.4rem;margin-bottom:1.4rem;
+    }
+    .footer-top small{font-size:.78rem;color:rgba(255,255,255,.4);}
+    .footer-bottom{
+      display:flex;justify-content:space-between;align-items:center;
+      font-size:.73rem;
+    }
+
+    /* ANIMATIONS & RESPONSIVE */
+    @keyframes up{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
+    @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+    @keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+    .d1{transition-delay:.1s;}
+    .d2{transition-delay:.2s;}
+
+    @media(max-width:960px){
+      nav{padding:1rem 1.5rem;}
+      .nav-links{
+        display:none;position:absolute;top:100%;left:0;right:0;
+        flex-direction:column;background:var(--light);
+        padding:1.5rem 2rem;gap:1.2rem;border-bottom:1px solid var(--border);
+      }
+      .nav-links.open{display:flex;}
+      .hamburger{display:flex;}
+      #home{grid-template-columns:1fr;}
+      .hero-right{height:55vw;}
+      .hero-left{padding:3rem 2rem;}
+      #over{grid-template-columns:1fr;}
+      .over-visual{height:380px;padding:2.5rem;}
+      .over-text{padding:3rem 2rem;}
+      #diensten,#prijzen-teaser,#afspraak,footer{padding:4rem 2rem;}
+      .diensten-grid{grid-template-columns:1fr;}
+      .dc:nth-child(3n){border-right:1px solid var(--border);}
+      .dc:nth-child(n+4){border-bottom:1px solid var(--border);}
+      .dc:last-child{border-bottom:none;}
+      .prices-inner{flex-direction:column;}
+      #afspraak{grid-template-columns:1fr;}
+    }
+    @media(max-width:600px){
+      .hero-logo-image{max-width:260px;}
+    }
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="#home" class="nav-logo">
+    <!-- Logo met transparante achtergrond in goudkleur -->
+    <img src="logo-hairroom.png" alt="Hair Room by Lindsay">
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#over">Over mij</a></li>
+    <li><a href="#diensten">Diensten</a></li>
+    <li><a href="#prijzen-teaser">Prijzen</a></li>
+    <li><a href="#afspraak" class="nav-cta">Afspraak</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<section id="home">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Eerlijke prijzen · Liefde voor het vak · Aandacht voor u</p>
+    <div class="hero-logo-image">
+      <img src="logo-hairroom.png" alt="Hair Room by Lindsay">
+    </div>
+    <p class="hero-tagline">
+      Hair Room by Lindsay is een kleinschalige kapsalon in Leiderdorp
+      waar kwaliteit, rust en persoonlijke aandacht centraal staan.
+    </p>
+    <div class="hero-actions">
+      <a href="#afspraak" class="btn-gold">Maak een afspraak</a>
+      <a href="#prijzen-teaser" class="btn-outline">Bekijk prijslijst</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <!-- Vervang deze div eventueel door een echte foto van de salon -->
+    <div class="hero-illustration">
+      <div class="hi-icon">✂️</div>
+      <div class="hi-label">De Salon</div>
+    </div>
+    <div class="hero-badge">
+      <div class="hb-label">Hairstylist</div>
+      <div class="hb-name">Lindsay</div>
+      <div class="hb-sub">In de salon</div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-strip" aria-hidden="true">
+  <div class="marquee-inner">
+    <span class="dot">✦</span> Knippen & föhnen
+    <span class="dot">✦</span> Dames kleuren
+    <span class="dot">✦</span> Highlights & balayage
+    <span class="dot">✦</span> Permanent
+    <span class="dot">✦</span> Extensions
+    <span class="dot">✦</span> Luxe verzorgingsmasker
+    <span class="dot">✦</span> Knippen & föhnen
+    <span class="dot">✦</span> Dames kleuren
+    <span class="dot">✦</span> Highlights & balayage
+    <span class="dot">✦</span> Permanent
+  </div>
+</div>
+
+<section id="over">
+  <div class="over-visual">
+    <div class="over-frame">
+      <div class="over-frame-icon">✂️</div>
+      <div class="over-frame-lbl">Hair Room by Lindsay · Hairstylist</div>
+    </div>
+  </div>
+  <div class="over-text">
+    <p class="sec-eyebrow reveal">Over mij</p>
+    <h2 class="sec-title reveal">Welkom bij <em>Hair Room by Lindsay</em></h2>
+    <p class="reveal">
+      Mijn naam is Lindsay. Met bijna vijftien jaar ervaring in het kappersvak
+      werk ik met veel zorg en aandacht aan ieder kapsel.
+    </p>
+    <p class="reveal d1">
+      In mijn salon in Leiderdorp staat een rustig moment voor uzelf centraal:
+      een verzorgde coupe, een eerlijk advies en een kleur die bij u past.
+    </p>
+  </div>
+</section>
+
+<section id="diensten">
+  <div class="sec-header">
+    <p class="sec-eyebrow reveal">Wat ik doe</p>
+    <h2 class="sec-title reveal">Mijn <em>diensten</em></h2>
+  </div>
+  <div class="diensten-grid reveal">
+    <div class="dc">
+      <div class="dc-icon">✂️</div>
+      <div class="dc-name">Knippen</div>
+      <p class="dc-desc">
+        Wassen & knippen, met of zonder föhnen. Het haar wordt standaard gewassen voor de knipbeurt.
+      </p>
+      <span class="dc-price">Vanaf € 25,00</span>
+    </div>
+    <div class="dc">
+      <div class="dc-icon">🌬️</div>
+      <div class="dc-name">Föhnen & stylen</div>
+      <p class="dc-desc">
+        Föhnen, styltang of krultang voor een verzorgd resultaat, geschikt voor iedere gelegenheid.
+      </p>
+      <span class="dc-price">Vanaf € 22,50</span>
+    </div>
+    <div class="dc">
+      <div class="dc-icon">🎨</div>
+      <div class="dc-name">Dames kleuren</div>
+      <p class="dc-desc">
+        Uitgroei kleuren, volledig kleuren of een combinatie met highlights voor een mooie overgang.
+      </p>
+      <span class="dc-price">Vanaf € 40,00</span>
+    </div>
+    <div class="dc">
+      <div class="dc-icon">✨</div>
+      <div class="dc-name">Highlights & balayage</div>
+      <p class="dc-desc">
+        Van subtiele highlights tot een warme balayage. Behandelingen zijn inclusief toner.
+      </p>
+      <span class="dc-price">Op aanvraag</span>
+    </div>
+    <div class="dc">
+      <div class="dc-icon">💫</div>
+      <div class="dc-name">Permanent</div>
+      <p class="dc-desc">
+        Deel permanent of volledig permanent, altijd inclusief knippen en föhnen.
+      </p>
+      <span class="dc-price">Vanaf € 70,00</span>
+    </div>
+    <div class="dc">
+      <div class="dc-icon">🌿</div>
+      <div class="dc-name">Extensions & extra's</div>
+      <p class="dc-desc">
+        Luxe verzorgingsmasker met hoofdmassage (15 minuten). Extensions zijn mogelijk op aanvraag.
+      </p>
+      <span class="dc-price">Vanaf € 20,00</span>
+    </div>
+  </div>
+</section>
+
+<section id="prijzen-teaser">
+  <div class="prices-inner">
+    <div>
+      <p class="sec-eyebrow">Transparant</p>
+      <h2 class="sec-title">Prijslijst</h2>
+      <p>
+        Bij Hair Room by Lindsay werkt u met duidelijke, eerlijke prijzen.
+        Op de aparte prijspagina vindt u alle behandelingen overzichtelijk terug.
+      </p>
+      <div class="price-tags">
+        <span class="price-tag">Knippen</span>
+        <span class="price-tag">Kleuren</span>
+        <span class="price-tag">Highlights</span>
+        <span class="price-tag">Permanent</span>
+        <span class="price-tag">Extensions</span>
+      </div>
+    </div>
+    <div>
+      <a href="prijzen.html" class="btn-gold">Bekijk volledige prijslijst</a>
+    </div>
+  </div>
+</section>
+
+<section id="afspraak">
+  <div class="af-info">
+    <p class="sec-eyebrow">Afspraak maken</p>
+    <h2 class="sec-title">Plan uw <em>bezoek</em></h2>
+    <p>
+      Wilt u een afspraak plannen voor knippen, kleuren of een andere behandeling?
+      Via de afsprakenpagina verstuurt u eenvoudig uw wensen via WhatsApp.
+    </p>
+    <p class="af-hours">
+      Beschikbare tijden in de salon:<br>
+      Dinsdag · 09:00 – 12:30<br>
+      Donderdag · 09:00 – 12:30<br>
+      Vrijdag · 09:00 – 18:00
+    </p>
+  </div>
+  <div class="af-card">
+    <p>
+      Geef uw naam, gewenste behandeling en voorkeursdag door.
+      U ontvangt vervolgens persoonlijk bericht om de afspraak te bevestigen.
+    </p>
+    <a href="afspraak.html" class="btn-gold">Naar afsprakenpagina</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <small>Hair Room by Lindsay · Leiderdorp</small>
+    <small>Dinsdag & donderdag 09:00 – 12:30 · Vrijdag 09:00 – 18:00</small>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Hair Room by Lindsay</span>
+    <span style="font-style:italic;color:rgba(255,255,255,.25);">
+      Eerlijk · Persoonlijk · Met aandacht
+    </span>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu(){
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+
+  const reveals=document.querySelectorAll('.reveal');
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:0.1});
+  reveals.forEach(el=>io.observe(el));
+
+  window.addEventListener('scroll',()=>{
+    const n=document.getElementById('navbar');
+    n.style.padding=window.scrollY>60 ? '.8rem 4rem' : '1.2rem 4rem';
+  });
+</script>
+
+</body>
+</html>
