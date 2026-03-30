@@ -107,7 +107,7 @@
     .af-note{
       font-size:.8rem;
       color:var(--muted);
-      margin-top:.8rem;
+      margin-top:.6rem;
     }
 
     form .row2{
@@ -203,21 +203,19 @@
   <div class="af-wrapper">
     <div class="af-text">
       <p class="eyebrow">Afspraak maken</p>
-      <h1>Plan je bezoek bij <em>Lindsay</em></h1>
+      <h1>Plan uw bezoek bij <em>Lindsay</em></h1>
       <p>
-        Vul kort je naam, gewenste behandeling en voorkeuren in. Met één klik ga je
-        direct naar WhatsApp, zodat we samen een moment kunnen plannen.
+        Via deze pagina kunt u eenvoudig een afspraakaanvraag doen voor een kappersbehandeling.
+        Vul uw gegevens en wensen in, zodat ik een passend voorstel kan doen.
       </p>
       <p>
-        Je kunt kiezen voor een afspraak in de salon of aan huis. Twijfel je nog over
-        de behandeling? Omschrijf je haar en wens, dan denk ik graag met je mee.
+        Een afspraak is mogelijk in de salon of bij u aan huis. Op basis van uw aanvraag neem ik contact met u op om dag, tijd en behandeling definitief af te stemmen.
       </p>
       <p class="af-note">
-        Beschikbaar op: dinsdag en donderdag 09:00 – 12:30 · vrijdag 09:00 – 18:00.
+        Beschikbare tijden: dinsdag en donderdag 09:00 – 12:30 · vrijdag 09:00 – 18:00.
       </p>
     </div>
 
-    <!-- Simpel formulier dat alleen de WhatsApp-tekst opbouwt -->
     <form onsubmit="sendWhatsApp(event)">
       <div class="fg">
         <label for="naam">Naam</label>
@@ -226,9 +224,9 @@
 
       <div class="row2">
         <div class="fg">
-          <label for="dienst">Gewenste dienst</label>
+          <label for="dienst">Gewenste behandeling</label>
           <select id="dienst" required>
-            <option value="" disabled selected>Kies een dienst</option>
+            <option value="" disabled selected>Kies een behandeling</option>
             <option>Wassen & knippen</option>
             <option>Wassen, knippen & deel föhnen</option>
             <option>Knippen & föhnen</option>
@@ -256,7 +254,7 @@
       </div>
 
       <div class="fg">
-        <label for="locatie">Locatie voorkeur</label>
+        <label for="locatie">Locatie</label>
         <select id="locatie" required>
           <option value="" disabled selected>In de salon of aan huis?</option>
           <option>In de salon</option>
@@ -266,17 +264,18 @@
       </div>
 
       <div class="fg">
-        <label for="bericht">Bericht / wensen</label>
-        <textarea id="bericht" placeholder="Vertel iets over je haar, lengte, kleur en eventuele vragen..."></textarea>
+        <label for="bericht">Toelichting</label>
+        <textarea id="bericht" placeholder="Beschrijf kort uw haar, lengte, huidige kleur en eventuele vragen."></textarea>
       </div>
 
-      <button type="submit" class="btn-main">Verstuur via WhatsApp</button>
+      <button type="submit" class="btn-main">Verzend aanvraag</button>
       <p class="f-msg" id="fMsg"></p>
     </form>
   </div>
 </main>
 
 <script>
+  // Bouwt de tekst op en stuurt door naar WhatsApp (06 4884 9226)
   function sendWhatsApp(e){
     e.preventDefault();
     const naam = document.getElementById('naam').value.trim();
@@ -285,18 +284,17 @@
     const locatie = document.getElementById('locatie').value;
     const extra = document.getElementById('bericht').value.trim();
 
-    let tekst = `Hoi Lindsay, ik wil graag een afspraak maken.%0A%0A`;
-    tekst += `Naam: ${naam}%0A`;
-    tekst += `Behandeling: ${dienst}%0A`;
-    tekst += `Voorkeursdag: ${dag}%0A`;
-    tekst += `Locatie: ${locatie}%0A`;
+    let tekst = `Hoi Lindsay, ik wil graag een afspraak aanvragen.%0A%0A`;
+    tekst += `Naam: ${encodeURIComponent(naam)}%0A`;
+    tekst += `Behandeling: ${encodeURIComponent(dienst)}%0A`;
+    tekst += `Voorkeursdag: ${encodeURIComponent(dag)}%0A`;
+    tekst += `Locatie: ${encodeURIComponent(locatie)}%0A`;
     if(extra){
-      tekst += `%0AWensen/vragen:%0A${encodeURIComponent(extra)}`;
+      tekst += `%0AToelichting:%0A${encodeURIComponent(extra)}`;
     }
 
     const nummer = '31648849226'; // 06 4884 9226
     const url = `https://wa.me/${nummer}?text=${tekst}`;
-
     window.location.href = url;
   }
 </script>
