@@ -144,7 +144,7 @@
       border-color:var(--gold);
     }
     .fg textarea{
-      min-height:110px;
+      min-height:130px;
       resize:vertical;
     }
 
@@ -162,6 +162,7 @@
       background:var(--gold);
       color:var(--light);
       cursor:pointer;
+      display:inline-block;
     }
     .btn-main:hover{
       background:var(--dark);
@@ -204,8 +205,8 @@
       <p class="eyebrow">Afspraak maken</p>
       <h1>Plan je bezoek bij <em>Lindsay</em></h1>
       <p>
-        Vul je gegevens en wensen in, dan neem ik zo snel mogelijk contact met je op
-        om de afspraak definitief te plannen.
+        Vul kort je naam, gewenste behandeling en voorkeuren in. Met één klik ga je
+        direct naar WhatsApp, zodat we samen een moment kunnen plannen.
       </p>
       <p>
         Je kunt kiezen voor een afspraak in de salon of aan huis. Twijfel je nog over
@@ -216,21 +217,11 @@
       </p>
     </div>
 
-    <form onsubmit="handleSubmit(event)">
-      <div class="row2">
-        <div class="fg">
-          <label for="naam">Naam</label>
-          <input type="text" id="naam" required />
-        </div>
-        <div class="fg">
-          <label for="tel">Telefoonnummer</label>
-          <input type="tel" id="tel" required />
-        </div>
-      </div>
-
+    <!-- Simpel formulier dat alleen de WhatsApp-tekst opbouwt -->
+    <form onsubmit="sendWhatsApp(event)">
       <div class="fg">
-        <label for="email">E-mailadres</label>
-        <input type="email" id="email" required />
+        <label for="naam">Naam</label>
+        <input type="text" id="naam" required />
       </div>
 
       <div class="row2">
@@ -279,19 +270,34 @@
         <textarea id="bericht" placeholder="Vertel iets over je haar, lengte, kleur en eventuele vragen..."></textarea>
       </div>
 
-      <button type="submit" class="btn-main">Verstuur aanvraag</button>
+      <button type="submit" class="btn-main">Verstuur via WhatsApp</button>
       <p class="f-msg" id="fMsg"></p>
     </form>
   </div>
 </main>
 
 <script>
-  function handleSubmit(e){
+  function sendWhatsApp(e){
     e.preventDefault();
-    const msg = document.getElementById('fMsg');
-    msg.style.color = '#7a6a58';
-    msg.textContent = 'Bedankt voor je bericht! Ik neem zo snel mogelijk contact met je op.';
-    // Hier kun je later email/service aan koppelen.
+    const naam = document.getElementById('naam').value.trim();
+    const dienst = document.getElementById('dienst').value;
+    const dag = document.getElementById('dag').value;
+    const locatie = document.getElementById('locatie').value;
+    const extra = document.getElementById('bericht').value.trim();
+
+    let tekst = `Hoi Lindsay, ik wil graag een afspraak maken.%0A%0A`;
+    tekst += `Naam: ${naam}%0A`;
+    tekst += `Behandeling: ${dienst}%0A`;
+    tekst += `Voorkeursdag: ${dag}%0A`;
+    tekst += `Locatie: ${locatie}%0A`;
+    if(extra){
+      tekst += `%0AWensen/vragen:%0A${encodeURIComponent(extra)}`;
+    }
+
+    const nummer = '31648849226'; // 06 4884 9226
+    const url = `https://wa.me/${nummer}?text=${tekst}`;
+
+    window.location.href = url;
   }
 </script>
 
