@@ -7,230 +7,228 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Dancing+Script:wght@600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400,1,600&family=Dancing+Script:wght@600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --cream: #f5ede0;
-      --light: #faf6f0;
-      --warm:  #ece0d0;
-      --gold:  #9e7d3a;
-      --dark:  #1e1a16;
-      --muted: #7a6a58;
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    :root{
+      --cream:#f5ede0;
+      --light:#faf6f0;
+      --warm:#ece0d0;
+      --gold:#9e7d3a;
+      --dark:#1e1a16;
+      --muted:#7a6a58;
       --border:#ddd0bb;
     }
-    html { scroll-behavior: smooth; }
-    body {
-      background: var(--light);
-      color: var(--dark);
-      font-family: 'Raleway', sans-serif;
-      font-weight: 300;
-      overflow-x: hidden;
+    html{scroll-behavior:smooth;}
+    body{
+      background:var(--light);
+      color:var(--dark);
+      font-family:'Raleway',sans-serif;
+      font-weight:300;
+      overflow-x:hidden;
     }
-    ::-webkit-scrollbar { width: 5px; }
-    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+    ::-webkit-scrollbar{width:5px;}
+    ::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px;}
+
+    /* ALGEMEEN LOGO-BLOK (overal hetzelfde) */
+    .logo-combo{
+      display:inline-block;
+    }
+    .logo-top{
+      font-family:'Cormorant Garamond',serif;
+      font-size:clamp(2.8rem,4.2vw,4.6rem);
+      font-weight:600;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--gold);
+      line-height:1;
+    }
+    .logo-row{
+      display:flex;
+      align-items:flex-start;
+      gap:1.1rem;
+      margin-top:.4rem;
+    }
+    .logo-scissors{
+      width:clamp(2.1rem,2.8vw,2.6rem);
+      height:clamp(3.2rem,4.1vw,3.8rem);
+      display:block;
+      position:relative;
+      color:var(--gold);
+    }
+    /* schaar opgebouwd met CSS zodat het 1 geheel vormt met de pagina */
+    .logo-scissors::before{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 25% 90%, transparent 55%, currentColor 56%, currentColor 68%, transparent 69%) bottom left,
+        radial-gradient(circle at 75% 90%, transparent 55%, currentColor 56%, currentColor 68%, transparent 69%) bottom right,
+        linear-gradient(currentColor,currentColor);
+      background-size:50% 50%,50% 50%,12% 78%;
+      background-position:0 100%,100% 100%,50% 0;
+      background-repeat:no-repeat;
+    }
+    .logo-script{
+      font-family:'Dancing Script',cursive;
+      font-size:clamp(2.4rem,3.4vw,3.8rem);
+      color:var(--gold);
+      line-height:1.1;
+      padding-top:.2rem;
+    }
+
+    /* kleine variant voor nav/footer */
+    .logo-combo-small .logo-top{
+      font-size:1rem;
+      letter-spacing:.24em;
+    }
+    .logo-combo-small .logo-row{
+      gap:.6rem;
+      margin-top:.25rem;
+    }
+    .logo-combo-small .logo-scissors{
+      width:1.3rem;
+      height:2.1rem;
+    }
+    .logo-combo-small .logo-script{
+      font-size:1.25rem;
+      padding-top:.05rem;
+    }
 
     /* NAV */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1.2rem 4rem;
-      background: rgba(250,246,240,.96);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      transition: padding .3s;
+    nav{
+      position:fixed;top:0;left:0;right:0;z-index:200;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:1.2rem 4rem;
+      background:rgba(250,246,240,.96);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--border);
+      transition:padding .3s;
+    }
+    .nav-logo{
+      text-decoration:none;
+      display:flex;
+      align-items:center;
+    }
+    .nav-links{display:flex;gap:2.5rem;list-style:none;}
+    .nav-links a{
+      font-size:.73rem;letter-spacing:.14em;text-transform:uppercase;
+      color:var(--muted);text-decoration:none;transition:color .2s;
+    }
+    .nav-links a:hover{color:var(--gold);}
+    .nav-cta{
+      padding:.55rem 1.5rem;background:var(--gold);
+      color:var(--light)!important;transition:background .2s!important;
+      border-radius:999px;
+    }
+    .nav-cta:hover{background:var(--dark)!important;}
+    .hamburger{
+      display:none;flex-direction:column;gap:5px;
+      cursor:pointer;background:none;border:none;
+    }
+    .hamburger span{
+      display:block;width:22px;height:1.5px;background:var(--dark);
     }
 
-    .nav-logo {
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      line-height: 1;
+    /* HERO */
+    #home{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      padding:92px 5rem 5rem;
+      background:linear-gradient(135deg,#faf6f0 0%,#f2e7d6 45%,#e2cfb0 100%);
+    }
+    .hero-inner{max-width:900px;}
+    .hero-eyebrow{
+      font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;
+      color:var(--gold);margin-bottom:1.6rem;
+    }
+    .hero-logo-block{
+      margin-bottom:2.2rem;
+    }
+    .hero-tagline{
+      font-family:'Cormorant Garamond',serif;
+      font-size:clamp(1rem,1.6vw,1.25rem);
+      color:var(--muted);max-width:460px;line-height:1.9;
+      margin-bottom:2.3rem;
+    }
+    .hero-actions{
+      display:flex;flex-wrap:wrap;gap:.75rem;
+    }
+    .btn-main{
+      flex:1 1 190px;
+      text-align:center;
+      padding:.95rem 1.4rem;
+      border-radius:999px;
+      border:1px solid var(--border);
+      text-decoration:none;
+      font-size:.72rem;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      transition:background .2s,color .2s,border-color .2s,transform .15s;
+    }
+    .btn-main-primary{
+      background:var(--gold);
+      border-color:var(--gold);
+      color:var(--light);
+    }
+    .btn-main-primary:hover{
+      background:var(--dark);
+      border-color:var(--dark);
+      transform:translateY(-1px);
+    }
+    .btn-main-ghost{
+      background:rgba(250,246,240,.4);
+      color:var(--muted);
+    }
+    .btn-main-ghost:hover{
+      border-color:var(--gold);
+      color:var(--gold);
+      transform:translateY(-1px);
     }
 
-    .nav-logo-text {
-      display: flex;
-      flex-direction: column;
-      gap: 0.15rem;
+    /* OVER-KORT */
+    #over-kort{
+      padding:4.5rem 5rem 5.5rem;
+      background:var(--light);
+      display:flex;
+      justify-content:center;
+      border-top:1px solid var(--border);
     }
-
-    .nav-logo-text .nl-top {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1rem;
-      font-weight: 600;
-      letter-spacing: .32em;
-      text-transform: uppercase;
-      color: var(--gold);
+    .over-mini{
+      max-width:880px;
+      display:grid;
+      grid-template-columns:1.2fr 1fr;
+      gap:3rem;
+      align-items:center;
     }
-
-    .nav-logo-text .nl-script {
-      font-family: 'Dancing Script', cursive;
-      font-size: 1.25rem;
-      color: var(--gold);
+    .sec-eyebrow{
+      font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;
+      color:var(--gold);margin-bottom:1rem;
     }
-
-    /* schaar in nav – in dezelfde stijl als het logo‑bestand */
-    .nav-logo-scissors {
-      width: 26px;
-      height: 26px;
-      color: var(--gold);
-      flex-shrink: 0;
+    .sec-title{
+      font-family:'Cormorant Garamond',serif;
+      font-size:clamp(2rem,3vw,2.7rem);line-height:1.2;
+      color:var(--dark);margin-bottom:1.4rem;
     }
-
-    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-    .nav-links a {
-      font-size: .73rem; letter-spacing: .14em; text-transform: uppercase;
-      color: var(--muted); text-decoration: none; transition: color .2s;
+    .sec-title em{font-style:italic;color:var(--gold);}
+    .over-mini-text p{
+      color:var(--muted);line-height:1.9;font-size:.95rem;
     }
-    .nav-links a:hover { color: var(--gold); }
-    .nav-cta {
-      padding: .55rem 1.5rem; background: var(--gold);
-      color: var(--light) !important; transition: background .2s !important;
-      border-radius: 999px;
+    .over-mini-card{
+      background:var(--warm);
+      border:1px solid var(--border);
+      padding:1.6rem 1.8rem;
     }
-    .nav-cta:hover { background: var(--dark) !important; }
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
-    .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--dark); }
-
-    /* HERO – volle breedte, clean */
-    #home {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding: 92px 5rem 5rem;
-      background: linear-gradient(135deg, #faf6f0 0%, #f2e7d6 45%, #e2cfb0 100%);
+    .over-mini-card h3{
+      font-family:'Cormorant Garamond',serif;
+      font-size:1.4rem;margin-bottom:.4rem;color:var(--dark);
     }
-    .hero-inner {
-      max-width: 900px;
+    .over-mini-card p{
+      font-size:.88rem;color:var(--muted);line-height:1.7;
     }
-    .hero-eyebrow {
-      font-size: .68rem; letter-spacing: .26em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 1.6rem;
-    }
-
-    .hero-logo-block {
-      margin-bottom: 2rem;
-    }
-
-    .hero-logo-row-top {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.8rem, 4.2vw, 4.6rem);
-      font-weight: 600;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: var(--gold);
-      line-height: 1;
-      text-align: left;
-    }
-
-    .hero-logo-row-bottom {
-      display: flex;
-      align-items: flex-start;
-      gap: 1.2rem;
-      margin-top: 0.4rem;
-    }
-
-    .hero-logo-scissors {
-      width: clamp(60px, 7vw, 80px);
-      color: var(--gold);
-      flex-shrink: 0;
-    }
-
-    .hero-logo-script {
-      font-family: 'Dancing Script', cursive;
-      font-size: clamp(2.4rem, 3.4vw, 3.8rem);
-      color: var(--gold);
-      line-height: 1.1;
-      padding-top: 0.3rem;
-    }
-
-    .hero-tagline {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1rem,1.6vw,1.25rem);
-      color: var(--muted); max-width: 460px; line-height: 1.9;
-      margin-bottom: 2.3rem;
-    }
-    .hero-actions {
-      display: flex; flex-wrap: wrap; gap: .75rem;
-    }
-    .btn-main {
-      flex: 1 1 190px;
-      text-align: center;
-      padding: 0.95rem 1.4rem;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      text-decoration: none;
-      font-size: .72rem;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      transition: background .2s, color .2s, border-color .2s, transform .15s;
-    }
-    .btn-main-primary {
-      background: var(--gold);
-      border-color: var(--gold);
-      color: var(--light);
-    }
-    .btn-main-primary:hover {
-      background: var(--dark);
-      border-color: var(--dark);
-      transform: translateY(-1px);
-    }
-    .btn-main-ghost {
-      background: rgba(250,246,240,.4);
-      color: var(--muted);
-    }
-    .btn-main-ghost:hover {
-      border-color: var(--gold);
-      color: var(--gold);
-      transform: translateY(-1px);
-    }
-
-    /* KLEIN OVER-BLOKJE “IN DE SALON” */
-    #over-kort {
-      padding: 4.5rem 5rem 5.5rem;
-      background: var(--light);
-      display: flex;
-      justify-content: center;
-      border-top: 1px solid var(--border);
-    }
-    .over-mini {
-      max-width: 880px;
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 3rem;
-      align-items: center;
-    }
-    .over-mini-text .sec-eyebrow {
-      font-size: .66rem; letter-spacing: .26em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 1rem;
-    }
-    .over-mini-text .sec-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2rem, 3vw, 2.7rem); line-height: 1.2;
-      color: var(--dark); margin-bottom: 1.4rem;
-    }
-    .over-mini-text .sec-title em { font-style: italic; color: var(--gold); }
-    .over-mini-text p { color: var(--muted); line-height: 1.9; font-size: .95rem; }
-
-    .over-mini-card {
-      background: var(--warm);
-      border: 1px solid var(--border);
-      padding: 1.6rem 1.8rem;
-    }
-    .over-mini-card h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.4rem;
-      margin-bottom: .4rem;
-      color: var(--dark);
-    }
-    .over-mini-card p {
-      font-size: .88rem;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-    .over-mini-card a {
+    .over-mini-card a{
       display:inline-block;
       margin-top:.9rem;
       font-size:.72rem;
@@ -241,132 +239,105 @@
       border-bottom:1px solid rgba(158,125,58,.4);
       padding-bottom:2px;
     }
-    .over-mini-card a:hover {
-      border-color:var(--gold);
-    }
+    .over-mini-card a:hover{border-color:var(--gold);}
 
     /* OPENINGSTIJDEN */
-    .hours-bar {
-      background: var(--warm);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 2.2rem 5rem;
+    .hours-bar{
+      background:var(--warm);
+      border-top:1px solid var(--border);
+      border-bottom:1px solid var(--border);
+      padding:2.2rem 5rem;
     }
-    .hours-inner {
-      display: flex; justify-content: center; flex-wrap: wrap;
-      max-width: 800px; margin: 0 auto;
+    .hours-inner{
+      display:flex;justify-content:center;flex-wrap:wrap;
+      max-width:800px;margin:0 auto;
     }
-    .hi {
-      text-align: center; padding: .9rem 1.8rem;
-      border-right: 1px solid var(--border);
+    .hi{
+      text-align:center;padding:.9rem 1.8rem;
+      border-right:1px solid var(--border);
     }
-    .hi:last-child { border-right: none; }
-    .hi-day {
-      font-size: .6rem; letter-spacing: .16em; text-transform: uppercase;
-      color: var(--muted); margin-bottom: .25rem;
+    .hi:last-child{border-right:none;}
+    .hi-day{
+      font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;
+      color:var(--muted);margin-bottom:.25rem;
     }
-    .hi-time {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1rem; color: var(--dark);
+    .hi-time{
+      font-family:'Cormorant Garamond',serif;
+      font-size:1rem;color:var(--dark);
     }
-    .hi-time.closed {
-      color: var(--border);
-      font-style: italic;
-      font-size: .85rem;
+    .hi-time.closed{
+      color:var(--border);
+      font-style:italic;
+      font-size:.85rem;
     }
 
     /* FOOTER */
-    footer {
-      background: var(--dark);
-      color: rgba(255,255,255,.38);
-      padding: 4.5rem 5rem 2rem;
+    footer{
+      background:var(--dark);
+      color:rgba(255,255,255,.38);
+      padding:4.5rem 5rem 2rem;
     }
-    .footer-grid {
-      display: grid; grid-template-columns: 1.8fr 1fr 1fr;
-      gap: 4rem; margin-bottom: 3.5rem;
+    .footer-grid{
+      display:grid;grid-template-columns:1.8fr 1fr 1fr;
+      gap:4rem;margin-bottom:3.5rem;
     }
-
-    .fb-logo {
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.7rem;
-      margin-bottom: 1.1rem;
+    .fb-logo{
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      gap:.7rem;
+      margin-bottom:1.1rem;
     }
-    .fb-logo-text {
-      display: flex;
-      flex-direction: column;
-      gap: 0.15rem;
+    .fb-brand p{font-size:.84rem;line-height:1.8;}
+    .soc-row{display:flex;gap:.7rem;margin-top:1.4rem;}
+    .soc{
+      width:34px;height:34px;border-radius:50%;
+      border:1px solid rgba(255,255,255,.14);
+      display:flex;align-items:center;justify-content:center;
+      text-decoration:none;color:rgba(255,255,255,.35);font-size:.82rem;
+      transition:border-color .2s,color .2s;
     }
-    .fb-logo-text .fl-top {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.05rem; font-weight: 600;
-      letter-spacing: .28em; text-transform: uppercase; color: var(--gold);
+    .soc:hover{border-color:var(--gold);color:var(--gold);}
+    .fc h4{
+      font-size:.6rem;letter-spacing:.22em;
+      text-transform:uppercase;color:var(--cream);margin-bottom:1.3rem;
     }
-    .fb-logo-text .fl-script {
-      font-family: 'Dancing Script', cursive;
-      font-size: 1.3rem; color: var(--gold);
+    .fc ul{list-style:none;}
+    .fc ul li{margin-bottom:.65rem;font-size:.84rem;}
+    .fc ul a{
+      color:rgba(255,255,255,.38);
+      text-decoration:none;
+      transition:color .2s;
     }
-    .fb-logo-scissors {
-      width: 28px;
-      height: 28px;
-      color: var(--gold);
-      flex-shrink: 0;
-    }
-
-    .fb-brand p { font-size: .84rem; line-height: 1.8; }
-    .soc-row { display: flex; gap: .7rem; margin-top: 1.4rem; }
-    .soc {
-      width: 34px; height: 34px; border-radius: 50%;
-      border: 1px solid rgba(255,255,255,.14);
-      display: flex; align-items: center; justify-content: center;
-      text-decoration: none; color: rgba(255,255,255,.35); font-size: .82rem;
-      transition: border-color .2s, color .2s;
-    }
-    .soc:hover { border-color: var(--gold); color: var(--gold); }
-    .fc h4 {
-      font-size: .6rem; letter-spacing: .22em;
-      text-transform: uppercase; color: var(--cream); margin-bottom: 1.3rem;
-    }
-    .fc ul { list-style: none; }
-    .fc ul li { margin-bottom: .65rem; font-size: .84rem; }
-    .fc ul a { color: rgba(255,255,255,.38); text-decoration: none; transition: color .2s; }
-    .fc ul a:hover { color: var(--gold); }
-    .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,.08); padding-top: 1.5rem;
-      display: flex; justify-content: space-between; align-items: center; font-size: .73rem;
+    .fc ul a:hover{color:var(--gold);}
+    .footer-bottom{
+      border-top:1px solid rgba(255,255,255,.08);padding-top:1.5rem;
+      display:flex;justify-content:space-between;align-items:center;font-size:.73rem;
     }
 
     /* RESPONSIVE */
-    @media (max-width: 960px) {
-      nav { padding: 1rem 1.5rem; }
-      .nav-links {
-        display:none; position:absolute; top:100%; left:0; right:0;
-        flex-direction:column; background:var(--light);
-        padding:1.5rem 2rem; gap:1.2rem; border-bottom:1px solid var(--border);
+    @media(max-width:960px){
+      nav{padding:1rem 1.5rem;}
+      .nav-links{
+        display:none;position:absolute;top:100%;left:0;right:0;
+        flex-direction:column;background:var(--light);
+        padding:1.5rem 2rem;gap:1.2rem;border-bottom:1px solid var(--border);
       }
-      .nav-links.open { display:flex; }
-      .hamburger { display:flex; }
+      .nav-links.open{display:flex;}
+      .hamburger{display:flex;}
 
-      #home { padding: 88px 2rem 3.5rem; }
-      .hero-inner { max-width: 100%; }
-      #over-kort { padding:3rem 2rem 4rem; }
-      .over-mini { grid-template-columns:1fr; }
-      .footer-grid { grid-template-columns:1fr; gap:2.5rem; }
-      .hours-bar { padding:2rem; }
-      .hi { padding:.75rem 1.2rem; }
-      .hero-logo-row-bottom {
-        flex-direction: row;
-        align-items: flex-start;
-      }
+      #home{padding:88px 2rem 3.5rem;}
+      .hero-inner{max-width:100%;}
+      #over-kort{padding:3rem 2rem 4rem;}
+      .over-mini{grid-template-columns:1fr;}
+      .footer-grid{grid-template-columns:1fr;gap:2.5rem;}
+      .hours-bar{padding:2rem;}
+      .hi{padding:.75rem 1.2rem;}
     }
-    @media (max-width: 480px) {
-      .hours-inner { flex-direction:column; }
-      .hi { border-right:none; border-bottom:1px solid var(--border); }
-      .hi:last-child { border-bottom:none; }
-      .hero-logo-row-bottom {
-        align-items: center;
-      }
+    @media(max-width:480px){
+      .hours-inner{flex-direction:column;}
+      .hi{border-right:none;border-bottom:1px solid var(--border);}
+      .hi:last-child{border-bottom:none;}
     }
   </style>
 </head>
@@ -375,16 +346,13 @@
 <!-- NAV -->
 <nav id="navbar">
   <a href="index.html" class="nav-logo">
-    <svg class="nav-logo-scissors" viewBox="0 0 48 48" aria-hidden="true">
-      <circle cx="10" cy="36" r="5.2" fill="none" stroke="currentColor" stroke-width="1.8"/>
-      <circle cx="10" cy="12" r="5.2" fill="none" stroke="currentColor" stroke-width="1.8"/>
-      <line x1="14.5" y1="31.5" x2="38" y2="10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-      <line x1="14.5" y1="16.5" x2="38" y2="38" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-    </svg>
-    <span class="nav-logo-text">
-      <span class="nl-top">HAIR ROOM</span>
-      <span class="nl-script">by Lindsay</span>
-    </span>
+    <div class="logo-combo logo-combo-small">
+      <div class="logo-top">HAIR ROOM</div>
+      <div class="logo-row">
+        <span class="logo-scissors"></span>
+        <span class="logo-script">by Lindsay</span>
+      </div>
+    </div>
   </a>
   <ul class="nav-links" id="navLinks">
     <li><a href="over.html">Over mij</a></li>
@@ -402,15 +370,12 @@
     <p class="hero-eyebrow">HAIR ROOM BY LINDSAY · SALON &amp; AAN HUIS</p>
 
     <div class="hero-logo-block">
-      <div class="hero-logo-row-top">HAIR ROOM</div>
-      <div class="hero-logo-row-bottom">
-        <svg class="hero-logo-scissors" viewBox="0 0 48 48" aria-hidden="true">
-          <circle cx="10" cy="36" r="7" fill="none" stroke="currentColor" stroke-width="2"/>
-          <circle cx="10" cy="12" r="7" fill="none" stroke="currentColor" stroke-width="2"/>
-          <line x1="15" y1="30" x2="40" y2="10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <line x1="15" y1="18" x2="40" y2="38" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-        <div class="hero-logo-script">by Lindsay</div>
+      <div class="logo-combo">
+        <div class="logo-top">HAIR ROOM</div>
+        <div class="logo-row">
+          <span class="logo-scissors"></span>
+          <span class="logo-script">by Lindsay</span>
+        </div>
       </div>
     </div>
 
@@ -475,16 +440,13 @@
   <div class="footer-grid">
     <div class="fb-brand">
       <a href="index.html" class="fb-logo">
-        <svg class="fb-logo-scissors" viewBox="0 0 48 48" aria-hidden="true">
-          <circle cx="10" cy="36" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/>
-          <circle cx="10" cy="12" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/>
-          <line x1="14.5" y1="30.5" x2="38" y2="10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-          <line x1="14.5" y1="17.5" x2="38" y2="38" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-        </svg>
-        <span class="fb-logo-text">
-          <span class="fl-top">Hair Room</span>
-          <span class="fl-script">by Lindsay</span>
-        </span>
+        <div class="logo-combo logo-combo-small">
+          <div class="logo-top">HAIR ROOM</div>
+          <div class="logo-row">
+            <span class="logo-scissors"></span>
+            <span class="logo-script">by Lindsay</span>
+          </div>
+        </div>
       </a>
       <p>Eerlijke prijzen, liefde voor het vak en aandacht voor jou. Flexibel in de salon of aan huis. Vragen mag altijd.</p>
       <div class="soc-row">
@@ -519,14 +481,15 @@
 </footer>
 
 <script>
-  function toggleMenu() {
+  function toggleMenu(){
     document.getElementById('navLinks').classList.toggle('open');
   }
 
-  window.addEventListener('scroll', () => {
-    const n = document.getElementById('navbar');
-    n.style.padding = scrollY > 60 ? '.8rem 4rem' : '1.2rem 4rem';
+  window.addEventListener('scroll',()=>{
+    const n=document.getElementById('navbar');
+    n.style.padding=scrollY>60?'.8rem 4rem':'1.2rem 4rem';
   });
 </script>
+
 </body>
 </html>
