@@ -4,306 +4,197 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hair Room by Lindsay</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Dancing+Script:wght@600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Dancing+Script:wght@600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --cream: #f5ede0;
-      --light: #faf6f0;
-      --warm:  #ece0d0;
-      --gold:  #9e7d3a;
-      --dark:  #1e1a16;
-      --muted: #7a6a58;
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    :root{
+      --cream:#f5ede0;
+      --light:#faf6f0;
+      --warm:#ece0d0;
+      --gold:#9e7d3a;
+      --dark:#1e1a16;
+      --muted:#7a6a58;
       --border:#ddd0bb;
     }
-    html { scroll-behavior: smooth; }
-    body {
-      background: var(--light);
-      color: var(--dark);
-      font-family: 'Raleway', sans-serif;
-      font-weight: 300;
-      overflow-x: hidden;
+    html{scroll-behavior:smooth;}
+    body{
+      background:var(--light);
+      color:var(--dark);
+      font-family:'Raleway',sans-serif;
+      font-weight:300;
+      overflow-x:hidden;
     }
-    ::-webkit-scrollbar { width: 5px; }
-    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
 
-    /* LOGO-AFBEELDING (het nieuwe logo) */
+    /* LOGO-IMAGE – zelfde huiskleuren, geen harde rand */
     .logo-full{
       background-image:url('logo-full.png');
       background-repeat:no-repeat;
       background-position:center;
       background-size:contain;
-      display:inline-block;
+      display:block;
     }
-    .logo-full-nav{
-      width:180px;
-      height:calc(180px * 0.6);
+    .logo-nav{
+      width:140px;
+      height:calc(140px*0.6);
     }
-    .logo-full-hero{
-      width:min(520px,90vw);
-      height:calc(min(520px,90vw) * 0.6);
+    .logo-hero{
+      width:min(420px,80vw);
+      height:calc(min(420px,80vw)*0.6);
       margin-bottom:2.2rem;
-    }
-    .logo-full-footer{
-      width:170px;
-      height:calc(170px * 0.6);
-      margin-bottom:1.1rem;
     }
 
     /* NAV */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1.2rem 4rem;
-      background: rgba(250,246,240,.96);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      transition: padding .3s;
+    nav{
+      position:fixed;top:0;left:0;right:0;z-index:10;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:1.1rem 3.5rem;
+      background:rgba(250,246,240,.97);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--border);
     }
-    .nav-logo { text-decoration: none; line-height: 1; display:flex; align-items:center; }
-    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-    .nav-links a {
-      font-size: .73rem; letter-spacing: .14em; text-transform: uppercase;
-      color: var(--muted); text-decoration: none; transition: color .2s;
+    .nav-left{display:flex;align-items:center;gap:1.5rem;}
+    .brand-text{
+      font-family:'Cormorant Garamond',serif;
+      font-size:.7rem;letter-spacing:.26em;
+      text-transform:uppercase;color:var(--muted);
     }
-    .nav-links a:hover { color: var(--gold); }
-    .nav-cta {
-      padding: .55rem 1.5rem; background: var(--gold); color: var(--light) !important;
-      transition: background .2s !important; border-radius:999px;
+    .nav-links{display:flex;gap:2rem;list-style:none;}
+    .nav-links a{
+      font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;
+      color:var(--muted);text-decoration:none;
     }
-    .nav-cta:hover { background: var(--dark) !important; }
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
-    .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--dark); }
+    .nav-links a:hover{color:var(--gold);}
+    .btn-nav{
+      padding:.5rem 1.4rem;border-radius:999px;
+      background:var(--gold);color:var(--light);text-decoration:none;
+      font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;
+    }
 
     /* HERO */
-    #home {
-      min-height: 100vh;
-      display: grid; grid-template-columns: 1fr 1fr;
-      padding-top: 78px; background: var(--light);
+    main{
+      min-height:100vh;
+      display:grid;grid-template-columns:1.1fr 1fr;
+      background:linear-gradient(135deg,#faf6f0 0%,#f2e7d6 50%,#e2cfb0 100%);
+      padding-top:86px;
     }
-    .hero-left {
-      display: flex; flex-direction: column; justify-content: center;
-      padding: 6rem 3.5rem 6rem 5rem;
+    .hero-left{
+      padding:4.5rem 3.5rem 4.5rem 5rem;
+      display:flex;flex-direction:column;justify-content:center;
     }
-    .hero-eyebrow {
-      font-size: .68rem; letter-spacing: .26em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 2rem;
-      opacity: 0; animation: up .8s .1s forwards;
+    .hero-eyebrow{
+      font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;
+      color:var(--gold);margin-bottom:2rem;
     }
-    .hero-logo-block {
-      margin-bottom: 2.2rem;
-      opacity: 0; animation: up .9s .22s forwards;
+    .hero-tagline{
+      font-family:'Cormorant Garamond',serif;
+      font-size:1rem;font-style:italic;
+      color:var(--muted);max-width:380px;line-height:1.8;
+      margin-bottom:2.4rem;
     }
-    .hero-tagline {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(.95rem,1.5vw,1.2rem); font-style: italic;
-      color: var(--muted); max-width: 380px; line-height: 1.75;
-      margin-bottom: 2.4rem;
-      opacity: 0; animation: up .9s .38s forwards;
+    .hero-actions{display:flex;gap:1rem;flex-wrap:wrap;}
+    .btn-gold{
+      padding:.85rem 2.1rem;background:var(--gold);color:var(--light);
+      border:none;text-decoration:none;cursor:pointer;
+      font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;
+      border-radius:999px;
     }
-    .hero-actions {
-      display: flex; gap: 1.2rem; align-items: center;
-      opacity: 0; animation: up .9s .52s forwards;
+    .btn-outline{
+      padding:.8rem 1.6rem;border-radius:999px;
+      border:1px solid var(--border);background:transparent;
+      color:var(--muted);text-decoration:none;
+      font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;
     }
-    .btn-gold {
-      padding: .85rem 2.2rem; background: var(--gold); color: var(--light);
-      font-size: .7rem;
-      letter-spacing: .18em; text-transform: uppercase;
-      border: none; cursor: pointer; text-decoration: none;
-      transition: background .25s, transform .2s; display: inline-block;
-    }
-    .btn-gold:hover { background: var(--dark); transform: translateY(-2px); }
-    .btn-outline {
-      font-size: .7rem; letter-spacing: .14em; text-transform: uppercase;
-      color: var(--muted); text-decoration: none;
-      border-bottom: 1px solid var(--border); padding-bottom: 2px;
-      transition: color .2s, border-color .2s;
-    }
-    .btn-outline:hover { color: var(--gold); border-color: var(--gold); }
 
-    .hero-right {
-      position: relative; overflow: hidden; background: var(--warm);
-      display: flex; align-items: center; justify-content: center;
+    .hero-right{
+      padding:4.5rem 5rem 4.5rem 3rem;
+      display:flex;align-items:center;justify-content:center;
     }
-    .hero-illustration {
-      width: 100%; height: 100%;
-      background: linear-gradient(150deg, #e8dbc8 0%, #d4c3a8 45%, #c0a888 100%);
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center; gap: 1rem;
-      opacity: 0; animation: fadeIn 1.2s .3s forwards;
-      position: relative;
+    .hero-card{
+      width:100%;max-width:360px;
+      background:linear-gradient(150deg,#e8dbc8 0%,#d4c3a8 45%,#c0a888 100%);
+      border-radius:12px;
+      box-shadow:0 22px 45px rgba(0,0,0,.12);
+      padding:2.4rem 2.1rem;
+      display:flex;flex-direction:column;justify-content:space-between;
     }
-    .hero-illustration::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: repeating-linear-gradient(90deg,
-        transparent, transparent 28px,
-        rgba(158,125,58,.07) 28px, rgba(158,125,58,.07) 30px);
+    .hc-label{
+      font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;
+      color:rgba(255,255,255,.7);margin-bottom:1.6rem;
     }
-    .hero-illustration .hi-icon { font-size: 5rem; opacity: .25; position: relative; z-index: 1; }
-    .hero-illustration .hi-label {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1rem; letter-spacing: .2em; text-transform: uppercase;
-      color: var(--gold); opacity: .55; position: relative; z-index: 1;
+    .hc-name{
+      font-family:'Dancing Script',cursive;
+      font-size:1.9rem;color:#fff;margin-bottom:.2rem;
     }
-    .hero-badge {
-      position: absolute; bottom: 2.5rem; left: 0;
-      background: var(--dark); color: var(--light);
-      padding: 1.1rem 1.7rem;
-      opacity: 0; animation: up .9s .7s forwards;
+    .hc-sub{
+      font-size:.8rem;color:rgba(255,255,255,.85);
     }
-    .hero-badge .hb-label { font-size: .58rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); }
-    .hero-badge .hb-name { font-family: 'Dancing Script', cursive; font-size: 1.6rem; margin-top: .05rem; }
-    .hero-badge .hb-sub { font-size: .7rem; color: rgba(255,255,255,.4); margin-top: .15rem; }
-
-    /* MARQUEE */
-    .marquee-strip {
-      overflow: hidden; height: 44px; background: var(--gold);
-      display: flex; align-items: center;
-    }
-    .marquee-inner {
-      display: flex; gap: 3rem; align-items: center; white-space: nowrap;
-      animation: marquee 24s linear infinite;
-      font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; color: var(--cream);
-    }
-    .marquee-inner .dot { opacity: .6; font-size: .9rem; }
-    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
-    /* OVER MIJ, DIENSTEN, SALON, PRIJZEN, AFSPRAAK, HOURS, FOOTER */
-    /* --- dit gedeelte komt 1-op-1 uit je huidige bestand, niet aangepast --- */
-    /* (ik laat het hier weg om het kort te houden, maar je kunt je volledige bestaande
-       CSS voor #over, #diensten, #salon, #prijzen, #afspraak, .hours-bar, footer
-       direct onder deze comment laten staan.) */
-
-    /* ANIMATIONS */
-    @keyframes up { from { opacity:0; transform:translateY(22px); } to { opacity:1; transform:translateY(0); } }
-    @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-    .reveal { opacity:0; transform:translateY(28px); transition: opacity .7s ease, transform .7s ease; }
-    .reveal.visible { opacity:1; transform:translateY(0); }
-    .d1 { transition-delay:.1s; } .d2 { transition-delay:.2s; } .d3 { transition-delay:.3s; }
 
     /* RESPONSIVE */
-    @media (max-width: 960px) {
-      nav { padding: 1rem 1.5rem; }
-      .nav-links {
-        display:none; position:absolute; top:100%; left:0; right:0;
-        flex-direction:column; background:var(--light); padding:1.5rem 2rem; gap:1.2rem; border-bottom:1px solid var(--border);
-      }
-      .nav-links.open { display:flex; }
-      .hamburger { display:flex; }
-
-      #home { grid-template-columns:1fr; }
-      .hero-right { height:55vw; }
-      .hero-left { padding:3rem 2rem; }
-
-      .logo-full-nav{
-        width:140px;
-        height:calc(140px * 0.6);
-      }
-
-      /* overige responsive regels uit je huidige bestand: laten staan */
-    }
-    @media (max-width: 480px) {
-      .hours-inner { flex-direction:column; }
-      .hi { border-right:none; border-bottom:1px solid var(--border); }
-      .hi:last-child { border-bottom:none; }
+    @media(max-width:960px){
+      nav{padding:.9rem 1.5rem;}
+      .nav-links{display:none;}
+      main{grid-template-columns:1fr;}
+      .hero-left{padding:3rem 1.8rem;}
+      .hero-right{padding:0 1.8rem 3rem;}
+      .hero-card{max-width:420px;}
+      .logo-nav{width:120px;height:calc(120px*0.6);}
     }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav id="navbar">
-  <a href="#home" class="nav-logo" aria-label="Hair Room by Lindsay">
-    <span class="logo-full logo-full-nav"></span>
-  </a>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="#over">Over mij</a></li>
-    <li><a href="#diensten">Diensten</a></li>
-    <li><a href="#salon">Salon</a></li>
+<nav>
+  <div class="nav-left">
+    <a href="#top" aria-label="Hair Room by Lindsay">
+      <span class="logo-full logo-nav"></span>
+    </a>
+    <span class="brand-text">Hair Room by Lindsay</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#ons">Over ons</a></li>
     <li><a href="#prijzen">Prijzen</a></li>
-    <li><a href="#afspraak" class="nav-cta">Afspraak</a></li>
   </ul>
-  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
+  <a href="#afspraak" class="btn-nav">Afspraak</a>
 </nav>
 
-<!-- HERO -->
-<section id="home">
-  <div class="hero-left">
-    <p class="hero-eyebrow">✦ Eerlijke prijzen • Liefde voor het vak • Aandacht voor jou</p>
+<main id="top">
+  <section class="hero-left">
+    <p class="hero-eyebrow">Eerlijke prijzen • Liefde voor het vak • Aandacht voor jou</p>
 
-    <div class="hero-logo-block">
-      <span class="logo-full logo-full-hero" aria-label="Hair Room by Lindsay"></span>
-    </div>
+    <!-- HOOFDLOGO -->
+    <span class="logo-full logo-hero" aria-label="Hair Room by Lindsay"></span>
 
     <p class="hero-tagline">
-      Eerlijke prijzen, liefde voor het vak<br>
-      en aandacht voor jou.<br>
-      Flexibel: in de salon of aan huis.
+      Een rustige, warme kapsalon met eerlijke prijzen en volledige aandacht voor jouw haar.
+      In de salon of flexibel aan huis – net wat jij prettig vindt.
     </p>
+
     <div class="hero-actions">
-      <a href="#afspraak" class="btn-gold">Maak een afspraak</a>
-      <a href="#prijzen" class="btn-outline">Bekijk prijzen</a>
+      <a href="#ons" class="btn-outline">Over ons</a>
+      <a href="#prijzen" class="btn-outline">Prijzen</a>
+      <a href="#afspraak" class="btn-gold">Afspraak maken</a>
     </div>
-  </div>
-  <div class="hero-right">
-    <div class="hero-illustration">
-      <div class="hi-icon">💇‍♀️</div>
-      <div class="hi-label">De Salon</div>
+  </section>
+
+  <section class="hero-right">
+    <div class="hero-card">
+      <div>
+        <div class="hc-label">Hairstylist</div>
+        <div class="hc-name">Lindsay</div>
+        <div class="hc-sub">In de salon • Aan huis • Op afspraak</div>
+      </div>
     </div>
-    <div class="hero-badge">
-      <div class="hb-label">Hairstylist</div>
-      <div class="hb-name">Lindsay</div>
-      <div class="hb-sub">In de salon • Aan huis</div>
-    </div>
-  </div>
-</section>
+  </section>
+</main>
 
-<!-- MARQUEE -->
-<div class="marquee-strip" aria-hidden="true">
-  <div class="marquee-inner">
-    <span class="dot">✦</span> Knippen &amp; föhnen <span class="dot">✦</span> Balayage <span class="dot">✦</span> Highlights
-    <span class="dot">✦</span> Dames kleuren <span class="dot">✦</span> Permanent <span class="dot">✦</span> Extensions
-    <span class="dot">✦</span> Aan huis service <span class="dot">✦</span> Knippen &amp; föhnen <span class="dot">✦</span> Balayage
-    <span class="dot">✦</span> Highlights <span class="dot">✦</span> Dames kleuren
-  </div>
-</div>
-
-<!-- HIER PLAATS JE GEWOON JE BESTAANDE SECTIES #over, #diensten, #salon, #prijzen, #afspraak, openingstijden -->
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-grid">
-    <div class="fb-brand">
-      <a href="#home" class="fb-logo" aria-label="Hair Room by Lindsay">
-        <span class="logo-full logo-full-footer"></span>
-      </a>
-      <p>Eerlijke prijzen, liefde voor het vak en aandacht voor jou. Flexibel in de salon of aan huis. Vragen mag altijd!</p>
-      <!-- socials en overige footer-kolommen zoals in je oude bestand -->
-    </div>
-    <!-- ... rest van je footer-kolommen ... -->
-  </div>
-  <div class="footer-bottom">
-    <span>&copy; 2025 Hair Room by Lindsay • Alle rechten voorbehouden</span>
-    <span style="font-style:italic;color:rgba(255,255,255,.18);">Flexibel • Eerlijk • Met passie</span>
-  </div>
-</footer>
-
-<script>
-  function toggleMenu() {
-    document.getElementById('navLinks').classList.toggle('open');
-  }
-
-  window.addEventListener('scroll', () => {
-    const n = document.getElementById('navbar');
-    n.style.padding = scrollY > 60 ? '.8rem 4rem' : '1.2rem 4rem';
-  });
-</script>
+<!-- Placeholder-ankers voor de knoppen (later invullen met eigen pagina's/secties) -->
+<section id="ons"></section>
+<section id="prijzen"></section>
+<section id="afspraak"></section>
 
 </body>
 </html>
