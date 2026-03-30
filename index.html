@@ -41,16 +41,44 @@
       border-bottom: 1px solid var(--border);
       transition: padding .3s;
     }
-    .nav-logo { text-decoration: none; line-height: 1; }
-    .nav-logo .nl-top {
+
+    .nav-logo {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      line-height: 1;
+    }
+
+    .nav-logo-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .nav-logo-text .nl-top {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1rem; font-weight: 600; letter-spacing: .32em;
-      text-transform: uppercase; color: var(--gold); display: block;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: .32em;
+      text-transform: uppercase;
+      color: var(--gold);
     }
-    .nav-logo .nl-script {
+
+    .nav-logo-text .nl-script {
       font-family: 'Dancing Script', cursive;
-      font-size: 1.25rem; color: var(--gold); margin-left: .4rem;
+      font-size: 1.25rem;
+      color: var(--gold);
     }
+
+    /* schaar in nav – in dezelfde stijl als het logo‑bestand */
+    .nav-logo-scissors {
+      width: 26px;
+      height: 26px;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
     .nav-links { display: flex; gap: 2.5rem; list-style: none; }
     .nav-links a {
       font-size: .73rem; letter-spacing: .14em; text-transform: uppercase;
@@ -81,21 +109,43 @@
       font-size: .68rem; letter-spacing: .26em; text-transform: uppercase;
       color: var(--gold); margin-bottom: 1.6rem;
     }
-    .hero-logo-block { margin-bottom: 2rem; }
-    .hero-logo-block .hl-top {
+
+    .hero-logo-block {
+      margin-bottom: 2rem;
+    }
+
+    .hero-logo-row-top {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(2.8rem, 4.2vw, 4.6rem);
-      font-weight: 600; letter-spacing: .18em; text-transform: uppercase;
-      color: var(--gold); line-height: 1; display: block;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      line-height: 1;
+      text-align: left;
     }
-    .hero-logo-block .hl-row {
-      display: flex; align-items: center; gap: .5rem; margin-top: .2rem;
+
+    .hero-logo-row-bottom {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.2rem;
+      margin-top: 0.4rem;
     }
-    .hero-logo-block .hl-row svg { width: clamp(26px,3.5vw,44px); color: var(--gold); }
-    .hero-logo-block .hl-script {
+
+    .hero-logo-scissors {
+      width: clamp(60px, 7vw, 80px);
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .hero-logo-script {
       font-family: 'Dancing Script', cursive;
-      font-size: clamp(2.2rem, 3.4vw, 3.8rem); color: var(--gold); line-height: 1;
+      font-size: clamp(2.4rem, 3.4vw, 3.8rem);
+      color: var(--gold);
+      line-height: 1.1;
+      padding-top: 0.3rem;
     }
+
     .hero-tagline {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(1rem,1.6vw,1.25rem);
@@ -235,13 +285,35 @@
       display: grid; grid-template-columns: 1.8fr 1fr 1fr;
       gap: 4rem; margin-bottom: 3.5rem;
     }
-    .fb-logo { text-decoration: none; display: block; margin-bottom: 1.1rem; }
-    .fb-logo .fl-top {
+
+    .fb-logo {
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-bottom: 1.1rem;
+    }
+    .fb-logo-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+    .fb-logo-text .fl-top {
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.05rem; font-weight: 600;
-      letter-spacing: .28em; text-transform: uppercase; color: var(--gold); display: block;
+      letter-spacing: .28em; text-transform: uppercase; color: var(--gold);
     }
-    .fb-logo .fl-script { font-family: 'Dancing Script', cursive; font-size: 1.3rem; color: var(--gold); margin-left: .3rem; }
+    .fb-logo-text .fl-script {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.3rem; color: var(--gold);
+    }
+    .fb-logo-scissors {
+      width: 28px;
+      height: 28px;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
     .fb-brand p { font-size: .84rem; line-height: 1.8; }
     .soc-row { display: flex; gap: .7rem; margin-top: 1.4rem; }
     .soc {
@@ -283,11 +355,18 @@
       .footer-grid { grid-template-columns:1fr; gap:2.5rem; }
       .hours-bar { padding:2rem; }
       .hi { padding:.75rem 1.2rem; }
+      .hero-logo-row-bottom {
+        flex-direction: row;
+        align-items: flex-start;
+      }
     }
     @media (max-width: 480px) {
       .hours-inner { flex-direction:column; }
       .hi { border-right:none; border-bottom:1px solid var(--border); }
       .hi:last-child { border-bottom:none; }
+      .hero-logo-row-bottom {
+        align-items: center;
+      }
     }
   </style>
 </head>
@@ -296,8 +375,16 @@
 <!-- NAV -->
 <nav id="navbar">
   <a href="index.html" class="nav-logo">
-    <span class="nl-top">HAIR ROOM</span>
-    <span class="nl-script">by Lindsay</span>
+    <svg class="nav-logo-scissors" viewBox="0 0 48 48" aria-hidden="true">
+      <circle cx="10" cy="36" r="5.2" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <circle cx="10" cy="12" r="5.2" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <line x1="14.5" y1="31.5" x2="38" y2="10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <line x1="14.5" y1="16.5" x2="38" y2="38" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    </svg>
+    <span class="nav-logo-text">
+      <span class="nl-top">HAIR ROOM</span>
+      <span class="nl-script">by Lindsay</span>
+    </span>
   </a>
   <ul class="nav-links" id="navLinks">
     <li><a href="over.html">Over mij</a></li>
@@ -313,18 +400,20 @@
 <section id="home">
   <div class="hero-inner">
     <p class="hero-eyebrow">HAIR ROOM BY LINDSAY · SALON &amp; AAN HUIS</p>
+
     <div class="hero-logo-block">
-      <span class="hl-top">HAIR ROOM</span>
-      <div class="hl-row">
-        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <circle cx="10" cy="38" r="5.5" stroke="currentColor" stroke-width="1.8"/>
-          <circle cx="10" cy="10" r="5.5" stroke="currentColor" stroke-width="1.8"/>
-          <line x1="14.5" y1="33.5" x2="42" y2="8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-          <line x1="14.5" y1="14.5" x2="42" y2="40" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <div class="hero-logo-row-top">HAIR ROOM</div>
+      <div class="hero-logo-row-bottom">
+        <svg class="hero-logo-scissors" viewBox="0 0 48 48" aria-hidden="true">
+          <circle cx="10" cy="36" r="7" fill="none" stroke="currentColor" stroke-width="2"/>
+          <circle cx="10" cy="12" r="7" fill="none" stroke="currentColor" stroke-width="2"/>
+          <line x1="15" y1="30" x2="40" y2="10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="15" y1="18" x2="40" y2="38" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
         </svg>
-        <span class="hl-script">by Lindsay</span>
+        <div class="hero-logo-script">by Lindsay</div>
       </div>
     </div>
+
     <p class="hero-tagline">
       Eerlijke prijzen, liefde voor het vak en aandacht voor jou.
       Flexibel: in de salon of bij jou aan huis.
@@ -386,8 +475,16 @@
   <div class="footer-grid">
     <div class="fb-brand">
       <a href="index.html" class="fb-logo">
-        <span class="fl-top">Hair Room</span>
-        <span class="fl-script">by Lindsay</span>
+        <svg class="fb-logo-scissors" viewBox="0 0 48 48" aria-hidden="true">
+          <circle cx="10" cy="36" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/>
+          <circle cx="10" cy="12" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/>
+          <line x1="14.5" y1="30.5" x2="38" y2="10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="14.5" y1="17.5" x2="38" y2="38" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+        <span class="fb-logo-text">
+          <span class="fl-top">Hair Room</span>
+          <span class="fl-script">by Lindsay</span>
+        </span>
       </a>
       <p>Eerlijke prijzen, liefde voor het vak en aandacht voor jou. Flexibel in de salon of aan huis. Vragen mag altijd.</p>
       <div class="soc-row">
