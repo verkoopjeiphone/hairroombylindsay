@@ -8,262 +8,178 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Dancing+Script:wght@600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" />
-
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --cream: #f5ede0;
-      --light: #faf6f0;
-      --warm:  #ece0d0;
-      --gold:  #9e7d3a;
-      --dark:  #1e1a16;
-      --muted: #7a6a58;
-      --border:#ddd0bb;
+@@ -56,10 +57,16 @@
+      color: var(--muted); text-decoration: none; transition: color .2s;
     }
-    html { scroll-behavior: smooth; }
-    body {
-      background: var(--light);
-      color: var(--dark);
-      font-family: 'Raleway', sans-serif;
-      font-weight: 300;
-      overflow-x: hidden;
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      padding: .55rem 1.5rem; background: var(--gold);
+      color: var(--light) !important; transition: background .2s !important;
+      border-radius: 999px;
     }
-    ::-webkit-scrollbar { width: 5px; }
-    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+    .nav-cta:hover { background: var(--dark) !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
+    .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--dark); }
 
-    /* NAV */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1.2rem 4rem;
-      background: rgba(250,246,240,.96);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      transition: padding .3s;
-    }
-    .nav-logo { text-decoration: none; line-height: 1; }
-    .nav-logo .nl-top {
-
-    .nav-logo {
-      text-decoration: none;
+    /* HERO – volle breedte, geen rechtervak */
+    /* HERO – volle breedte, clean */
+    #home {
+      min-height: 100vh;
       display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      line-height: 1;
-    }
-
-    .nav-logo-text {
-      display: flex;
-      flex-direction: column;
-      gap: 0.15rem;
-    }
-
-    .nav-logo-text .nl-top {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1rem; font-weight: 600; letter-spacing: .32em;
-      text-transform: uppercase; color: var(--gold); display: block;
-      font-size: 1rem;
-      font-weight: 600;
-      letter-spacing: .32em;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
-    .nav-logo .nl-script {
-
-    .nav-logo-text .nl-script {
-      font-family: 'Dancing Script', cursive;
-      font-size: 1.25rem; color: var(--gold); margin-left: .4rem;
-      font-size: 1.25rem;
-      color: var(--gold);
-    }
-
-    /* schaar in nav – in dezelfde stijl als het logo‑bestand */
-    .nav-logo-scissors {
-      width: 26px;
-      height: 26px;
-      color: var(--gold);
-      flex-shrink: 0;
-    }
-
-    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-    .nav-links a {
-      font-size: .73rem; letter-spacing: .14em; text-transform: uppercase;
-@@ -81,21 +109,43 @@
+@@ -74,9 +81,7 @@
       font-size: .68rem; letter-spacing: .26em; text-transform: uppercase;
       color: var(--gold); margin-bottom: 1.6rem;
     }
-    .hero-logo-block { margin-bottom: 2rem; }
-    .hero-logo-block .hl-top {
-
     .hero-logo-block {
       margin-bottom: 2rem;
     }
-
-    .hero-logo-row-top {
+    .hero-logo-block { margin-bottom: 2rem; }
+    .hero-logo-block .hl-top {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(2.8rem, 4.2vw, 4.6rem);
-      font-weight: 600; letter-spacing: .18em; text-transform: uppercase;
-      color: var(--gold); line-height: 1; display: block;
-      font-weight: 600;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: var(--gold);
-      line-height: 1;
-      text-align: left;
+@@ -175,8 +180,22 @@
+      color: var(--muted);
+      line-height: 1.7;
     }
-    .hero-logo-block .hl-row {
-      display: flex; align-items: center; gap: .5rem; margin-top: .2rem;
-
-    .hero-logo-row-bottom {
-      display: flex;
-      align-items: flex-start;
-      gap: 1.2rem;
-      margin-top: 0.4rem;
+    .over-mini-card a {
+      display:inline-block;
+      margin-top:.9rem;
+      font-size:.72rem;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      text-decoration:none;
+      color:var(--gold);
+      border-bottom:1px solid rgba(158,125,58,.4);
+      padding-bottom:2px;
     }
-
-    .hero-logo-scissors {
-      width: clamp(60px, 7vw, 80px);
-      color: var(--gold);
-      flex-shrink: 0;
-    }
-    .hero-logo-block .hl-row svg { width: clamp(26px,3.5vw,44px); color: var(--gold); }
-    .hero-logo-block .hl-script {
-
-    .hero-logo-script {
-      font-family: 'Dancing Script', cursive;
-      font-size: clamp(2.2rem, 3.4vw, 3.8rem); color: var(--gold); line-height: 1;
-      font-size: clamp(2.4rem, 3.4vw, 3.8rem);
-      color: var(--gold);
-      line-height: 1.1;
-      padding-top: 0.3rem;
+    .over-mini-card a:hover {
+      border-color:var(--gold);
     }
 
-    .hero-tagline {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1rem,1.6vw,1.25rem);
-@@ -235,13 +285,35 @@
-      display: grid; grid-template-columns: 1.8fr 1fr 1fr;
-      gap: 4rem; margin-bottom: 3.5rem;
-    }
-    .fb-logo { text-decoration: none; display: block; margin-bottom: 1.1rem; }
-    .fb-logo .fl-top {
+    /* OPENINGSTIJDEN – aangepaste dagen */
+    /* OPENINGSTIJDEN */
+    .hours-bar {
+      background: var(--warm);
+      border-top: 1px solid var(--border);
+@@ -257,9 +276,7 @@
+      .nav-links.open { display:flex; }
+      .hamburger { display:flex; }
 
-    .fb-logo {
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.7rem;
-      margin-bottom: 1.1rem;
-    }
-    .fb-logo-text {
-      display: flex;
-      flex-direction: column;
-      gap: 0.15rem;
-    }
-    .fb-logo-text .fl-top {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.05rem; font-weight: 600;
-      letter-spacing: .28em; text-transform: uppercase; color: var(--gold); display: block;
-      letter-spacing: .28em; text-transform: uppercase; color: var(--gold);
-    }
-    .fb-logo-text .fl-script {
-      font-family: 'Dancing Script', cursive;
-      font-size: 1.3rem; color: var(--gold);
-    }
-    .fb-logo .fl-script { font-family: 'Dancing Script', cursive; font-size: 1.3rem; color: var(--gold); margin-left: .3rem; }
-    .fb-logo-scissors {
-      width: 28px;
-      height: 28px;
-      color: var(--gold);
-      flex-shrink: 0;
-    }
-
-    .fb-brand p { font-size: .84rem; line-height: 1.8; }
-    .soc-row { display: flex; gap: .7rem; margin-top: 1.4rem; }
-    .soc {
-@@ -283,11 +355,18 @@
-      .footer-grid { grid-template-columns:1fr; gap:2.5rem; }
-      .hours-bar { padding:2rem; }
-      .hi { padding:.75rem 1.2rem; }
-      .hero-logo-row-bottom {
-        flex-direction: row;
-        align-items: flex-start;
+      #home {
+        padding: 88px 2rem 3.5rem;
       }
-    }
-    @media (max-width: 480px) {
-      .hours-inner { flex-direction:column; }
-      .hi { border-right:none; border-bottom:1px solid var(--border); }
-      .hi:last-child { border-bottom:none; }
-      .hero-logo-row-bottom {
-        align-items: center;
-      }
-    }
-  </style>
-</head>
-@@ -296,8 +375,16 @@
+      #home { padding: 88px 2rem 3.5rem; }
+      .hero-inner { max-width: 100%; }
+      #over-kort { padding:3rem 2rem 4rem; }
+      .over-mini { grid-template-columns:1fr; }
+@@ -278,24 +295,24 @@
+
 <!-- NAV -->
 <nav id="navbar">
+  <a href="#home" class="nav-logo">
   <a href="index.html" class="nav-logo">
     <span class="nl-top">HAIR ROOM</span>
     <span class="nl-script">by Lindsay</span>
-    <svg class="nav-logo-scissors" viewBox="0 0 48 48" aria-hidden="true">
-      <circle cx="10" cy="36" r="5.2" fill="none" stroke="currentColor" stroke-width="1.8"/>
-      <circle cx="10" cy="12" r="5.2" fill="none" stroke="currentColor" stroke-width="1.8"/>
-      <line x1="14.5" y1="31.5" x2="38" y2="10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-      <line x1="14.5" y1="16.5" x2="38" y2="38" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-    </svg>
-    <span class="nav-logo-text">
-      <span class="nl-top">HAIR ROOM</span>
-      <span class="nl-script">by Lindsay</span>
-    </span>
   </a>
   <ul class="nav-links" id="navLinks">
+    <li><a href="#over-kort">Over mij</a></li>
+    <li><a href="#afspraak">Afspraak</a></li>
+    <li><a href="#prijzen">Prijzen</a></li>
     <li><a href="over.html">Over mij</a></li>
-@@ -313,18 +400,20 @@
+    <li><a href="prijzen.html">Prijslijst</a></li>
+    <li><a href="afspraak.html" class="nav-cta">Afspraak</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO (één vlak, clean) -->
+<!-- HERO -->
 <section id="home">
   <div class="hero-inner">
+    <p class="hero-eyebrow">HAIR ROOM BY LINDSAY · SALON & AAN HUIS</p>
     <p class="hero-eyebrow">HAIR ROOM BY LINDSAY · SALON &amp; AAN HUIS</p>
-
     <div class="hero-logo-block">
       <span class="hl-top">HAIR ROOM</span>
       <div class="hl-row">
-        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <circle cx="10" cy="38" r="5.5" stroke="currentColor" stroke-width="1.8"/>
-          <circle cx="10" cy="10" r="5.5" stroke="currentColor" stroke-width="1.8"/>
-          <line x1="14.5" y1="33.5" x2="42" y2="8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-          <line x1="14.5" y1="14.5" x2="42" y2="40" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-      <div class="hero-logo-row-top">HAIR ROOM</div>
-      <div class="hero-logo-row-bottom">
-        <svg class="hero-logo-scissors" viewBox="0 0 48 48" aria-hidden="true">
-          <circle cx="10" cy="36" r="7" fill="none" stroke="currentColor" stroke-width="2"/>
-          <circle cx="10" cy="12" r="7" fill="none" stroke="currentColor" stroke-width="2"/>
-          <line x1="15" y1="30" x2="40" y2="10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <line x1="15" y1="18" x2="40" y2="38" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-        <span class="hl-script">by Lindsay</span>
-        <div class="hero-logo-script">by Lindsay</div>
-      </div>
-    </div>
-
-    <p class="hero-tagline">
-      Eerlijke prijzen, liefde voor het vak en aandacht voor jou.
+@@ -313,9 +330,9 @@
       Flexibel: in de salon of bij jou aan huis.
-@@ -386,8 +475,16 @@
+    </p>
+    <div class="hero-actions">
+      <a href="#afspraak" class="btn-main btn-main-primary">Afspraak maken</a>
+      <a href="#prijzen" class="btn-main btn-main-ghost">Prijzenlijst bekijken</a>
+      <a href="#over-kort" class="btn-main btn-main-ghost">Over mij</a>
+      <a href="afspraak.html" class="btn-main btn-main-primary">Afspraak maken</a>
+      <a href="prijzen.html" class="btn-main btn-main-ghost">Prijslijst bekijken</a>
+      <a href="over.html" class="btn-main btn-main-ghost">Over mij</a>
+    </div>
+  </div>
+</section>
+@@ -332,16 +349,17 @@
+      </p>
+    </div>
+    <div class="over-mini-card">
+      <h3>In de salon & aan huis</h3>
+      <h3>In de salon &amp; aan huis</h3>
+      <p>
+        Een warme, rustige plek waar jij centraal staat. Met flexibele tijden en eerlijke prijzen
+        zoeken we samen naar een look die bij jou past.
+      </p>
+      <a href="over.html">Lees meer over Lindsay</a>
+    </div>
+  </div>
+</section>
+
+<!-- OPENINGSTIJDEN – alleen di/do ochtend en vr -->
+<!-- OPENINGSTIJDEN -->
+<div class="hours-bar">
+  <div class="hours-inner">
+    <div class="hi">
+@@ -367,7 +385,7 @@
+<footer>
   <div class="footer-grid">
     <div class="fb-brand">
+      <a href="#home" class="fb-logo">
       <a href="index.html" class="fb-logo">
         <span class="fl-top">Hair Room</span>
         <span class="fl-script">by Lindsay</span>
-        <svg class="fb-logo-scissors" viewBox="0 0 48 48" aria-hidden="true">
-          <circle cx="10" cy="36" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/>
-          <circle cx="10" cy="12" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/>
-          <line x1="14.5" y1="30.5" x2="38" y2="10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-          <line x1="14.5" y1="17.5" x2="38" y2="38" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-        </svg>
-        <span class="fb-logo-text">
-          <span class="fl-top">Hair Room</span>
-          <span class="fl-script">by Lindsay</span>
-        </span>
       </a>
-      <p>Eerlijke prijzen, liefde voor het vak en aandacht voor jou. Flexibel in de salon of aan huis. Vragen mag altijd.</p>
-      <div class="soc-row">
+@@ -384,9 +402,9 @@
+    <div class="fc">
+      <h4>Navigatie</h4>
+      <ul>
+        <li><a href="#over-kort">Over mij</a></li>
+        <li><a href="#afspraak">Afspraak</a></li>
+        <li><a href="#prijzen">Prijzen</a></li>
+        <li><a href="over.html">Over mij</a></li>
+        <li><a href="prijzen.html">Prijslijst</a></li>
+        <li><a href="afspraak.html">Afspraak maken</a></li>
+      </ul>
+    </div>
+    <div class="fc">
+@@ -399,23 +417,19 @@
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2025 Hair Room by Lindsay · Alle rechten voorbehouden</span>
+    <span style="font-style:italic;color:rgba(255,255,255,.18);">Salon & aan huis · Op afspraak</span>
+    <span style="font-style:italic;color:rgba(255,255,255,.18);">Salon &amp; aan huis · Op afspraak</span>
+  </div>
+</footer>
+
+<!-- Placeholder anchors zodat de knoppen werken (later echte pagina's) -->
+<section id="afspraak" style="height:1px;"></section>
+<section id="prijzen" style="height:1px;"></section>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+
+  window.addEventListener('scroll', () => {
+    const n = document.getElementById('navbar');
+    n.style.padding = scrollY > 60 ? '.8rem 4rem' : '1.2rem 4rem';
+  });
+</script>
+</body>
+</html>
