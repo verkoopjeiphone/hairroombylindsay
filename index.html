@@ -22,7 +22,6 @@
     }
     html { scroll-behavior: smooth; }
     body {
-      /* zelfde zachte gradient overal op de achtergrond */
       background: linear-gradient(135deg,#faf6f0 0%,#f2e7d6 45%,#e2cfb0 100%);
       color: var(--dark);
       font-family: 'Raleway', sans-serif;
@@ -49,27 +48,28 @@
       height:calc(150px * 0.6);
       margin-bottom:1.1rem;
     }
+    /* Groot logo – vlak transparanter zodat het blendt */
     .logo-full-hero{
       width:min(520px, 90vw);
       height:calc(min(520px, 90vw) * 0.6);
-      background-color:#f5ede0;
-      border-radius:8px;
-      box-shadow:0 18px 40px rgba(0,0,0,.06);
-      margin-bottom:2.2rem;
-      display:block;
-      margin-left:auto;
-      margin-right:auto;
+      background:rgba(245,237,224,0.9);
+      border-radius:14px;
+      box-shadow:0 18px 40px rgba(0,0,0,.05);
+      margin:0 auto 2.2rem;
     }
 
-    /* NAV – lichte, semi-transparante balk boven je gradient */
+    /* NAV */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 200;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 1.2rem 4rem;
+      padding: 1.1rem 1.6rem;
       background: rgba(250,246,240,0.93);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(221,208,187,0.7);
       transition: padding .3s;
+    }
+    @media (min-width: 960px) {
+      nav { padding:1.2rem 4rem; }
     }
     .nav-logo { text-decoration: none; line-height: 1; }
     .nav-links { display: flex; gap: 2.5rem; list-style: none; }
@@ -92,13 +92,13 @@
       display: block; width: 22px; height: 1.5px; background: var(--dark);
     }
 
-    /* HERO – volgt de body-gradient, dus alles loopt door */
+    /* HERO */
     #home {
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 110px 4rem 4rem;
+      padding: 96px 1.6rem 3.5rem;
     }
     .hero-inner {
       max-width: 720px;
@@ -106,7 +106,7 @@
     }
     .hero-eyebrow {
       font-size: .68rem; letter-spacing: .26em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 1.6rem;
+      color: var(--gold); margin-bottom: 1.2rem;
     }
     .hero-tagline {
       font-family: 'Cormorant Garamond', serif;
@@ -114,7 +114,7 @@
       color: var(--muted);
       max-width: 420px;
       line-height: 1.8;
-      margin:0 auto 2.3rem;
+      margin:0 auto 2.1rem;
     }
     .hero-actions {
       display: flex; gap: 1rem; justify-content:center; flex-wrap: wrap;
@@ -141,9 +141,14 @@
       background: rgba(250,246,240,0.95);
     }
 
-    /* KORTE OVER-MIJ – lichte kaart boven de gradient */
+    /* Desktop hero-padding */
+    @media (min-width: 960px) {
+      #home { padding: 110px 4rem 4rem; }
+    }
+
+    /* KORTE OVER-MIJ */
     #over-kort {
-      padding: 4rem 4rem 4.5rem;
+      padding: 3.5rem 1.6rem 4.5rem;
     }
     .over-mini {
       max-width: 900px;
@@ -202,7 +207,7 @@
     }
     .over-mini-card a:hover { border-color: var(--gold); }
 
-    /* OPENINGSTIJDEN – subtiele strip met transparantie */
+    /* OPENINGSTIJDEN */
     .hours-bar {
       background: rgba(236,224,208,0.85);
       border-top: 1px solid rgba(221,208,187,0.9);
@@ -241,7 +246,7 @@
       font-size: .85rem;
     }
 
-    /* FOOTER – donkere basis die inloopt naar boven */
+    /* FOOTER */
     footer {
       background: radial-gradient(circle at top,#3a3127 0%,#1e1a16 55%,#15110e 100%);
       color: rgba(255,255,255,.38);
@@ -311,7 +316,6 @@
 
     /* RESPONSIVE */
     @media (max-width: 960px) {
-      nav { padding: 1rem 1.5rem; }
       .nav-links {
         display:none;
         position:absolute;
@@ -325,11 +329,7 @@
       .nav-links.open { display:flex; }
       .hamburger { display:flex; }
 
-      #home { padding: 88px 2rem 3.5rem; }
-      .hero-inner { max-width: 100%; }
-
-      #over-kort { padding:3rem 2rem 4rem; }
-      .over-mini { grid-template-columns:1fr; }
+      .over-mini { grid-template-columns:1fr; padding:2rem 2.1rem; }
 
       .hours-bar { padding:2rem; }
       .hi { padding:.75rem 1.2rem; }
@@ -421,7 +421,7 @@
     </div>
     <div class="hi">
       <div class="hi-day">Vrijdag</div>
-      <div class="hi-time">09:00 – 18:00 · Op afspraak</div>
+      <div class="hi-time">09:00 – 18:00</div>
     </div>
     <div class="hi">
       <div class="hi-day">Overig</div>
@@ -447,7 +447,7 @@
             <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
           </svg>
         </a>
-        <a href="https://www.facebook.com/hairroombylindsay" target="_blank" rel="noopener" class="soc" aria-label="Facebook">
+        <a href="https://www.facebook.com/profile.php?id=61582230286009" target="_blank" rel="noopener" class="soc" aria-label="Facebook">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
           </svg>
@@ -486,7 +486,10 @@
 
   window.addEventListener('scroll', () => {
     const n = document.getElementById('navbar');
-    n.style.padding = scrollY > 60 ? '.8rem 4rem' : '1.2rem 4rem';
+    n.style.padding = scrollY > 60 ? '.8rem 1.6rem' : '1.1rem 1.6rem';
+    if (window.innerWidth >= 960) {
+      n.style.padding = scrollY > 60 ? '.8rem 4rem' : '1.2rem 4rem';
+    }
   });
 </script>
 </body>
