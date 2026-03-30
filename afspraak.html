@@ -205,11 +205,11 @@
       <p class="eyebrow">Afspraak maken</p>
       <h1>Plan uw bezoek bij <em>Lindsay</em></h1>
       <p>
-        Via deze pagina kunt u eenvoudig een afspraakaanvraag doen voor een kappersbehandeling.
+        Via deze pagina kunt u een afspraakaanvraag doen voor een behandeling in de salon.
         Vul uw gegevens en wensen in, zodat ik een passend voorstel kan doen.
       </p>
       <p>
-        Een afspraak is mogelijk in de salon of bij u aan huis. Op basis van uw aanvraag neem ik contact met u op om dag, tijd en behandeling definitief af te stemmen.
+        Op basis van uw aanvraag neem ik contact met u op om dag, tijd en behandeling definitief af te stemmen.
       </p>
       <p class="af-note">
         Beschikbare tijden: dinsdag en donderdag 09:00 – 12:30 · vrijdag 09:00 – 18:00.
@@ -254,18 +254,8 @@
       </div>
 
       <div class="fg">
-        <label for="locatie">Locatie</label>
-        <select id="locatie" required>
-          <option value="" disabled selected>In de salon of aan huis?</option>
-          <option>In de salon</option>
-          <option>Aan huis</option>
-          <option>Geen voorkeur</option>
-        </select>
-      </div>
-
-      <div class="fg">
         <label for="bericht">Toelichting</label>
-        <textarea id="bericht" placeholder="Beschrijf kort uw haar, lengte, huidige kleur en eventuele vragen."></textarea>
+        <textarea id="bericht" placeholder="Beschrijf kort uw haar, huidige kleur en eventuele vragen."></textarea>
       </div>
 
       <button type="submit" class="btn-main">Verzend aanvraag</button>
@@ -275,20 +265,18 @@
 </main>
 
 <script>
-  // Bouwt de tekst op en stuurt door naar WhatsApp (06 4884 9226)
+  // Stuurt de ingevulde aanvraag door naar WhatsApp (06 4884 9226)
   function sendWhatsApp(e){
     e.preventDefault();
     const naam = document.getElementById('naam').value.trim();
     const dienst = document.getElementById('dienst').value;
     const dag = document.getElementById('dag').value;
-    const locatie = document.getElementById('locatie').value;
     const extra = document.getElementById('bericht').value.trim();
 
-    let tekst = `Hoi Lindsay, ik wil graag een afspraak aanvragen.%0A%0A`;
+    let tekst = `Hoi Lindsay, ik wil graag een afspraak in de salon aanvragen.%0A%0A`;
     tekst += `Naam: ${encodeURIComponent(naam)}%0A`;
     tekst += `Behandeling: ${encodeURIComponent(dienst)}%0A`;
     tekst += `Voorkeursdag: ${encodeURIComponent(dag)}%0A`;
-    tekst += `Locatie: ${encodeURIComponent(locatie)}%0A`;
     if(extra){
       tekst += `%0AToelichting:%0A${encodeURIComponent(extra)}`;
     }
