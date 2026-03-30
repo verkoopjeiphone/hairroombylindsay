@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prijslijst · Hair Room by Lindsay</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Dancing+Script:wght@600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    :root{
+      --cream:#f5ede0;
+      --light:#faf6f0;
+      --warm:#ece0d0;
+      --gold:#9e7d3a;
+      --dark:#1e1a16;
+      --muted:#7a6a58;
+      --border:#ddd0bb;
+    }
+    html{scroll-behavior:smooth;}
+    body{
+      background:var(--light);
+      color:var(--dark);
+      font-family:'Raleway',sans-serif;
+      font-weight:300;
+    }
+
+    /* simpele topbalk */
+    header{
+      padding:1.4rem 4rem;
+      border-bottom:1px solid var(--border);
+      background:#faf6f0;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .logo-link{
+      text-decoration:none;
+      line-height:1;
+    }
+    .logo-top{
+      font-family:'Cormorant Garamond',serif;
+      font-size:1rem;
+      letter-spacing:.32em;
+      text-transform:uppercase;
+      color:var(--gold);
+      display:block;
+      font-weight:600;
+    }
+    .logo-script{
+      font-family:'Dancing Script',cursive;
+      font-size:1.2rem;
+      color:var(--gold);
+      margin-left:.3rem;
+    }
+    .back-link{
+      font-size:.72rem;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      text-decoration:none;
+      color:var(--muted);
+      border:1px solid var(--border);
+      padding:.55rem 1.4rem;
+      border-radius:999px;
+    }
+    .back-link:hover{
+      border-color:var(--gold);
+      color:var(--gold);
+    }
+
+    main{
+      padding:3.5rem 1.5rem 4rem;
+      display:flex;
+      justify-content:center;
+    }
+    .price-wrapper{
+      width:100%;
+      max-width:780px;
+      background:var(--cream);
+      border:1px solid var(--border);
+      padding:3rem 3rem 2.5rem;
+    }
+    .price-eyebrow{
+      font-size:.66rem;
+      letter-spacing:.26em;
+      text-transform:uppercase;
+      color:var(--gold);
+      text-align:center;
+      margin-bottom:.75rem;
+    }
+    .price-title{
+      font-family:'Cormorant Garamond',serif;
+      font-size:2.4rem;
+      letter-spacing:.28em;
+      text-transform:uppercase;
+      text-align:center;
+      color:var(--gold);
+      margin-bottom:1.8rem;
+    }
+    .price-sub{
+      font-size:.85rem;
+      text-align:center;
+      color:var(--muted);
+      margin-bottom:2.4rem;
+    }
+
+    .price-section{
+      margin-bottom:2.2rem;
+    }
+    .price-section-title{
+      font-family:'Cormorant Garamond',serif;
+      font-size:1.1rem;
+      text-align:center;
+      color:var(--dark);
+      margin-bottom:.8rem;
+    }
+    .price-section-title span{
+      font-size:.7rem;
+      font-style:italic;
+      font-weight:300;
+      letter-spacing:.06em;
+      text-transform:none;
+      color:var(--muted);
+      display:block;
+      margin-top:.1rem;
+    }
+
+    .price-list{
+      border-top:1px solid var(--border);
+    }
+    .price-row{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      padding:.55rem 0;
+      border-bottom:1px solid var(--border);
+      font-size:.9rem;
+    }
+    .price-name{
+      color:var(--dark);
+    }
+    .price-note{
+      display:block;
+      font-size:.78rem;
+      color:var(--muted);
+      margin-top:.12rem;
+    }
+    .price-value{
+      font-family:'Cormorant Garamond',serif;
+      color:var(--gold);
+      margin-left:1rem;
+      white-space:nowrap;
+    }
+    .price-value-muted{
+      font-size:.8rem;
+      font-style:italic;
+      color:var(--muted);
+      margin-left:1rem;
+      white-space:nowrap;
+    }
+
+    .price-footer{
+      margin-top:1.8rem;
+      font-size:.82rem;
+      color:var(--muted);
+      text-align:center;
+      line-height:1.7;
+    }
+
+    @media(max-width:720px){
+      header{padding:1.1rem 1.5rem;}
+      .price-wrapper{padding:2.4rem 1.6rem 2.1rem;}
+      .price-title{font-size:2rem;letter-spacing:.22em;}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo-link">
+    <span class="logo-top">HAIR ROOM</span>
+    <span class="logo-script">by Lindsay</span>
+  </a>
+  <a href="index.html" class="back-link">Terug naar home</a>
+</header>
+
+<main>
+  <div class="price-wrapper">
+    <p class="price-eyebrow">Flexibel: in de salon of aan huis</p>
+    <h1 class="price-title">Prijslijst</h1>
+    <p class="price-sub">
+      Eerlijke prijzen, liefde voor het vak en aandacht voor jou. Neem rustig een kijkje — vragen mogen altijd.
+    </p>
+
+    <!-- Knippen -->
+    <section class="price-section">
+      <h2 class="price-section-title">Knippen</h2>
+      <div class="price-list">
+        <div class="price-row">
+          <div class="price-name">
+            Wassen &amp; knippen
+            <span class="price-note">haar wordt standaard gewassen</span>
+          </div>
+          <div class="price-value">€ 25,00</div>
+        </div>
+        <div class="price-row">
+          <div class="price-name">Wassen, knippen &amp; deel föhnen</div>
+          <div class="price-value">€ 27,50</div>
+        </div>
+        <div class="price-row">
+          <div class="price-name">Knippen &amp; föhnen</div>
+          <div class="price-value">v.a. € 42,50</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dames föhnen / stylen -->
+    <section class="price-section">
+      <h2 class="price-section-title">Dames föhnen / stylen</h2>
+      <div class="price-list">
+        <div class="price-row">
+          <div class="price-name">Föhnen</div>
+          <div class="price-value">v.a. € 22,50</div>
+        </div>
+        <div class="price-row">
+          <div class="price-name">Styltang</div>
+          <div class="price-value">v.a. € 25,00</div>
+        </div>
+        <div class="price-row">
+          <div class="price-name">Krultang</div>
+          <div class="price-value">v.a. € 25,00</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dames kleuren -->
+    <section class="price-section">
+      <h2 class="price-section-title">Dames kleuren</h2>
+      <div class="price-list">
+        <div class="price-row">
+          <div class="price-name">Uitgroei kleuren</div>
+          <div class="price-value">v.a. € 40,00</div>
+        </div>
+        <div class="price-row">
+          <div class="price-name">Helemaal kleuren</div>
+          <div class="price-value">v.a. € 55,00</div>
+        </div>
+        <div class="price-row">
+          <div class="price-name">Uitgroei kleuren &amp; highlights</div>
+          <div class="price-value">v.a. € 75,00</div>
+        </div>
+        <div class="price-row">
+          <div class="price-name">Highlights</div>
+          <div class="price-value-muted">op aanvraag</div>
+        </div>
+        <div class="price-row">
+          <div class="price-name">Highlights helemaal</div>
+          <div class="price-value-muted">op aanvraag</div>
+        </div>
+        <div class="price-row">
+          <div class="price-name">Balayage</div>
+          <div class="price-value-muted">op aanvraag</div>
+        </div>
+        <div class="price-row">
+          <div class="price-name">Toner tussen behandelingen door</div>
+          <div class="price-value">€ 25,00</div>
+        </div>
+      </div>
+      <p class="price-footer" style="margin-top:1rem;">
+        Highlights en balayage behandelingen zijn inclusief toner.
+      </p>
+    </section>
+
+    <!-- Permanent -->
+    <section class="price-section">
+      <h2 class="price-section-title">
+        Permanent
+        <span>incl. knippen &amp; föhnen</span>
+      </h2>
+      <div class="price-list">
+        <div class="price-row">
+          <div class="price-name">Deel permanent</div>
+          <div class="price-value">€ 70,00</div>
+        </div>
+        <div class="price-row">
+          <div class="price-name">Permanent helemaal</div>
+          <div class="price-value">v.a. € 80,00</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Extensions -->
+    <section class="price-section">
+      <h2 class="price-section-title">Extensions</h2>
+      <div class="price-list">
+        <div class="price-row">
+          <div class="price-name">Extensions</div>
+          <div class="price-value-muted">op aanvraag</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Extra's -->
+    <section class="price-section">
+      <h2 class="price-section-title">Extra's</h2>
+      <div class="price-list">
+        <div class="price-row">
+          <div class="price-name">
+            Luxe verzorgingsmasker + hoofdmassage
+            <span class="price-note">15 minuten</span>
+          </div>
+          <div class="price-value">€ 20,00</div>
+        </div>
+      </div>
+    </section>
+
+    <p class="price-footer">
+      Prijzen zijn indicatief en kunnen per haardikte en gewenste behandeling iets variëren.
+      Voor vragen of een combinatiebehandeling mag je altijd even een bericht sturen.
+    </p>
+  </div>
+</main>
+
+</body>
+</html>
