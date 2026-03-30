@@ -404,4 +404,123 @@
   <div class="hero-inner">
     <p class="hero-eyebrow">HAIR ROOM BY LINDSAY · SALON &amp; AAN HUIS</p>
 
-    <!-- Groot logo als afbeelding 
+    <!-- Groot logo als afbeelding met zachte achtergrond -->
+    <span class="logo-full logo-full-hero" aria-label="Hair Room by Lindsay"></span>
+
+    <p class="hero-tagline">
+      Eerlijke prijzen, liefde voor het vak en aandacht voor jou.
+      Flexibel: in de salon of bij jou aan huis.
+    </p>
+
+    <div class="hero-actions">
+      <a href="afspraak.html" class="btn-main btn-main-primary">Afspraak maken</a>
+      <a href="prijzen.html" class="btn-main btn-main-ghost">Prijslijst bekijken</a>
+      <a href="over.html" class="btn-main btn-main-ghost">Over mij</a>
+    </div>
+  </div>
+</section>
+
+<!-- KORTE OVER-MIJ -->
+<section id="over-kort">
+  <div class="over-mini">
+    <div>
+      <h2>Welkom bij <em>Hair Room by Lindsay</em></h2>
+      <p>
+        Een rustige, warme kapsalon waar jij centraal staat. Of je nu komt voor een frisse knipbeurt,
+        kleurbehandeling of een compleet nieuwe look: ik neem de tijd voor jou en je haar.
+      </p>
+    </div>
+    <div class="over-mini-card">
+      <h3>In de salon &amp; aan huis</h3>
+      <p>
+        Een warme, rustige plek waar jij centraal staat. Met flexibele tijden en eerlijke prijzen
+        zoeken we samen naar een look die bij jou past.
+      </p>
+      <a href="over.html">Lees meer over Lindsay</a>
+    </div>
+  </div>
+</section>
+
+<!-- OPENINGSTIJDEN -->
+<div class="hours-bar">
+  <div class="hours-inner">
+    <div class="hi">
+      <div class="hi-day">Dinsdag</div>
+      <div class="hi-time">09:00 – 12:00</div>
+    </div>
+    <div class="hi">
+      <div class="hi-day">Donderdag</div>
+      <div class="hi-time">09:00 – 12:00</div>
+    </div>
+    <div class="hi">
+      <div class="hi-day">Vrijdag</div>
+      <div class="hi-time">09:00 – 18:00 · Op afspraak</div>
+    </div>
+    <div class="hi">
+      <div class="hi-day">Overig</div>
+      <div class="hi-time">In overleg / op afspraak</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="fb-brand">
+      <a href="index.html" class="fb-logo" aria-label="Hair Room by Lindsay">
+        <span class="logo-full logo-full-footer"></span>
+      </a>
+      <p>Eerlijke prijzen, liefde voor het vak en aandacht voor jou. Flexibel in de salon of aan huis. Vragen mag altijd!</p>
+
+      <div class="soc-row">
+        <a href="https://www.instagram.com/hairroombylindsay" target="_blank" rel="noopener" class="soc" aria-label="Instagram">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" />
+            <circle cx="12" cy="12" r="4" />
+            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+          </svg>
+        </a>
+        <a href="https://www.facebook.com/hairroombylindsay" target="_blank" rel="noopener" class="soc" aria-label="Facebook">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="fc">
+      <h4>Navigatie</h4>
+      <ul>
+        <li><a href="over.html">Over mij</a></li>
+        <li><a href="prijzen.html">Prijslijst</a></li>
+        <li><a href="afspraak.html">Afspraak maken</a></li>
+      </ul>
+    </div>
+
+    <div class="fc">
+      <h4>Contact</h4>
+      <ul>
+        <li>Hair Room by Lindsay</li>
+        <li>Salon &amp; aan huis · Op afspraak</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>&copy; 2025 Hair Room by Lindsay · Alle rechten voorbehouden</span>
+    <span style="font-style:italic;color:rgba(255,255,255,.18);">Salon &amp; aan huis · Op afspraak</span>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+
+  window.addEventListener('scroll', () => {
+    const n = document.getElementById('navbar');
+    n.style.padding = scrollY > 60 ? '.8rem 4rem' : '1.2rem 4rem';
+  });
+</script>
+</body>
+</html>
