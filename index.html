@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Satine — Satijnen Self-Care Accessoires</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #faf7f4;
+      --blush: #f2e8e0;
+      --warm: #e8d8cc;
+      --dark: #2c2420;
+      --muted: rgba(44,36,32,0.45);
+      --faint: rgba(44,36,32,0.1);
+      --accent: #c9957a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--cream);
+      color: var(--dark);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.3rem 3rem;
+      background: var(--cream);
+      border-bottom: 0.5px solid var(--faint);
+    }
+
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      font-weight: 400;
+      letter-spacing: 8px;
+      color: var(--dark);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 10px;
+      letter-spacing: 2.5px;
+      color: var(--muted);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--dark); }
+
+    /* HERO */
+    .hero {
+      text-align: center;
+      padding: 7rem 2rem 6rem;
+      background: var(--blush);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, var(--warm) 0%, transparent 70%);
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      font-size: 10px;
+      letter-spacing: 5px;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 56px;
+      font-weight: 300;
+      letter-spacing: 2px;
+      color: var(--dark);
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-sub {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.9;
+      max-width: 360px;
+      margin: 0 auto 3rem;
+      letter-spacing: 0.3px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 40px;
+      border: 0.5px solid var(--dark);
+      color: var(--dark);
+      font-family: 'Jost', sans-serif;
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-decoration: none;
+      background: transparent;
+      cursor: pointer;
+      transition: background 0.25s, color 0.25s;
+    }
+
+    .btn:hover {
+      background: var(--dark);
+      color: var(--cream);
+    }
+
+    .btn-dark {
+      background: var(--dark);
+      color: var(--cream);
+      border-color: var(--dark);
+    }
+
+    .btn-dark:hover {
+      background: #3d332e;
+    }
+
+    /* SECTIONS */
+    .section {
+      padding: 5rem 3rem;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-eyebrow {
+      font-size: 10px;
+      letter-spacing: 4px;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 0.7rem;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
+      font-weight: 300;
+      color: var(--dark);
+      letter-spacing: 1px;
+    }
+
+    /* PRODUCT GRID */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      max-width: 860px;
+      margin: 0 auto;
+      border: 0.5px solid var(--faint);
+    }
+
+    .product-card {
+      background: #fff;
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      border-right: 0.5px solid var(--faint);
+      border-bottom: 0.5px solid var(--faint);
+      display: flex;
+      flex-direction: column;
+      transition: background 0.2s;
+    }
+
+    .product-card:hover { background: #fdfbf9; }
+
+    .product-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17px;
+      font-weight: 400;
+      color: var(--dark);
+      margin-bottom: 0.6rem;
+      letter-spacing: 0.5px;
+      height: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .product-desc {
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 1.2rem;
+      line-height: 1.7;
+      flex: 1;
+      min-height: 52px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+    }
+
+    .product-price {
+      font-size: 14px;
+      color: var(--dark);
+      margin-bottom: 1.2rem;
+      letter-spacing: 0.5px;
+      height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .product-btn {
+      width: 100%;
+      padding: 9px;
+      border: 0.5px solid rgba(44,36,32,0.2);
+      background: transparent;
+      color: var(--dark);
+      font-family: 'Jost', sans-serif;
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: auto;
+    }
+
+    .product-btn:hover { background: var(--blush); }
+
+    /* UPSELL BANNER */
+    .upsell {
+      max-width: 860px;
+      margin: 2.5rem auto 0;
+      background: var(--blush);
+      border: 0.5px solid rgba(44,36,32,0.12);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+      padding: 1.8rem 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .upsell-eyebrow {
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+
+    .upsell-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--dark);
+      margin-bottom: 0.3rem;
+    }
+
+    .upsell-sub {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .upsell-btns {
+      display: flex;
+      gap: 0.8rem;
+      flex-shrink: 0;
+      flex-wrap: wrap;
+    }
+
+    /* BUNDLE SECTION */
+    .bundle-section {
+      padding: 5rem 3rem;
+      background: var(--blush);
+    }
+
+    .bundle-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .bundle-card {
+      background: var(--cream);
+      border: 0.5px solid rgba(44,36,32,0.1);
+      padding: 2.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.2s;
+    }
+
+    .bundle-card:hover {
+      box-shadow: 0 4px 24px rgba(44,36,32,0.07);
+    }
+
+    .bundle-card.featured {
+      border-color: rgba(44,36,32,0.25);
+    }
+
+    .bundle-eyebrow {
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+
+    .bundle-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 300;
+      color: var(--dark);
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.5px;
+    }
+
+    .bundle-desc {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+      min-height: 40px;
+    }
+
+    .bundle-items {
+      margin-bottom: 1.5rem;
+      flex: 1;
+    }
+
+    .bundle-item {
+      font-size: 11px;
+      color: var(--muted);
+      padding: 7px 0;
+      border-bottom: 0.5px solid var(--faint);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      letter-spacing: 0.3px;
+    }
+
+    .bundle-dash {
+      color: var(--accent);
+      font-size: 13px;
+    }
+
+    .bundle-price-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1.5rem;
+    }
+
+    .bundle-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 300;
+      color: var(--dark);
+    }
+
+    .bundle-save {
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 0.5px;
+    }
+
+    .bundle-btn {
+      width: 100%;
+      padding: 13px;
+      border: 0.5px solid rgba(44,36,32,0.2);
+      background: transparent;
+      color: var(--dark);
+      font-family: 'Jost', sans-serif;
+      font-size: 10px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      margin-top: auto;
+    }
+
+    .bundle-card.featured .bundle-btn {
+      background: var(--dark);
+      color: var(--cream);
+      border-color: var(--dark);
+    }
+
+    .bundle-card.featured .bundle-btn:hover { background: #3d332e; }
+    .bundle-btn:hover { background: var(--warm); }
+
+    /* STRIP */
+    .strip {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 3rem;
+      padding: 2rem 3rem;
+      border-top: 0.5px solid var(--faint);
+      border-bottom: 0.5px solid var(--faint);
+    }
+
+    .strip-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .strip-dot {
+      width: 4px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .strip-label {
+      font-size: 10px;
+      letter-spacing: 2.5px;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 10px;
+      color: rgba(44,36,32,0.28);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 640px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1.2rem; }
+      .hero { padding: 5rem 1.5rem 4rem; }
+      .hero-title { font-size: 38px; }
+      .section { padding: 3.5rem 1.5rem; }
+      .product-grid { grid-template-columns: repeat(2, 1fr); }
+      .bundle-section { padding: 3.5rem 1.5rem; }
+      .bundle-grid { grid-template-columns: 1fr; }
+      .upsell { flex-direction: column; align-items: flex-start; }
+      .upsell-btns { width: 100%; }
+      .upsell-btns .btn { flex: 1; text-align: center; }
+      .strip { gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="logo">SATINE</a>
+    <ul class="nav-links">
+      <li><a href="#collectie">Collectie</a></li>
+      <li><a href="#bundels">Bundels</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="hero-eyebrow">Satijnen Self-Care</p>
+    <h1 class="hero-title">Voor jezelf<br>zorgen, zacht.</h1>
+    <p class="hero-sub">Dagelijkse self-care accessoires in premium satijn. Voor elke ochtend en elke nacht.</p>
+    <a href="#collectie" class="btn">Bekijk collectie</a>
+  </section>
+
+  <!-- STRIP -->
+  <div class="strip">
+    <div class="strip-item"><div class="strip-dot"></div><span class="strip-label">Gratis verzending</span></div>
+    <div class="strip-item"><div class="strip-dot"></div><span class="strip-label">Snel geleverd</span></div>
+    <div class="strip-item"><div class="strip-dot"></div><span class="strip-label">Premium satijn</span></div>
+    <div class="strip-item"><div class="strip-dot"></div><span class="strip-label">Veilig betalen</span></div>
+  </div>
+
+  <!-- PRODUCTEN -->
+  <section class="section" id="collectie">
+    <div class="section-header">
+      <p class="section-eyebrow">Collectie</p>
+      <h2 class="section-title">Losse producten</h2>
+    </div>
+
+    <div class="product-grid">
+      <div class="product-card">
+        <div class="product-name">Slaapmutsje</div>
+        <div class="product-desc">Bescherm je haar elke nacht in zacht satijn</div>
+        <div class="product-price">€12,95</div>
+        <button class="product-btn">Bestel</button>
+      </div>
+      <div class="product-card">
+        <div class="product-name">Slaapmasker</div>
+        <div class="product-desc">Zacht satijnen masker voor de perfecte nacht</div>
+        <div class="product-price">€9,95</div>
+        <button class="product-btn">Bestel</button>
+      </div>
+      <div class="product-card">
+        <div class="product-name">Scrunchie set</div>
+        <div class="product-desc">3 satijnen scrunchies in neutrale tinten</div>
+        <div class="product-price">€8,95</div>
+        <button class="product-btn">Bestel</button>
+      </div>
+      <div class="product-card">
+        <div class="product-name">Kussensloop</div>
+        <div class="product-desc">Satijnen kussensloop voor haar en huid</div>
+        <div class="product-price">€19,95</div>
+        <button class="product-btn">Bestel</button>
+      </div>
+      <div class="product-card">
+        <div class="product-name">Haarband</div>
+        <div class="product-desc">Brede satijnen haarband voor ochtend en avond</div>
+        <div class="product-price">€7,95</div>
+        <button class="product-btn">Bestel</button>
+      </div>
+      <div class="product-card">
+        <div class="product-name">Claw clips</div>
+        <div class="product-desc">Satijnen haarklauwen in 4 neutrale kleuren</div>
+        <div class="product-price">€7,95</div>
+        <button class="product-btn">Bestel</button>
+      </div>
+    </div>
+
+    <div class="upsell">
+      <div>
+        <div class="upsell-eyebrow">Bundels</div>
+        <div class="upsell-title">Combineer en bespaar tot €8,—</div>
+        <div class="upsell-sub">Bekijk onze samengestelde bundels en betaal minder dan los.</div>
+      </div>
+      <div class="upsell-btns">
+        <a href="#bundels" class="btn btn-dark">Nacht — €24,95</a>
+        <a href="#bundels" class="btn">Ochtend — €19,95</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUNDELS -->
+  <section class="bundle-section" id="bundels">
+    <div class="section-header">
+      <p class="section-eyebrow">Bundels</p>
+      <h2 class="section-title">Alles in één</h2>
+    </div>
+
+    <div class="bundle-grid">
+      <div class="bundle-card featured">
+        <div class="bundle-eyebrow">Nacht</div>
+        <div class="bundle-name">Nacht Bundel</div>
+        <div class="bundle-desc">Jouw complete satijnen nachtroutine</div>
+        <div class="bundle-items">
+          <div class="bundle-item">Satijnen slaapmutsje <span class="bundle-dash">—</span></div>
+          <div class="bundle-item">Satijnen slaapmasker <span class="bundle-dash">—</span></div>
+          <div class="bundle-item">Scrunchie set (3x) <span class="bundle-dash">—</span></div>
+        </div>
+        <div class="bundle-price-row">
+          <span class="bundle-price">€24,95</span>
+          <span class="bundle-save">Bespaar €6,90</span>
+        </div>
+        <button class="bundle-btn">Bestel bundel</button>
+      </div>
+
+      <div class="bundle-card">
+        <div class="bundle-eyebrow">Ochtend</div>
+        <div class="bundle-name">Ochtend Bundel</div>
+        <div class="bundle-desc">Begin elke dag goed verzorgd</div>
+        <div class="bundle-items">
+          <div class="bundle-item">Satijnen haarband <span class="bundle-dash">—</span></div>
+          <div class="bundle-item">Claw clips (4x) <span class="bundle-dash">—</span></div>
+          <div class="bundle-item">Scrunchie set (3x) <span class="bundle-dash">—</span></div>
+        </div>
+        <div class="bundle-price-row">
+          <span class="bundle-price">€19,95</span>
+          <span class="bundle-save">Bespaar €4,90</span>
+        </div>
+        <button class="bundle-btn">Bestel bundel</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contact">
+    <p>© 2025 Satine — Alle rechten voorbehouden</p>
+    <p style="margin-top: 0.5rem; font-size: 10px;">info@satine.nl</p>
+  </footer>
+
+</body>
+</html>
