@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Van Smoorenburg Huisontruiming — Professionele woningontruiming in Leiden en omgeving. Discreet, snel en volledig geregeld." />
+  <title>Van Smoorenburg Huisontruiming | Leiden en omgeving</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --navy:   #1B3A5C;
+      --blue:   #2A5A8C;
+      --sky:    #E8F0F8;
+      --paper:  #F9F7F4;
+      --warm:   #EEECe8;
+      --line:   #DCDAD6;
+      --ink:    #141414;
+      --muted:  #787570;
+      --serif:  'Instrument Serif', Georgia, serif;
+      --sans:   'Geist', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: var(--paper); color: var(--ink); -webkit-font-smoothing: antialiased; }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      background: var(--navy);
+      padding: 10px 52px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .topbar-left {
+      font-size: 12px; color: rgba(255,255,255,0.6);
+      display: flex; align-items: center; gap: 24px;
+    }
+    .topbar-left a { color: rgba(255,255,255,0.6); text-decoration: none; transition: color .15s; }
+    .topbar-left a:hover { color: #fff; }
+    .topbar-left span { display: flex; align-items: center; gap: 6px; }
+    .topbar-right {
+      display: flex; align-items: center; gap: 12px;
+    }
+    .topbar-phone {
+      font-size: 13px; font-weight: 500; color: #fff;
+      text-decoration: none; display: flex; align-items: center; gap: 6px;
+      letter-spacing: 0.02em;
+    }
+    .topbar-phone:hover { color: rgba(255,255,255,0.85); }
+    .topbar-phone svg { width: 14px; height: 14px; }
+    .topbar-offerte {
+      background: #fff; color: var(--navy);
+      padding: 7px 18px; font-size: 12px; font-weight: 500;
+      letter-spacing: 0.05em; text-transform: uppercase;
+      text-decoration: none; transition: opacity .15s;
+    }
+    .topbar-offerte:hover { opacity: .88; }
+
+    /* ── NAV ── */
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 52px;
+      border-bottom: 1px solid var(--line);
+      background: var(--paper);
+      position: sticky; top: 0; z-index: 99;
+    }
+    .logo { text-decoration: none; }
+    .logo-main { display: block; font-family: var(--serif); font-size: 17px; color: var(--navy); }
+    .logo-sub  { display: block; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-top: 2px; }
+    .nav-links { display: flex; align-items: center; gap: 32px; }
+    .nav-links a { font-size: 12px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color .15s; }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-cta {
+      background: var(--navy) !important; color: #fff !important;
+      padding: 9px 22px;
+    }
+    .nav-cta:hover { background: var(--blue) !important; color: #fff !important; }
+
+    /* ── HERO ── */
+    .hero {
+      display: grid; grid-template-columns: 1.1fr 0.9fr;
+      min-height: 420px; border-bottom: 1px solid var(--line);
+    }
+    .hero-l {
+      padding: 72px 52px;
+      display: flex; flex-direction: column; justify-content: center;
+      border-right: 1px solid var(--line);
+    }
+    .hero-tag {
+      font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--blue); margin-bottom: 24px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .hero-tag::before { content: ''; width: 20px; height: 1px; background: var(--blue); }
+    .hero-l h1 {
+      font-family: var(--serif); font-size: 46px; line-height: 1.1;
+      font-weight: 400; color: var(--ink); margin-bottom: 20px;
+    }
+    .hero-l h1 em { font-style: italic; color: var(--navy); }
+    .hero-l p {
+      font-size: 15px; color: var(--muted); line-height: 1.8;
+      font-weight: 300; max-width: 380px; margin-bottom: 36px;
+    }
+    .hero-actions { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+    .btn-offerte {
+      background: var(--navy); color: #fff;
+      padding: 13px 28px; font-family: var(--sans);
+      font-size: 13px; letter-spacing: 0.04em;
+      text-decoration: none; transition: background .15s;
+    }
+    .btn-offerte:hover { background: var(--blue); }
+    .btn-bel {
+      display: inline-flex; align-items: center; gap: 8px;
+      color: var(--navy); font-size: 14px; font-weight: 500;
+      text-decoration: none; border-bottom: 1px solid var(--line);
+      padding-bottom: 2px; transition: border-color .15s, color .15s;
+      letter-spacing: 0.02em;
+    }
+    .btn-bel:hover { color: var(--blue); border-color: var(--blue); }
+    .btn-bel svg { width: 15px; height: 15px; }
+
+    .hero-r {
+      background: var(--sky);
+      padding: 52px;
+      display: flex; flex-direction: column; justify-content: center; gap: 0;
+    }
+    .usp {
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(42,90,140,0.15);
+      display: flex; align-items: flex-start; gap: 16px;
+    }
+    .usp:first-child { border-top: 1px solid rgba(42,90,140,0.15); }
+    .usp-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--navy); flex-shrink: 0; margin-top: 5px;
+    }
+    .usp-title { font-size: 13px; font-weight: 500; color: var(--navy); margin-bottom: 3px; }
+    .usp-text  { font-size: 12px; color: var(--blue); font-weight: 300; line-height: 1.5; opacity: .8; }
+
+    /* ── WERKGEBIED ── */
+    .gebied-bar {
+      background: var(--navy); color: rgba(255,255,255,0.5);
+      padding: 13px 52px;
+      font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+    }
+    .gebied-bar strong { color: rgba(255,255,255,0.9); font-weight: 400; }
+
+    /* ── DIENSTEN ── */
+    .diensten { border-bottom: 1px solid var(--line); }
+    .section-header { padding: 52px 52px 36px; border-bottom: 1px solid var(--line); }
+    .section-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--blue); margin-bottom: 8px; }
+    .section-title { font-family: var(--serif); font-size: 28px; font-weight: 400; color: var(--ink); }
+    .diensten-grid { display: flex; flex-direction: column; }
+    .dienst {
+      padding: 36px 52px;
+      border-bottom: 1px solid var(--line);
+      display: grid; grid-template-columns: 60px 1fr 2fr; align-items: start; gap: 0 32px;
+      transition: background .15s;
+    }
+    .dienst:last-child { border-bottom: none; }
+    .dienst:hover { background: var(--sky); }
+    .dienst-num { font-size: 11px; letter-spacing: 0.1em; color: var(--blue); text-transform: uppercase; padding-top: 4px; }
+    .dienst h3 { font-family: var(--serif); font-size: 22px; font-weight: 400; color: var(--navy); line-height: 1.2; }
+    .dienst p  { font-size: 14px; color: var(--muted); line-height: 1.75; font-weight: 300; }
+
+    /* ── WERKWIJZE ── */
+    .werkwijze { border-bottom: 1px solid var(--line); }
+    .stappen { display: grid; grid-template-columns: 1fr 1fr; }
+    .stap {
+      padding: 36px 52px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .stap:nth-child(2n) { border-right: none; }
+    .stap:nth-last-child(-n+2) { border-bottom: none; }
+    .stap-num { font-family: var(--serif); font-size: 40px; color: var(--line); margin-bottom: 14px; line-height: 1; }
+    .stap h4 { font-size: 14px; font-weight: 500; color: var(--navy); margin-bottom: 8px; }
+    .stap p  { font-size: 13px; color: var(--muted); font-weight: 300; line-height: 1.65; }
+
+    /* ── VOOR WIE ── */
+    .voor-wie { display: flex; flex-direction: column; border-bottom: 1px solid var(--line); }
+    .voor-wie-blok {
+      padding: 48px 52px;
+      border-bottom: 1px solid var(--line);
+      display: grid; grid-template-columns: 1fr 2fr; gap: 0 48px; align-items: start;
+    }
+    .voor-wie-blok:last-child { border-bottom: none; background: var(--sky); }
+    .voor-wie-blok h2 { font-family: var(--serif); font-size: 22px; font-weight: 400; color: var(--navy); margin-bottom: 12px; margin-top: 8px; }
+    .voor-wie-blok p  { font-size: 14px; color: var(--muted); line-height: 1.8; font-weight: 300; }
+
+    /* ── CONTACT ── */
+    .contact { display: flex; flex-direction: column; }
+    .contact-l {
+      padding: 52px 52px 40px;
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; align-items: start;
+    }
+    .contact-l h2 { font-family: var(--serif); font-size: 28px; font-weight: 400; color: var(--navy); margin-bottom: 8px; }
+    .contact-l > p { font-size: 14px; color: var(--muted); line-height: 1.8; font-weight: 300; }
+    .contact-bel {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--navy); color: #fff;
+      padding: 14px 28px; font-family: var(--sans);
+      font-size: 15px; font-weight: 400; text-decoration: none;
+      letter-spacing: 0.02em; transition: background .15s; width: fit-content;
+    }
+    .contact-bel:hover { background: var(--blue); }
+    .contact-bel svg { width: 18px; height: 18px; }
+    .contact-details { display: flex; flex-direction: column; gap: 12px; }
+    .cd { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--ink); }
+    .cd svg { color: var(--navy); flex-shrink: 0; }
+    .cd a { color: var(--ink); text-decoration: none; }
+    .cd a:hover { color: var(--navy); }
+
+    /* ── FORM ── */
+    .contact-r { padding: 0 52px 52px; background: var(--paper); }
+    .contact-r .form-kop { font-family: var(--serif); font-size: 22px; font-weight: 400; color: var(--navy); margin-bottom: 6px; display: none; }
+    .contact-r .form-sub { font-size: 13px; color: var(--muted); margin-bottom: 28px; font-weight: 300; display: none; }
+    .contact-form-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 0 32px; }
+    .contact-form-inner .form-row { margin-bottom: 16px; }
+    .contact-form-inner .full { grid-column: 1 / -1; }
+    .contact-form-inner .form-submit { grid-column: 1 / -1; }
+    .form-kop { font-family: var(--serif); font-size: 22px; font-weight: 400; color: var(--navy); margin-bottom: 6px; }
+    .form-sub { font-size: 13px; color: var(--muted); margin-bottom: 28px; font-weight: 300; }
+    .form-row { margin-bottom: 16px; }
+    .form-row label { display: block; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+    .form-row input,
+    .form-row select,
+    .form-row textarea {
+      width: 100%; padding: 11px 14px;
+      font-family: var(--sans); font-size: 13px; font-weight: 300;
+      border: 1px solid var(--line); background: #fff; color: var(--ink);
+      outline: none; border-radius: 0; appearance: none; transition: border-color .15s;
+    }
+    .form-row input:focus,
+    .form-row select:focus,
+    .form-row textarea:focus { border-color: var(--navy); }
+    .form-row textarea { min-height: 85px; resize: vertical; }
+    .form-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .form-submit {
+      width: 100%; padding: 13px; margin-top: 4px;
+      background: var(--navy); color: #fff; border: none;
+      font-family: var(--sans); font-size: 12px; letter-spacing: 0.1em;
+      text-transform: uppercase; cursor: pointer; transition: background .15s;
+    }
+    .form-submit:hover { background: var(--blue); }
+    .form-success { display: none; padding: 40px 0; text-align: center; }
+    .form-success strong { display: block; font-family: var(--serif); font-size: 22px; font-weight: 400; color: var(--navy); margin-bottom: 6px; }
+    .form-success span { font-size: 13px; color: var(--muted); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      padding: 24px 52px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .f-logo { font-family: var(--serif); font-size: 15px; color: rgba(255,255,255,0.6); }
+    .f-copy  { font-size: 11px; color: rgba(255,255,255,0.25); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 800px) {
+      .topbar { padding: 10px 20px; }
+      .topbar-left { display: none; }
+      nav { padding: 14px 20px; }
+      .nav-links a:not(.nav-cta) { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-l { padding: 48px 24px; border-right: none; border-bottom: 1px solid var(--line); }
+      .hero-l h1 { font-size: 34px; }
+      .hero-r { padding: 32px 24px; }
+      .gebied-bar { padding: 12px 20px; }
+      .section-header { padding: 36px 24px 24px; }
+      .dienst { padding: 24px; grid-template-columns: 40px 1fr; grid-template-rows: auto auto; }
+      .dienst p { grid-column: 2; }
+      .stappen { grid-template-columns: 1fr; }
+      .stap { padding: 28px 24px; border-right: none; border-bottom: 1px solid var(--line); }
+      .stap:last-child { border-bottom: none; }
+      .stap:nth-last-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .stap:last-child { border-bottom: none; }
+      .voor-wie-blok { padding: 36px 24px; grid-template-columns: 1fr; gap: 12px; }
+      .contact-l { padding: 36px 24px; grid-template-columns: 1fr; }
+      .contact-r { padding: 0 24px 40px; }
+      .contact-form-inner { grid-template-columns: 1fr; }
+      footer { padding: 20px 24px; flex-direction: column; gap: 6px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <span>
+        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+        Leiden &amp; omgeving
+      </span>
+      <span>Ma – Za &middot; 8:00 – 18:00</span>
+    </div>
+    <div class="topbar-right">
+      <a href="tel:0630576584" class="topbar-phone">
+        <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+        06 30 57 65 84
+      </a>
+      <a href="#contact" class="topbar-offerte">Offerte aanvragen</a>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="logo">
+      <span class="logo-main">Van Smoorenburg Huisontruiming</span>
+      <span class="logo-sub">Leiden &amp; omgeving</span>
+    </a>
+    <div class="nav-links">
+      <a href="#diensten">Diensten</a>
+      <a href="#werkwijze">Werkwijze</a>
+      <a href="#contact">Contact</a>
+      <a href="#contact" class="nav-cta">Offerte aanvragen</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-l">
+      <p class="hero-tag">Professioneel &amp; discreet</p>
+      <h1>Wij regelen<br>de ontruiming.<br><em>U hoeft niets</em><br><em>te doen.</em></h1>
+      <p>Volledige huisontruiming in Leiden en omgeving. Snel, zorgvuldig en tegen een vaste prijs — zonder gedoe.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-offerte">Offerte aanvragen</a>
+        <a href="tel:0630576584" class="btn-bel">
+          <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+          06 30 57 65 84
+        </a>
+      </div>
+    </div>
+    <div class="hero-r">
+      <div class="usp">
+        <div class="usp-dot"></div>
+        <div>
+          <p class="usp-title">Reactie binnen 24 uur</p>
+          <p class="usp-text">Vrijblijvende offerte op maat, altijd snel.</p>
+        </div>
+      </div>
+      <div class="usp">
+        <div class="usp-dot"></div>
+        <div>
+          <p class="usp-title">Volledig ontzorgd</p>
+          <p class="usp-text">Van eerste contact tot oplevering — alles geregeld.</p>
+        </div>
+      </div>
+      <div class="usp">
+        <div class="usp-dot"></div>
+        <div>
+          <p class="usp-title">Vaste prijs, geen verrassingen</p>
+          <p class="usp-text">De offerte is wat u betaalt. Geen bijkomende kosten.</p>
+        </div>
+      </div>
+      <div class="usp">
+        <div class="usp-dot"></div>
+        <div>
+          <p class="usp-title">Bezemschoon opgeleverd</p>
+          <p class="usp-text">De woning is klaar voor verkoop, verhuur of overdracht.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WERKGEBIED -->
+  <div class="gebied-bar">
+    <strong>Werkgebied</strong>
+    Leiden &middot; Leiderdorp &middot; Zoetermeer &middot; Den Haag &middot; Alphen aan den Rijn &middot; Katwijk &middot; Noordwijk &middot; Wassenaar &middot; Voorschoten &middot; Oegstgeest
+  </div>
+
+  <!-- DIENSTEN -->
+  <section class="diensten" id="diensten">
+    <div class="section-header">
+      <p class="section-label">Wat wij doen</p>
+      <h2 class="section-title">Onze diensten</h2>
+    </div>
+    <div class="diensten-grid">
+      <div class="dienst">
+        <p class="dienst-num">01</p>
+        <h3>Woningontruiming</h3>
+        <p>Volledige ontruiming van een woning — van grote meubels tot kleine spullen. Wij zorgen dat alles wordt afgevoerd en de woning leeg wordt opgeleverd.</p>
+      </div>
+      <div class="dienst">
+        <p class="dienst-num">02</p>
+        <h3>Oplevering bij verhuizing</h3>
+        <p>Woning volledig leeg en bezemschoon achterlaten. Wij regelen het zodat u zorgeloos kunt vertrekken of overdragen.</p>
+      </div>
+      <div class="dienst">
+        <p class="dienst-num">03</p>
+        <h3>Ontruiming voor verhuurders</h3>
+        <p>Snel en volledig voor verhuurders en makelaars. Wij zorgen dat de woning zo snel mogelijk opnieuw beschikbaar is.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WERKWIJZE -->
+  <section class="werkwijze" id="werkwijze">
+    <div class="section-header">
+      <p class="section-label">Hoe het werkt</p>
+      <h2 class="section-title">In vier stappen geregeld</h2>
+    </div>
+    <div class="stappen">
+      <div class="stap">
+        <div class="stap-num">01</div>
+        <h4>Contact opnemen</h4>
+        <p>Bel of stuur een bericht via het formulier. Wij reageren altijd binnen 24 uur.</p>
+      </div>
+      <div class="stap">
+        <div class="stap-num">02</div>
+        <h4>Vrijblijvende offerte</h4>
+        <p>Na een korte intake ontvangt u een heldere offerte op maat, zonder verborgen kosten.</p>
+      </div>
+      <div class="stap">
+        <div class="stap-num">03</div>
+        <h4>Wij gaan aan het werk</h4>
+        <p>Op de afgesproken datum ruimen wij de woning volledig leeg. U hoeft er niet bij te zijn.</p>
+      </div>
+      <div class="stap">
+        <div class="stap-num">04</div>
+        <h4>Woning opgeleverd</h4>
+        <p>Bezemschoon achtergelaten en klaar voor de volgende stap. Wij melden wanneer het klaar is.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- VOOR WIE -->
+  <section class="voor-wie">
+    <div class="voor-wie-blok">
+      <p class="section-label">Particulieren</p>
+      <h2>Een woning leegmaken op een moeilijk moment</h2>
+      <p>Soms moet een woning worden leeggehaald terwijl u al genoeg aan uw hoofd heeft. Wij nemen de praktische kant volledig van u over — rustig, discreet en op uw tempo. U hoeft er niet bij te zijn en u hoeft niets zelf te regelen.</p>
+    </div>
+    <div class="voor-wie-blok">
+      <p class="section-label">Verhuurders &amp; makelaars</p>
+      <h2>Snel en professioneel voor uw vastgoed</h2>
+      <p>Leegstand kost geld. Wij zorgen voor een snelle en volledige ontruiming zodat uw woning zo snel mogelijk weer beschikbaar is. Wij werken samen met verhuurders, woningcorporaties en makelaars in de regio Leiden.</p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="contact-l">
+      <div>
+        <h2>Neem contact op</h2>
+        <p>Bel voor een snelle reactie, of vraag een offerte aan via het formulier. Wij reageren binnen 24 uur.</p>
+      </div>
+      <div>
+        <a href="tel:0630576584" class="contact-bel">
+          <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+          06 30 57 65 84
+        </a>
+      </div>
+      <div class="contact-details">
+        <div class="cd">
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+          <a href="mailto:info@vansmoorenburgtotaalservice.nl">info@vansmoorenburgtotaalservice.nl</a>
+        </div>
+        <div class="cd">
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+          Leiden &amp; omgeving
+        </div>
+        <div class="cd">
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          Ma &ndash; Za &middot; 8:00 &ndash; 18:00
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-r" style="border-top: 1px solid var(--line); padding-top: 40px;">
+      <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="contact-form-inner">
+        <div class="form-row">
+          <label for="voornaam">Voornaam</label>
+          <input type="text" id="voornaam" name="voornaam" placeholder="Jan" required />
+        </div>
+        <div class="form-row">
+          <label for="achternaam">Achternaam</label>
+          <input type="text" id="achternaam" name="achternaam" placeholder="de Vries" required />
+        </div>
+        <div class="form-row">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" placeholder="jan@email.nl" required />
+        </div>
+        <div class="form-row">
+          <label for="telefoon">Telefoon</label>
+          <input type="tel" id="telefoon" name="telefoon" placeholder="06 ..." />
+        </div>
+        <div class="form-row full">
+          <label for="type">Type ontruiming</label>
+          <select id="type" name="type" required>
+            <option value="">Selecteer een optie</option>
+            <option value="woning-leegmaken">Woning leegmaken</option>
+            <option value="oplevering">Oplevering bij verhuizing</option>
+            <option value="verhuurder">Verhuurder / makelaar</option>
+            <option value="anders">Anders / weet ik nog niet</option>
+          </select>
+        </div>
+        <div class="form-row full">
+          <label for="bericht">Toelichting</label>
+          <textarea id="bericht" name="bericht" placeholder="Adres, type woning, gewenste datum of andere informatie..."></textarea>
+        </div>
+        <button type="submit" class="form-submit full">Verstuur aanvraag</button>
+      </form>
+      <div id="form-success" class="form-success">
+        <strong>Bedankt voor uw bericht.</strong>
+        <span>Wij nemen binnen 24 uur contact met u op.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="f-logo">Van Smoorenburg Huisontruiming &mdash; Leiden</span>
+    <span class="f-copy">&copy; 2025</span>
+  </footer>
+
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const href = a.getAttribute('href');
+        if (href === '#') return;
+        e.preventDefault();
+        const el = document.querySelector(href);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    const form = document.getElementById('contact-form');
+    const success = document.getElementById('form-success');
+    if (form) {
+      form.addEventListener('submit', async e => {
+        e.preventDefault();
+        const btn = form.querySelector('.form-submit');
+        btn.textContent = 'Versturen...';
+        btn.disabled = true;
+        try {
+          const res = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { Accept: 'application/json' }
+          });
+          if (res.ok) {
+            form.style.display = 'none';
+            success.style.display = 'block';
+          } else {
+            btn.textContent = 'Verstuur aanvraag';
+            btn.disabled = false;
+            alert('Er ging iets mis. Probeer het opnieuw.');
+          }
+        } catch {
+          btn.textContent = 'Verstuur aanvraag';
+          btn.disabled = false;
+          alert('Geen verbinding. Controleer uw internet.');
+        }
+      });
+    }
+  </script>
+</body>
+</html>
